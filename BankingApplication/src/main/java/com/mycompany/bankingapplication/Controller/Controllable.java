@@ -23,5 +23,5 @@ public interface Controllable {
     //Requires that it runs after user is logged in, else will set null details
     
     //NOTE: removed to get goin
-    //void setUserDetails();
+    void setUserDetails();
 }
