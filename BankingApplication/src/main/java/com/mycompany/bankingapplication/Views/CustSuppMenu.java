@@ -37,32 +37,103 @@ public class CustSuppMenu extends javax.swing.JPanel implements Controllable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        welcomeLbl = new javax.swing.JLabel();
+        phoneSuppLbl = new javax.swing.JLabel();
+        selectLbl1 = new javax.swing.JLabel();
+        emailSuppLbl = new javax.swing.JLabel();
+        phoneNavBtn = new javax.swing.JButton();
+        emailNavBtn = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(300, 300));
 
-        jLabel1.setText("Welcome to the Customer Support Page ");
+        welcomeLbl.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        welcomeLbl.setText("Welcome to the Customer Support Menu ");
+
+        phoneSuppLbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        phoneSuppLbl.setText("For Phone Support");
+
+        selectLbl1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        selectLbl1.setText("Please select your preferred method of contacting our customer support");
+
+        emailSuppLbl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        emailSuppLbl.setText("For Email Support");
+
+        phoneNavBtn.setText("Click Here");
+        phoneNavBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phoneNavBtnActionPerformed(evt);
+            }
+        });
+
+        emailNavBtn.setText("Click Here");
+        emailNavBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailNavBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(264, 264, 264)
-                .addComponent(jLabel1)
-                .addContainerGap(298, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(166, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(welcomeLbl)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(emailSuppLbl)
+                            .addComponent(emailNavBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(phoneNavBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(phoneSuppLbl))))
+                .addGap(146, 146, 146))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(124, Short.MAX_VALUE)
+                    .addComponent(selectLbl1)
+                    .addGap(89, 89, 89)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(578, Short.MAX_VALUE))
+                .addComponent(welcomeLbl)
+                .addGap(183, 183, 183)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phoneSuppLbl)
+                    .addComponent(emailSuppLbl))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phoneNavBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailNavBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(294, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(66, 66, 66)
+                    .addComponent(selectLbl1)
+                    .addContainerGap(509, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void emailNavBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailNavBtnActionPerformed
+        // TODO add your handling code here:
+        Listener.changeCard("EmailSuppPage");
+    }//GEN-LAST:event_emailNavBtnActionPerformed
+
+    private void phoneNavBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNavBtnActionPerformed
+        // TODO add your handling code here:
+        Listener.changeCard("PhoneSuppPage");
+    }//GEN-LAST:event_phoneNavBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton emailNavBtn;
+    private javax.swing.JLabel emailSuppLbl;
+    private javax.swing.JButton phoneNavBtn;
+    private javax.swing.JLabel phoneSuppLbl;
+    private javax.swing.JLabel selectLbl1;
+    private javax.swing.JLabel welcomeLbl;
     // End of variables declaration//GEN-END:variables
 }

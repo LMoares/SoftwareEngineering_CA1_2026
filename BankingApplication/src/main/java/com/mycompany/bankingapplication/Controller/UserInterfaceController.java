@@ -6,8 +6,10 @@ package com.mycompany.bankingapplication.Controller;
 
 import com.mycompany.bankingapplication.Views.AccountManagement;
 import com.mycompany.bankingapplication.Views.CustSuppMenu;
+import com.mycompany.bankingapplication.Views.EmailSuppPage;
 import com.mycompany.bankingapplication.Views.HomePage;
 import com.mycompany.bankingapplication.Views.LoginPanel;
+import com.mycompany.bankingapplication.Views.PhoneSuppPage;
 import com.mycompany.bankingapplication.Views.UserInterfaceView;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +34,8 @@ public class UserInterfaceController {
             put("HomePage", new HomePage());
             put("AccountManagement", new AccountManagement());
             put("CustSuppMenu", new CustSuppMenu());
+            put("EmailSuppPage", new EmailSuppPage());
+            put("PhoneSuppPage", new PhoneSuppPage());
         }
     };
     
