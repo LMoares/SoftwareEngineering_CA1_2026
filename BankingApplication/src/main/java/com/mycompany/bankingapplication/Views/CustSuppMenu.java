@@ -44,6 +44,7 @@ public class CustSuppMenu extends javax.swing.JPanel implements Controllable {
         phoneNavBtn = new javax.swing.JButton();
         emailNavBtn = new javax.swing.JButton();
 
+        setMinimumSize(new java.awt.Dimension(780, 600));
         setPreferredSize(new java.awt.Dimension(300, 300));
 
         welcomeLbl.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -91,7 +92,7 @@ public class CustSuppMenu extends javax.swing.JPanel implements Controllable {
                 .addGap(146, 146, 146))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap(124, Short.MAX_VALUE)
                     .addComponent(selectLbl1)
                     .addGap(89, 89, 89)))
         );

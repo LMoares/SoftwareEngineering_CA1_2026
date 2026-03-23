@@ -18,3 +18,4 @@ com\mycompany\bankingapplication\Views\CustSuppMenu.class
 com\mycompany\bankingapplication\Views\EmailSuppPage$1.class
 com\mycompany\bankingapplication\Controller\Controllable.class
 com\mycompany\bankingapplication\Views\EmailSuppPage$2.class
+com\mycompany\bankingapplication\Views\PhoneSuppPage$1.class
