@@ -7,7 +7,7 @@ import com.mycompany.bankingapplication.Controller.Controllable;
 import com.mycompany.bankingapplication.Controller.UserInterfaceController;
 
 import com.mycompany.bankingapplication.Controller.UserInterfaceController;
-
+// Deposits and withdrawals can only happen when standing beside atm (code of atm)
 /**
  *
  * @author walco
@@ -40,26 +40,356 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        transactionTabPane = new javax.swing.JTabbedPane();
+        balanceTab = new javax.swing.JPanel();
+        checkBalanceButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        checkBalanceTabDisplay = new javax.swing.JTextArea();
+        transferTab = new javax.swing.JPanel();
+        transferFundsButton = new javax.swing.JButton();
+        transferTabAccountNumber = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        transferTabTransferAccountNumber = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        transferTabTransferMessage = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        withdrawTab = new javax.swing.JPanel();
+        withdrawFundsButton = new javax.swing.JButton();
+        withdrawTabAccountNumber = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        withdrawTabAtmCode = new javax.swing.JTextField();
+        withdrawTabWithdrawAmount = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        withdrawTabWithdrawMessage = new javax.swing.JTextField();
+        depostiTab = new javax.swing.JPanel();
+        depostTabAccountNumber = new javax.swing.JTextField();
+        depositFundsButton = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        despositTabAtmCode = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        depostiTabDespositAmount = new javax.swing.JTextField();
+        depostiTabDepositMessage = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+
+        setMaximumSize(new java.awt.Dimension(720, 600));
+        setMinimumSize(new java.awt.Dimension(720, 600));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         jLabel1.setText("Transactions");
 
-        jButton1.setText("Check Balance");
+        balanceTab.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton2.setText("Transfer Funds");
-
-        jButton3.setText("Withdraw Funds");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        checkBalanceButton.setText("Check Balance");
+        checkBalanceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                checkBalanceButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Deposit Funds");
+        checkBalanceTabDisplay.setColumns(20);
+        checkBalanceTabDisplay.setRows(5);
+        jScrollPane1.setViewportView(checkBalanceTabDisplay);
+
+        javax.swing.GroupLayout balanceTabLayout = new javax.swing.GroupLayout(balanceTab);
+        balanceTab.setLayout(balanceTabLayout);
+        balanceTabLayout.setHorizontalGroup(
+            balanceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, balanceTabLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addGroup(balanceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(checkBalanceButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
+        );
+        balanceTabLayout.setVerticalGroup(
+            balanceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, balanceTabLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(checkBalanceButton)
+                .addGap(40, 40, 40))
+        );
+
+        transactionTabPane.addTab("Check Balance", balanceTab);
+
+        transferTab.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        transferFundsButton.setText("Transfer Funds");
+        transferFundsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transferFundsButtonActionPerformed(evt);
+            }
+        });
+
+        transferTabAccountNumber.setText("account number");
+        transferTabAccountNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transferTabAccountNumberActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Account Number");
+
+        transferTabTransferAccountNumber.setText("recievers account number");
+        transferTabTransferAccountNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transferTabTransferAccountNumberActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Reciever Account Number");
+
+        transferTabTransferMessage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transferTabTransferMessageActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Transfer Message");
+
+        javax.swing.GroupLayout transferTabLayout = new javax.swing.GroupLayout(transferTab);
+        transferTab.setLayout(transferTabLayout);
+        transferTabLayout.setHorizontalGroup(
+            transferTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transferTabLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(transferTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(transferTabLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(transferTabLayout.createSequentialGroup()
+                        .addComponent(transferTabTransferMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                        .addComponent(transferFundsButton)
+                        .addGap(40, 40, 40))
+                    .addGroup(transferTabLayout.createSequentialGroup()
+                        .addGroup(transferTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(transferTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel2)
+                                .addComponent(transferTabAccountNumber)
+                                .addComponent(transferTabTransferAccountNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        transferTabLayout.setVerticalGroup(
+            transferTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferTabLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(transferTabAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(transferTabTransferAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(transferTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(transferFundsButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(transferTabTransferMessage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
+        );
+
+        transactionTabPane.addTab("Transfer Funds", transferTab);
+
+        withdrawTab.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        withdrawFundsButton.setText("Withdraw Funds");
+        withdrawFundsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                withdrawFundsButtonActionPerformed(evt);
+            }
+        });
+
+        withdrawTabAccountNumber.setText("account number");
+        withdrawTabAccountNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                withdrawTabAccountNumberActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Account Number");
+
+        jLabel7.setText("Atm Code");
+
+        withdrawTabAtmCode.setText("atm code");
+        withdrawTabAtmCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                withdrawTabAtmCodeActionPerformed(evt);
+            }
+        });
+
+        withdrawTabWithdrawAmount.setText("withdraw amount");
+        withdrawTabWithdrawAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                withdrawTabWithdrawAmountActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Withdraw Amount");
+
+        jLabel12.setText("Withdraw Funds Message");
+
+        withdrawTabWithdrawMessage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                withdrawTabWithdrawMessageActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout withdrawTabLayout = new javax.swing.GroupLayout(withdrawTab);
+        withdrawTab.setLayout(withdrawTabLayout);
+        withdrawTabLayout.setHorizontalGroup(
+            withdrawTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(withdrawTabLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(withdrawTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(withdrawTabLayout.createSequentialGroup()
+                        .addComponent(withdrawTabWithdrawMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                        .addComponent(withdrawFundsButton)
+                        .addGap(40, 40, 40))
+                    .addGroup(withdrawTabLayout.createSequentialGroup()
+                        .addGroup(withdrawTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addGroup(withdrawTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel5)
+                                .addComponent(withdrawTabAccountNumber)
+                                .addComponent(withdrawTabAtmCode)
+                                .addComponent(withdrawTabWithdrawAmount, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(withdrawTabLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        withdrawTabLayout.setVerticalGroup(
+            withdrawTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, withdrawTabLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(withdrawTabAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(withdrawTabAtmCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(withdrawTabWithdrawAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(withdrawTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(withdrawTabLayout.createSequentialGroup()
+                        .addGap(0, 97, Short.MAX_VALUE)
+                        .addComponent(withdrawFundsButton))
+                    .addComponent(withdrawTabWithdrawMessage))
+                .addGap(40, 40, 40))
+        );
+
+        transactionTabPane.addTab("Withdraw Funds", withdrawTab);
+
+        depostiTab.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        depostTabAccountNumber.setText("account number");
+        depostTabAccountNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depostTabAccountNumberActionPerformed(evt);
+            }
+        });
+
+        depositFundsButton.setText("Deposit Funds");
+        depositFundsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depositFundsButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Account Number");
+
+        despositTabAtmCode.setText("atm code");
+        despositTabAtmCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                despositTabAtmCodeActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Atm Code");
+
+        jLabel10.setText("Deposit Amount");
+
+        depostiTabDespositAmount.setText("deposit amount");
+        depostiTabDespositAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depostiTabDespositAmountActionPerformed(evt);
+            }
+        });
+
+        depostiTabDepositMessage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depostiTabDepositMessageActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Deposit Message");
+
+        javax.swing.GroupLayout depostiTabLayout = new javax.swing.GroupLayout(depostiTab);
+        depostiTab.setLayout(depostiTabLayout);
+        depostiTabLayout.setHorizontalGroup(
+            depostiTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(depostiTabLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(depostiTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(depostiTabLayout.createSequentialGroup()
+                        .addComponent(depostiTabDepositMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                        .addComponent(depositFundsButton)
+                        .addGap(40, 40, 40))
+                    .addGroup(depostiTabLayout.createSequentialGroup()
+                        .addGroup(depostiTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addGroup(depostiTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(depostiTabDespositAmount, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(depostTabAccountNumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                .addComponent(despositTabAtmCode, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        depostiTabLayout.setVerticalGroup(
+            depostiTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(depostiTabLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(depostTabAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(despositTabAtmCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(depostiTabDespositAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(depostiTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(depostiTabLayout.createSequentialGroup()
+                        .addGap(0, 97, Short.MAX_VALUE)
+                        .addComponent(depositFundsButton))
+                    .addComponent(depostiTabDepositMessage))
+                .addGap(40, 40, 40))
+        );
+
+        transactionTabPane.addTab("Deposit Funds", depostiTab);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -67,19 +397,12 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(335, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel1)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(9, 9, 9)
-                            .addComponent(jButton1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addComponent(jButton2)
-                            .addComponent(jButton4))))
+                .addComponent(jLabel1)
                 .addContainerGap(254, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(transactionTabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,27 +410,106 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(34, 34, 34)
-                .addComponent(jButton2)
-                .addGap(27, 27, 27)
-                .addComponent(jButton3)
-                .addGap(34, 34, 34)
-                .addComponent(jButton4)
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addComponent(transactionTabPane)
+                .addGap(81, 81, 81))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void withdrawFundsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawFundsButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_withdrawFundsButtonActionPerformed
+
+    private void withdrawTabAtmCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawTabAtmCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_withdrawTabAtmCodeActionPerformed
+
+    private void transferTabAccountNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferTabAccountNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transferTabAccountNumberActionPerformed
+
+    private void transferTabTransferAccountNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferTabTransferAccountNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transferTabTransferAccountNumberActionPerformed
+
+    private void transferTabTransferMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferTabTransferMessageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transferTabTransferMessageActionPerformed
+
+    private void transferFundsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferFundsButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transferFundsButtonActionPerformed
+
+    private void checkBalanceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBalanceButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkBalanceButtonActionPerformed
+
+    private void withdrawTabAccountNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawTabAccountNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_withdrawTabAccountNumberActionPerformed
+
+    private void withdrawTabWithdrawAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawTabWithdrawAmountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_withdrawTabWithdrawAmountActionPerformed
+
+    private void withdrawTabWithdrawMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawTabWithdrawMessageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_withdrawTabWithdrawMessageActionPerformed
+
+    private void depostTabAccountNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depostTabAccountNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_depostTabAccountNumberActionPerformed
+
+    private void despositTabAtmCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despositTabAtmCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_despositTabAtmCodeActionPerformed
+
+    private void depostiTabDespositAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depostiTabDespositAmountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_depostiTabDespositAmountActionPerformed
+
+    private void depostiTabDepositMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depostiTabDepositMessageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_depostiTabDepositMessageActionPerformed
+
+    private void depositFundsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositFundsButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_depositFundsButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JPanel balanceTab;
+    private javax.swing.JButton checkBalanceButton;
+    private javax.swing.JTextArea checkBalanceTabDisplay;
+    private javax.swing.JButton depositFundsButton;
+    private javax.swing.JTextField depostTabAccountNumber;
+    private javax.swing.JPanel depostiTab;
+    private javax.swing.JTextField depostiTabDepositMessage;
+    private javax.swing.JTextField depostiTabDespositAmount;
+    private javax.swing.JTextField despositTabAtmCode;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane transactionTabPane;
+    private javax.swing.JButton transferFundsButton;
+    private javax.swing.JPanel transferTab;
+    private javax.swing.JTextField transferTabAccountNumber;
+    private javax.swing.JTextField transferTabTransferAccountNumber;
+    private javax.swing.JTextField transferTabTransferMessage;
+    private javax.swing.JButton withdrawFundsButton;
+    private javax.swing.JPanel withdrawTab;
+    private javax.swing.JTextField withdrawTabAccountNumber;
+    private javax.swing.JTextField withdrawTabAtmCode;
+    private javax.swing.JTextField withdrawTabWithdrawAmount;
+    private javax.swing.JTextField withdrawTabWithdrawMessage;
     // End of variables declaration//GEN-END:variables
 }
