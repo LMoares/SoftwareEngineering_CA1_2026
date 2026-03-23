@@ -251,13 +251,12 @@
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="requestBTN" alignment="0" max="32767" attributes="0"/>
-                              <Component id="selectBTN" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="selectedLoanLBL" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="selectedLoanLBL" alignment="1" min="-2" pref="174" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="requestBTN" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="selectBTN" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace pref="17" max="32767" attributes="0"/>
@@ -330,11 +329,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Select Desired Loan Amount"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectBTNActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="requestBTN">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Submit Loan Request"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="requestBTNActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="selectedLoanLBL">
               <Properties>

@@ -22,17 +22,20 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         initComponents();
         incomeTable.getTableHeader().setReorderingAllowed(false);
         slider.setMaximum(0);
+        outputTA.setEditable(false);
     }
     private float sum = 0.0f;
     private float maxLoan = 0.0f;
+    private int selectedLoan = 0;
     private UserInterfaceController Listener;
-    
+
     public void setListener(UserInterfaceController Listener) {
         this.Listener = Listener;
     }
-    
-    public void setUserDetails(){}
-    
+
+    public void setUserDetails() {
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -177,8 +180,18 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         });
 
         selectBTN.setText("Select Desired Loan Amount");
+        selectBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectBTNActionPerformed(evt);
+            }
+        });
 
         requestBTN.setText("Submit Loan Request");
+        requestBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requestBTNActionPerformed(evt);
+            }
+        });
 
         selectedLoanLBL.setText("€0.00");
 
@@ -200,12 +213,11 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
                         .addComponent(slider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25)
                         .addComponent(jLabel5))
-                    .addGroup(loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(requestBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(selectBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(loanApplicationPaneLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(selectedLoanLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(selectedLoanLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(requestBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(selectBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         loanApplicationPaneLayout.setVerticalGroup(
@@ -266,84 +278,129 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
             if (income <= 0) {
                 throw new Exception("Negative Income Entered");
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Please enter a valid positive number for monthly income");
             return;
         }
         sourceTF.setText("");
         incomeTF.setText("");
-        
+
         DefaultTableModel model = (DefaultTableModel) incomeTable.getModel();
-        model.addRow(new Object[]{source,income});
+        model.addRow(new Object[]{source, income});
         sum += income;
-        maxLoan = sum*4.0f;
-        slider.setMaximum((int)maxLoan);
-        loanMaxLBL.setText("€"+((int)maxLoan));
+        maxLoan = sum * 4.0f;
+        slider.setMaximum((int) maxLoan);
+        loanMaxLBL.setText("€" + ((int) maxLoan));
+
+        outputTA.setText("####################\n"
+                + "TOTAL INCOME BASED ON DECLARED INCOME AND CURRENT FUNDS:\n"
+                + "€" + sum + "\n"
+                + "####################\n");
     }//GEN-LAST:event_addBTNActionPerformed
 
     private void updateBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBTNActionPerformed
         int selectedRow = incomeTable.getSelectedRow();
-        
+
         if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this,"Please select a row to update.");
+            JOptionPane.showMessageDialog(this, "Please select a row to update.");
             return;
         }
-        
+
         DefaultTableModel model = (DefaultTableModel) incomeTable.getModel();
         String source = model.getValueAt(selectedRow, 0).toString();
         float income = (float) model.getValueAt(selectedRow, 1);
-        
+
         float updatedIncome = -1.0f;
-        
+
         try {
-            updatedIncome = Float.parseFloat(JOptionPane.showInputDialog(this, "Update monthly income for : "+source));
-            
-            if(updatedIncome <= 0) {
+            updatedIncome = Float.parseFloat(JOptionPane.showInputDialog(this, "Update monthly income for : " + source));
+
+            if (updatedIncome <= 0) {
                 throw new Exception("Negative Income Entered");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Please enter a valid positive number for monthly income");
             return;
         }
-        
+
         model.removeRow(selectedRow);
-        model.addRow(new Object[]{source,updatedIncome});
-        sum-=income;
-        sum+=updatedIncome;
-        maxLoan = sum*4.0f;
-        slider.setMaximum((int)maxLoan);
-        loanMaxLBL.setText("€"+((int)maxLoan));
+        model.addRow(new Object[]{source, updatedIncome});
+        sum -= income;
+        sum += updatedIncome;
+        maxLoan = sum * 4.0f;
+        slider.setMaximum((int) maxLoan);
+        loanMaxLBL.setText("€" + ((int) maxLoan));
+
+        outputTA.setText("####################\n"
+                + "TOTAL INCOME BASED ON DECLARED INCOME AND CURRENT FUNDS:\n"
+                + "€" + sum + "\n"
+                + "####################\n");
     }//GEN-LAST:event_updateBTNActionPerformed
 
     private void deleteBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBTNActionPerformed
         int selectedRow = incomeTable.getSelectedRow();
-        
+
         if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this,"Please select a row to delete.");
+            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
             return;
         }
-        
+
         DefaultTableModel model = (DefaultTableModel) incomeTable.getModel();
         String source = model.getValueAt(selectedRow, 0).toString();
         int income = (int) model.getValueAt(selectedRow, 1);
-        
-        int selection = JOptionPane.showConfirmDialog(this,"Are you sure you want to delete:\nSource - "+source+"\nMonthly Income - €"+income);
-        
+
+        int selection = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete:\nSource - " + source + "\nMonthly Income - €" + income);
+
         if (selection == 0) {
-            JOptionPane.showMessageDialog(this,"Source of Income deleted");
+            JOptionPane.showMessageDialog(this, "Source of Income deleted");
             model.removeRow(selectedRow);
-        }else {
-            JOptionPane.showMessageDialog(this,"Action Aborted");
+        } else {
+            JOptionPane.showMessageDialog(this, "Action Aborted");
         }
-        sum-=income;
-        maxLoan = sum*4.0f;
-        slider.setMaximum((int)maxLoan);
-        loanMaxLBL.setText("€"+((int)maxLoan));
+        sum -= income;
+        maxLoan = sum * 4.0f;
+        slider.setMaximum((int) maxLoan);
+        loanMaxLBL.setText("€" + ((int) maxLoan));
+
+        outputTA.setText("####################\n"
+                + "TOTAL INCOME BASED ON DECLARED INCOME AND CURRENT FUNDS:\n"
+                + "€" + sum + "\n"
+                + "####################\n");
     }//GEN-LAST:event_deleteBTNActionPerformed
 
     private void sliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderStateChanged
-        selectedLoanLBL.setText("€"+slider.getValue());
+        selectedLoanLBL.setText("€" + slider.getValue());
     }//GEN-LAST:event_sliderStateChanged
+
+    private void selectBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBTNActionPerformed
+        if (slider.getValue() == 0) {
+            JOptionPane.showMessageDialog(this,"Error: no declared income or funds available.");
+            return;
+        }
+        
+        selectedLoan = slider.getValue();
+        outputTA.setText("####################\n"
+                + "TOTAL INCOME BASED ON DECLARED INCOME AND CURRENT FUNDS:\n"
+                + "€" + sum + "\n"
+                + "--------------------\n"
+                + "SELECTED LOAN VALUE:\n"
+                + "€" + selectedLoan + " + 4.5% Interest Rate\n"
+                + "--------------------\n"
+                + "TOTAL LOAN DUE:\n"
+                + "€" + ((int) (selectedLoan * 0.045) + selectedLoan) + " due in 12 months\n"
+                + "€" + (((int) (selectedLoan * 0.045) + selectedLoan) / 12) + " due each month\n"
+                + "####################\n");
+    }//GEN-LAST:event_selectBTNActionPerformed
+
+    private void requestBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestBTNActionPerformed
+        if (selectedLoan == 0) {
+            JOptionPane.showMessageDialog(this, "Please use the slider to select a loan value and click select button.");
+            return;
+        }
+
+        JOptionPane.showMessageDialog(this, "Loan Request sent.\n€" + ((int) (selectedLoan * 0.045) + selectedLoan) + " due in 12 months\n€" + (((int) (selectedLoan * 0.045) + selectedLoan) / 12) + " due each month\n");
+        Listener.changeCard("HomePage");
+    }//GEN-LAST:event_requestBTNActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

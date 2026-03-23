@@ -10,6 +10,8 @@ com\mycompany\bankingapplication\Views\LoanApplication$4.class
 com\mycompany\bankingapplication\Views\AccountManagement.class
 com\mycompany\bankingapplication\Controller\UserInterfaceController$1.class
 com\mycompany\bankingapplication\Views\NavMenu$2.class
+com\mycompany\bankingapplication\Views\LoanApplication$5.class
+com\mycompany\bankingapplication\Views\LoanApplication$6.class
 com\mycompany\bankingapplication\BankingApplication.class
 com\mycompany\bankingapplication\Views\NavMenu$1.class
 com\mycompany\bankingapplication\Views\NavMenu$3.class
