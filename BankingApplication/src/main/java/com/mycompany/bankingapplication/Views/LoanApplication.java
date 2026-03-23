@@ -69,7 +69,10 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         requestBTN = new javax.swing.JButton();
         selectedLoanLBL = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        setBackground(new java.awt.Color(204, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Loan Application Form");
 
         jTabbedPane1.setDoubleBuffered(true);
@@ -179,6 +182,8 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
             }
         });
 
+        selectBTN.setBackground(new java.awt.Color(153, 255, 153));
+        selectBTN.setForeground(new java.awt.Color(0, 0, 0));
         selectBTN.setText("Select Desired Loan Amount");
         selectBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,6 +191,8 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
             }
         });
 
+        requestBTN.setBackground(new java.awt.Color(102, 153, 255));
+        requestBTN.setForeground(new java.awt.Color(0, 0, 0));
         requestBTN.setText("Submit Loan Request");
         requestBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,21 +259,21 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(281, 281, 281)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addComponent(jLabel1)))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(17, 17, 17)
                 .addComponent(jLabel1)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
