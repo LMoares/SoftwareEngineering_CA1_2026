@@ -6,6 +6,7 @@ com\mycompany\bankingapplication\Views\NavMenu.class
 com\mycompany\bankingapplication\Views\LoginPanel.class
 com\mycompany\bankingapplication\Views\HomePage.class
 com\mycompany\bankingapplication\Views\LoanApplication$1.class
+com\mycompany\bankingapplication\Views\LoanApplication$4.class
 com\mycompany\bankingapplication\Views\AccountManagement.class
 com\mycompany\bankingapplication\Controller\UserInterfaceController$1.class
 com\mycompany\bankingapplication\Views\NavMenu$2.class

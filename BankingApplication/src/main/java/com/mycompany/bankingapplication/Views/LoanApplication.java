@@ -21,8 +21,10 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
     public LoanApplication() {
         initComponents();
         incomeTable.getTableHeader().setReorderingAllowed(false);
+        slider.setMaximum(0);
     }
-    
+    private float sum = 0.0f;
+    private float maxLoan = 0.0f;
     private UserInterfaceController Listener;
     
     public void setListener(UserInterfaceController Listener) {
@@ -53,7 +55,16 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         updateBTN = new javax.swing.JButton();
         deleteBTN = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        loanApplicationPane = new javax.swing.JPanel();
+        loanLBL = new javax.swing.JLabel();
+        loanMaxLBL = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        outputTA = new javax.swing.JTextArea();
+        slider = new javax.swing.JSlider();
+        jLabel5 = new javax.swing.JLabel();
+        selectBTN = new javax.swing.JButton();
+        requestBTN = new javax.swing.JButton();
+        selectedLoanLBL = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Loan Application Form");
@@ -151,18 +162,76 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
 
         jTabbedPane1.addTab("Income Declaration", incomePane);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 686, Short.MAX_VALUE)
+        loanLBL.setText("Max loan available based on all sources of income and account funds: ");
+
+        loanMaxLBL.setText("€0.00");
+
+        outputTA.setColumns(20);
+        outputTA.setRows(5);
+        jScrollPane2.setViewportView(outputTA);
+
+        slider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderStateChanged(evt);
+            }
+        });
+
+        selectBTN.setText("Select Desired Loan Amount");
+
+        requestBTN.setText("Submit Loan Request");
+
+        selectedLoanLBL.setText("€0.00");
+
+        javax.swing.GroupLayout loanApplicationPaneLayout = new javax.swing.GroupLayout(loanApplicationPane);
+        loanApplicationPane.setLayout(loanApplicationPaneLayout);
+        loanApplicationPaneLayout.setHorizontalGroup(
+            loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loanApplicationPaneLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2)
+                    .addGroup(loanApplicationPaneLayout.createSequentialGroup()
+                        .addComponent(loanLBL)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(loanMaxLBL)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loanApplicationPaneLayout.createSequentialGroup()
+                        .addComponent(slider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel5))
+                    .addGroup(loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(requestBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(selectBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(loanApplicationPaneLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(selectedLoanLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
+        loanApplicationPaneLayout.setVerticalGroup(
+            loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loanApplicationPaneLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(loanLBL)
+                    .addComponent(loanMaxLBL))
+                .addGap(26, 26, 26)
+                .addGroup(loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(loanApplicationPaneLayout.createSequentialGroup()
+                        .addGroup(loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(slider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(3, 3, 3)
+                        .addComponent(selectedLoanLBL)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(selectBTN)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(requestBTN)))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Loan Application", jPanel1);
+        jTabbedPane1.addTab("Loan Application", loanApplicationPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -176,7 +245,7 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,9 +260,9 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
 
     private void addBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTNActionPerformed
         String source = sourceTF.getText().trim();
-        int income = -1;
+        float income = -1.0f;
         try {
-            income = Integer.parseInt(incomeTF.getText().trim());
+            income = Float.parseFloat(incomeTF.getText().trim());
             if (income <= 0) {
                 throw new Exception("Negative Income Entered");
             }
@@ -206,6 +275,10 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         
         DefaultTableModel model = (DefaultTableModel) incomeTable.getModel();
         model.addRow(new Object[]{source,income});
+        sum += income;
+        maxLoan = sum*4.0f;
+        slider.setMaximum((int)maxLoan);
+        loanMaxLBL.setText("€"+((int)maxLoan));
     }//GEN-LAST:event_addBTNActionPerformed
 
     private void updateBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBTNActionPerformed
@@ -218,12 +291,12 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         
         DefaultTableModel model = (DefaultTableModel) incomeTable.getModel();
         String source = model.getValueAt(selectedRow, 0).toString();
-        int income = (int) model.getValueAt(selectedRow, 1);
+        float income = (float) model.getValueAt(selectedRow, 1);
         
-        int updatedIncome = -1;
+        float updatedIncome = -1.0f;
         
         try {
-            updatedIncome = Integer.parseInt(JOptionPane.showInputDialog(this, "Update monthly income for : "+source));
+            updatedIncome = Float.parseFloat(JOptionPane.showInputDialog(this, "Update monthly income for : "+source));
             
             if(updatedIncome <= 0) {
                 throw new Exception("Negative Income Entered");
@@ -235,8 +308,11 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         
         model.removeRow(selectedRow);
         model.addRow(new Object[]{source,updatedIncome});
-        
-        
+        sum-=income;
+        sum+=updatedIncome;
+        maxLoan = sum*4.0f;
+        slider.setMaximum((int)maxLoan);
+        loanMaxLBL.setText("€"+((int)maxLoan));
     }//GEN-LAST:event_updateBTNActionPerformed
 
     private void deleteBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBTNActionPerformed
@@ -259,7 +335,15 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         }else {
             JOptionPane.showMessageDialog(this,"Action Aborted");
         }
+        sum-=income;
+        maxLoan = sum*4.0f;
+        slider.setMaximum((int)maxLoan);
+        loanMaxLBL.setText("€"+((int)maxLoan));
     }//GEN-LAST:event_deleteBTNActionPerformed
+
+    private void sliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderStateChanged
+        selectedLoanLBL.setText("€"+slider.getValue());
+    }//GEN-LAST:event_sliderStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -272,9 +356,18 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel loanApplicationPane;
+    private javax.swing.JLabel loanLBL;
+    private javax.swing.JLabel loanMaxLBL;
+    private javax.swing.JTextArea outputTA;
+    private javax.swing.JButton requestBTN;
+    private javax.swing.JButton selectBTN;
+    private javax.swing.JLabel selectedLoanLBL;
+    private javax.swing.JSlider slider;
     private javax.swing.JTextField sourceTF;
     private javax.swing.JButton updateBTN;
     // End of variables declaration//GEN-END:variables
