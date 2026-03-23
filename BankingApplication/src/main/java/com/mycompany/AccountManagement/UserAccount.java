@@ -12,8 +12,8 @@ public class UserAccount {
 
     //variables
     private String fName, lName;
-    private int accountId,accountNum;
-    private String email, phoneNumber;
+    private int accountId;
+    private String accountNum,email, phoneNumber;
     private String passwordHash;
     private int age;
     private double balance;
@@ -23,7 +23,7 @@ public class UserAccount {
     //overloaded constructor
     
 
-    public UserAccount(String fName, String lName, int accountId, int accountNum, String email, String phoneNumber, String passwordHash, int age, double balance, String dateOfBirth, String gender, String address) {
+    public UserAccount(String fName, String lName, int accountId, String accountNum, String email, String phoneNumber, String passwordHash, int age, double balance, String dateOfBirth, String gender, String address) {
         this.fName = fName;
         this.lName = lName;
         this.accountId = accountId;
@@ -52,7 +52,7 @@ public class UserAccount {
         this.accountId = accountId;
     }
 
-    public void setAccountNum(int accountNum) {
+    public void setAccountNum(String accountNum) {
         this.accountNum = accountNum;
     }
 
@@ -103,7 +103,7 @@ public class UserAccount {
         return accountId;
     }
 
-    public int getAccountNum() {
+    public String getAccountNum() {
         return accountNum;
     }
 

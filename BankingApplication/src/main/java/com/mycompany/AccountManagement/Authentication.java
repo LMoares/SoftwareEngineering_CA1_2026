@@ -16,17 +16,20 @@ public abstract class Authentication implements RegistrationLoginInterface {
     
     //reference the AccountsFile does not create it
     private AccountsFileInterface accountsFile;
+    private PasswordHashing hash;
     
     //dependency injection
     //sperate responsibility of authentication and file handling
     //Authentication isn't forced to user AccountsFile everytime
     //testing Authentication is simpler without using real files
-    public Authentication(AccountsFileInterface accountsFile){
+    public Authentication(AccountsFileInterface accountsFile, PasswordHashing hash){
         this.accountsFile=accountsFile;
+        this.hash=hash;
     }
+    
     //register a new account if validation is passed
     public String createAccount(String fName, String lName, int accountId, String email, String phoneNumber, 
-            String passwordHash, int age, double balance, String dateOfBirth, String gender, String address) {
+            String password, int age, double balance, String dateOfBirth, String gender, String address) {
         
         //validation
         if (fName == null || fName.equals("")) {
@@ -45,6 +48,10 @@ public abstract class Authentication implements RegistrationLoginInterface {
         if (!isValidEmail(email) || email == null || email.equals("")) {
             throw new IllegalArgumentException("The email is not valid, needs to include '@'/meet minimum length");
         }
+        //check if a valid passowrd as been given
+        if(  password==null || password.equals("") || !(password.length()>=8 && password.length()<=12)){
+            throw new IllegalArgumentException("A password of at least 8 and less than 12 characters must be provided");
+        }
         //check null empty before
         if ( phoneNumber == null || phoneNumber.equals("") || phoneNumber.length() < 1 || phoneNumber.length() > 10) {
             throw new IllegalArgumentException("Phone number length is not the valid.");
@@ -62,6 +69,9 @@ public abstract class Authentication implements RegistrationLoginInterface {
         if (address == null || address.equals("")) {
             throw new IllegalArgumentException("An address must be provided.");
         }
+        
+        //hash password
+        String passwordHash=hash.hashPassword(password);
         
         //initialize new UserAccount Object with its variables after validation completion
         UserAccount ua= new UserAccount( fName,  lName,  accountId,  email,  phoneNumber, 
@@ -96,7 +106,7 @@ public abstract class Authentication implements RegistrationLoginInterface {
             LocalDate birthDate = LocalDate.parse(birthDateIn, formatter);
 
             //check if the users' birthdate is after the 16 years mark from now
-            if (birthDate.isAfter(LocalDate.now().minusYears(16))) {
+            if (birthDate.isBefore(LocalDate.now().minusYears(16))) {
                 return true;
             } else {
                 throw new IllegalArgumentException("Must be at least 16 years old to open an account");
@@ -109,6 +119,29 @@ public abstract class Authentication implements RegistrationLoginInterface {
 
     public String login(int accountId, String email,String password){
         
+        if(accountId=null || accountId<1){
+            
+        }
+        
+        //call method to check if the email passed to it is valid
+        if (!isValidEmail(email) || email == null || email.equals("")) {
+            throw new IllegalArgumentException("The email is not valid, needs to include '@'/meet minimum length");
+        }
+        
+        if(!(password.length()<8) || password==null || password.equals("")){
+            throw new IllegalArgumentException("");
+        }
+        //get save user accounts
+        accountsFile.loadFile();
+        
+        //UserAccount ua=
+        
+        if(accountId==ua.accountId){
+            
+        }
+                
+        
+        return "Login was successful.";
 
     }
 }

@@ -74,9 +74,10 @@ public class AccountsFile implements AccountsFileInterface {
                 nextId=Math.max(nextId, accountId+1);
                 //update the user account number
                 nextNum = Math.max(nextNum,Integer.parseInt(accountNum)+1);
+                
                        
                 //initialize new UserAccount object with the user information
-                UserAccount account = new UserAccount(fName, lName, accountId, accountNum email, phoneNumber, passwordHash, age, balance, dateOfBirth, gender, address);
+                UserAccount account = new UserAccount(fName, lName, accountId, accountNum, email, phoneNumber, passwordHash, age, balance, dateOfBirth, gender, address);
                 //add accounts to arraylist
                 users.add(account);
             }
