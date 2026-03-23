@@ -46,7 +46,7 @@ public class PhoneSuppPage extends javax.swing.JPanel implements Controllable {
         jLabel1.setText("0578612345");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("TO PHONE A SALES REP, CALL THE BELOW NUMBER");
+        jLabel2.setText("TO CONTACT A SUPPORT REP, CALL THE BELOW NUMBER");
 
         returnHomeBtn.setText("Return Home");
         returnHomeBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -60,7 +60,7 @@ public class PhoneSuppPage extends javax.swing.JPanel implements Controllable {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(290, Short.MAX_VALUE)
+                .addContainerGap(222, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)

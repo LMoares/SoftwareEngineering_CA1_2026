@@ -40,36 +40,29 @@
                                   <Component id="sNameLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="emailLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="phoneNumLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="contactTimeLbl" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="fNameFld" pref="200" max="32767" attributes="0"/>
+                                  <Component id="fNameFld" max="32767" attributes="0"/>
                                   <Component id="surnameFld" max="32767" attributes="0"/>
                                   <Component id="emailFld" max="32767" attributes="0"/>
                                   <Component id="phonenumFld" max="32767" attributes="0"/>
+                                  <Component id="contactFld" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="commentsLbl" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="contactTimeLbl" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="commentsLbl" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="issuesFld" max="32767" attributes="0"/>
+                                  <Component id="issuesFld" pref="200" max="32767" attributes="0"/>
                                   <Component id="commentsFld" max="32767" attributes="0"/>
-                                  <Component id="contactFld" pref="200" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="261" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="259" max="-2" attributes="0"/>
                       <Component id="submitBtn" min="-2" pref="200" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -86,7 +79,12 @@
               <Component id="fillFormLbl" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="contactFld" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="contactTimeLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="fNameLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="fNameFld" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -116,14 +114,9 @@
                   <Component id="commentsLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="commentsFld" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="contactTimeLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="contactFld" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
               <Component id="submitBtn" min="-2" pref="90" max="-2" attributes="0"/>
-              <EmptySpace pref="95" max="32767" attributes="0"/>
+              <EmptySpace pref="142" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

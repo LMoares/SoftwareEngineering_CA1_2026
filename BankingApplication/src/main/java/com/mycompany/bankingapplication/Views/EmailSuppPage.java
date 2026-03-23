@@ -6,6 +6,7 @@ package com.mycompany.bankingapplication.Views;
 
 import com.mycompany.bankingapplication.Controller.Controllable;
 import com.mycompany.bankingapplication.Controller.UserInterfaceController;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,6 +28,38 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
     }
 
     public void setUserDetails() {
+    }
+
+    public void submitInfo() {
+        String fname = fNameFld.getText().trim();
+        String surname = surnameFld.getText().trim();
+        String email = emailFld.getText().trim();
+        String phonenum = phonenumFld.getText().trim();
+        String issues = issuesFld.getText();//No trim on issues or comments as the user will be inputting full sentences here. Removing the whitespace makes no sense
+        String comments = commentsFld.getText();
+        String contactTime = contactFld.getText().trim();
+
+        if (fname.isEmpty() || surname.isEmpty() || email.isEmpty() || phonenum.isEmpty() || issues.isEmpty() || comments.isEmpty() || contactTime.isEmpty()) {//If any of the fields are not filled in
+            JOptionPane.showMessageDialog(this, "Please ensure you have filled out all of the fields.");
+        } else if (!email.contains("@") || !email.contains(".")) {//If the email address submitted does not contain an @ symbol or a .(like for .com, etc found at the end of an email address) display an error message to the user
+            JOptionPane.showMessageDialog(this, "Please ensure you have entered a valid email address");
+        } else if (!contactTime.contains(":")) {//If the 24 hour time submitted does not contain :
+            JOptionPane.showMessageDialog(this, "Please ensure that time you have inputted is in the following format: 00:00 (24 HOUR FORMAT)");
+        } else if (contactTime.length() > 5) {//If the time submitted contains more than 5 characters
+            JOptionPane.showMessageDialog(this, "Please ensure you have entered a valid time in the following format: 00:00 (24 HOUR FORMAT)");
+        } else {
+            fNameFld.setText("");
+            surnameFld.setText("");
+            emailFld.setText("");
+            phonenumFld.setText("");
+            issuesFld.setText("");
+            commentsFld.setText("");
+            contactFld.setText("");
+
+            JOptionPane.showMessageDialog(this, "Your feedback has been submitted to customer support, we will respond as soon as possible. Please click the button to view the submitted feedback");
+            JOptionPane.showMessageDialog(this, "The Issue(s) you're faceing: " + issues);
+            JOptionPane.showMessageDialog(this, "Any futher comments: " + comments);
+        }
     }
 
     /**
@@ -129,27 +162,23 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
                                     .addComponent(fNameLbl)
                                     .addComponent(sNameLbl)
                                     .addComponent(emailLbl)
-                                    .addComponent(phoneNumLbl))
-                                .addGap(78, 78, 78)
+                                    .addComponent(phoneNumLbl)
+                                    .addComponent(contactTimeLbl))
+                                .addGap(38, 38, 38)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(fNameFld, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(fNameFld)
                                     .addComponent(surnameFld)
                                     .addComponent(emailFld)
-                                    .addComponent(phonenumFld)))
+                                    .addComponent(phonenumFld)
+                                    .addComponent(contactFld, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(commentsLbl)
-                                        .addGap(66, 66, 66))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(contactTimeLbl)
-                                        .addGap(38, 38, 38)))
+                                .addComponent(commentsLbl)
+                                .addGap(66, 66, 66)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(issuesFld)
-                                    .addComponent(commentsFld)
-                                    .addComponent(contactFld, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))))
+                                    .addComponent(issuesFld, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(commentsFld)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(261, 261, 261)
+                        .addGap(259, 259, 259)
                         .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(210, Short.MAX_VALUE))
         );
@@ -162,7 +191,11 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
                 .addComponent(fillFormLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addGap(52, 52, 52)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(contactFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactTimeLbl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fNameLbl)
                     .addComponent(fNameFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -186,13 +219,9 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(commentsLbl)
                     .addComponent(commentsFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(contactTimeLbl)
-                    .addComponent(contactFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(83, 83, 83)
+                .addGap(64, 64, 64)
                 .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -202,6 +231,7 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
+        submitInfo();//Run the above submit info function
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void issuesFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_issuesFldActionPerformed
