@@ -5,6 +5,7 @@
 package com.mycompany.bankingapplication.Controller;
 
 import com.mycompany.bankingapplication.Views.AccountManagement;
+import com.mycompany.bankingapplication.Views.CustSuppMenu;
 import com.mycompany.bankingapplication.Views.HomePage;
 import com.mycompany.bankingapplication.Views.LoginPanel;
 import com.mycompany.bankingapplication.Views.UserInterfaceView;
@@ -30,6 +31,7 @@ public class UserInterfaceController {
             put("Login", new LoginPanel());
             put("HomePage", new HomePage());
             put("AccountManagement", new AccountManagement());
+            put("CustSuppMenu", new CustSuppMenu());
         }
     };
     

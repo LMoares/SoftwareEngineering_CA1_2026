@@ -43,7 +43,7 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
+        custSuppLbl = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
@@ -65,7 +65,18 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
 
         jLabel1.setText("jLabel1");
 
-        jLabel2.setText("jLabel2");
+        custSuppLbl.setText("Customer Support");
+        custSuppLbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                custSuppLblMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                custSuppLblMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                custSuppLblMousePressed(evt);
+            }
+        });
 
         jLabel3.setText("jLabel3");
 
@@ -94,7 +105,7 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(custSuppLbl, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(homeLBL, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -123,7 +134,7 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
                 .addGap(53, 53, 53)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(jLabel2)
+                .addComponent(custSuppLbl)
                 .addGap(36, 36, 36)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
@@ -161,12 +172,27 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
         Listener.changeCard("HomePage");
     }//GEN-LAST:event_homeLBLMousePressed
 
+    private void custSuppLblMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_custSuppLblMouseEntered
+        // TODO add your handling code here:
+        custSuppLbl.setForeground(Color.blue);
+    }//GEN-LAST:event_custSuppLblMouseEntered
+
+    private void custSuppLblMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_custSuppLblMouseExited
+        // TODO add your handling code here:
+        custSuppLbl.setForeground(Color.black);
+    }//GEN-LAST:event_custSuppLblMouseExited
+
+    private void custSuppLblMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_custSuppLblMousePressed
+        // TODO add your handling code here:
+        Listener.changeCard("CustSuppMenu");
+    }//GEN-LAST:event_custSuppLblMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accountManagementLBL;
+    private javax.swing.JLabel custSuppLbl;
     private javax.swing.JLabel homeLBL;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
