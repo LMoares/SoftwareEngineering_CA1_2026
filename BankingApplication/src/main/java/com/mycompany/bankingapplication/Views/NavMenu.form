@@ -23,7 +23,7 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="loanAppLBL" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="homeLBL" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -64,7 +64,7 @@
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+              <Component id="loanAppLBL" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
               <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
@@ -102,10 +102,15 @@
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator3">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="loanAppLBL">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel3"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;Loan Application&lt;/html&gt;"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="loanAppLBLMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="loanAppLBLMouseExited"/>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="loanAppLBLMousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator4">
     </Component>

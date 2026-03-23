@@ -4,10 +4,7 @@
  */
 package com.mycompany.bankingapplication.Controller;
 
-import com.mycompany.bankingapplication.Views.AccountManagement;
-import com.mycompany.bankingapplication.Views.HomePage;
-import com.mycompany.bankingapplication.Views.LoginPanel;
-import com.mycompany.bankingapplication.Views.UserInterfaceView;
+import com.mycompany.bankingapplication.Views.*;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JPanel;
@@ -30,6 +27,7 @@ public class UserInterfaceController {
             put("Login", new LoginPanel());
             put("HomePage", new HomePage());
             put("AccountManagement", new AccountManagement());
+            put("LoanApplication", new LoanApplication());
         }
     };
     
