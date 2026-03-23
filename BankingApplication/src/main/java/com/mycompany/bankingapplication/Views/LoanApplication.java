@@ -141,9 +141,9 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
                         .addComponent(updateBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(105, 105, 105)
                         .addComponent(deleteBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         incomePaneLayout.setVerticalGroup(
             incomePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +163,7 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
                     .addComponent(updateBTN)
                     .addComponent(deleteBTN)
                     .addComponent(addBTN))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Income Declaration", incomePane);
@@ -184,7 +184,7 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
 
         selectBTN.setBackground(new java.awt.Color(153, 255, 153));
         selectBTN.setForeground(new java.awt.Color(0, 0, 0));
-        selectBTN.setText("Select Desired Loan Amount");
+        selectBTN.setText("<html>Select Desired Loan Amount</html>");
         selectBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectBTNActionPerformed(evt);
@@ -193,7 +193,7 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
 
         requestBTN.setBackground(new java.awt.Color(102, 153, 255));
         requestBTN.setForeground(new java.awt.Color(0, 0, 0));
-        requestBTN.setText("Submit Loan Request");
+        requestBTN.setText("<html>Submit Loan Request</html>");
         requestBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestBTNActionPerformed(evt);
@@ -208,24 +208,24 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
             loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loanApplicationPaneLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
+                .addGroup(loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(loanApplicationPaneLayout.createSequentialGroup()
                         .addComponent(loanLBL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(loanMaxLBL)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(loanMaxLBL))
                     .addGroup(loanApplicationPaneLayout.createSequentialGroup()
-                        .addComponent(slider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel5))
-                    .addGroup(loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(selectedLoanLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(requestBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(selectBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(17, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(slider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(requestBTN)
+                            .addGroup(loanApplicationPaneLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(selectedLoanLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(selectBTN))))
+                .addGap(87, 87, 87)
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         loanApplicationPaneLayout.setVerticalGroup(
             loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,19 +235,19 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
                     .addComponent(loanLBL)
                     .addComponent(loanMaxLBL))
                 .addGap(26, 26, 26)
-                .addGroup(loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(loanApplicationPaneLayout.createSequentialGroup()
-                        .addGroup(loanApplicationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(slider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
+                        .addComponent(slider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
                         .addComponent(selectedLoanLBL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(selectBTN)
+                        .addComponent(selectBTN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(requestBTN)))
-                .addContainerGap(120, Short.MAX_VALUE))
+                        .addComponent(requestBTN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Loan Application", loanApplicationPane);
@@ -259,10 +259,10 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
+                        .addGap(125, 125, 125)
                         .addComponent(jLabel1)))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
@@ -272,7 +272,7 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap(93, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -354,7 +354,7 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
 
         DefaultTableModel model = (DefaultTableModel) incomeTable.getModel();
         String source = model.getValueAt(selectedRow, 0).toString();
-        int income = (int) model.getValueAt(selectedRow, 1);
+        float income = (float) model.getValueAt(selectedRow, 1);
 
         int selection = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete:\nSource - " + source + "\nMonthly Income - €" + income);
 
