@@ -39,29 +39,194 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        emailWelcomeLbl = new javax.swing.JLabel();
+        fillFormLbl = new javax.swing.JLabel();
+        fNameLbl = new javax.swing.JLabel();
+        emailLbl = new javax.swing.JLabel();
+        sNameLbl = new javax.swing.JLabel();
+        phoneNumLbl = new javax.swing.JLabel();
+        issueLbl = new javax.swing.JLabel();
+        commentsLbl = new javax.swing.JLabel();
+        contactTimeLbl = new javax.swing.JLabel();
+        fNameFld = new javax.swing.JTextField();
+        surnameFld = new javax.swing.JTextField();
+        emailFld = new javax.swing.JTextField();
+        phonenumFld = new javax.swing.JTextField();
+        issuesFld = new javax.swing.JTextField();
+        commentsFld = new javax.swing.JTextField();
+        contactFld = new javax.swing.JTextField();
+        submitBtn = new javax.swing.JButton();
 
-        jLabel1.setText("Email Page");
+        emailWelcomeLbl.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        emailWelcomeLbl.setText("Email Customer Support");
+
+        fillFormLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        fillFormLbl.setText("Please fill out the below form. A member of our team will contact you shortly");
+
+        fNameLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        fNameLbl.setText("First Name:");
+
+        emailLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        emailLbl.setText("Email Address:");
+
+        sNameLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        sNameLbl.setText("Surname:");
+
+        phoneNumLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        phoneNumLbl.setText("Contact Number:");
+
+        issueLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        issueLbl.setText("Issue(s) You Are Facing:");
+
+        commentsLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        commentsLbl.setText("Further Comments:");
+
+        contactTimeLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        contactTimeLbl.setText("Preferred Contact Time:");
+
+        fNameFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fNameFldActionPerformed(evt);
+            }
+        });
+
+        issuesFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                issuesFldActionPerformed(evt);
+            }
+        });
+
+        submitBtn.setBackground(new java.awt.Color(80, 200, 120));
+        submitBtn.setForeground(new java.awt.Color(255, 255, 255));
+        submitBtn.setText("Submit");
+        submitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(345, 345, 345)
-                .addComponent(jLabel1)
-                .addContainerGap(378, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(345, 345, 345)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(251, 251, 251)
+                        .addComponent(emailWelcomeLbl))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(fillFormLbl))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(issueLbl)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fNameLbl)
+                                    .addComponent(sNameLbl)
+                                    .addComponent(emailLbl)
+                                    .addComponent(phoneNumLbl))
+                                .addGap(78, 78, 78)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(fNameFld, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(surnameFld)
+                                    .addComponent(emailFld)
+                                    .addComponent(phonenumFld)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(commentsLbl)
+                                        .addGap(66, 66, 66))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(contactTimeLbl)
+                                        .addGap(38, 38, 38)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(issuesFld)
+                                    .addComponent(commentsFld)
+                                    .addComponent(contactFld, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(261, 261, 261)
+                        .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(20, 20, 20)
+                .addComponent(emailWelcomeLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fillFormLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(558, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fNameLbl)
+                    .addComponent(fNameFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sNameLbl)
+                    .addComponent(surnameFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailLbl)
+                    .addComponent(emailFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phoneNumLbl)
+                    .addComponent(phonenumFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(issueLbl)
+                    .addComponent(issuesFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(commentsLbl)
+                    .addComponent(commentsFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(contactTimeLbl)
+                    .addComponent(contactFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83)
+                .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(95, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void fNameFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNameFldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fNameFldActionPerformed
+
+    private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_submitBtnActionPerformed
+
+    private void issuesFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_issuesFldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_issuesFldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField commentsFld;
+    private javax.swing.JLabel commentsLbl;
+    private javax.swing.JTextField contactFld;
+    private javax.swing.JLabel contactTimeLbl;
+    private javax.swing.JTextField emailFld;
+    private javax.swing.JLabel emailLbl;
+    private javax.swing.JLabel emailWelcomeLbl;
+    private javax.swing.JTextField fNameFld;
+    private javax.swing.JLabel fNameLbl;
+    private javax.swing.JLabel fillFormLbl;
+    private javax.swing.JLabel issueLbl;
+    private javax.swing.JTextField issuesFld;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel phoneNumLbl;
+    private javax.swing.JTextField phonenumFld;
+    private javax.swing.JLabel sNameLbl;
+    private javax.swing.JButton submitBtn;
+    private javax.swing.JTextField surnameFld;
     // End of variables declaration//GEN-END:variables
 }

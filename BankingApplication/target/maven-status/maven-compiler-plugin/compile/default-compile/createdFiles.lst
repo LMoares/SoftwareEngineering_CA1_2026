@@ -8,10 +8,13 @@ com\mycompany\bankingapplication\Views\AccountManagement.class
 com\mycompany\bankingapplication\Controller\UserInterfaceController$1.class
 com\mycompany\bankingapplication\Views\CustSuppMenu$1.class
 com\mycompany\bankingapplication\Views\NavMenu$2.class
+com\mycompany\bankingapplication\Views\EmailSuppPage$3.class
 com\mycompany\bankingapplication\BankingApplication.class
 com\mycompany\bankingapplication\Views\CustSuppMenu$2.class
 com\mycompany\bankingapplication\Views\EmailSuppPage.class
 com\mycompany\bankingapplication\Views\NavMenu$1.class
 com\mycompany\bankingapplication\Views\NavMenu$3.class
 com\mycompany\bankingapplication\Views\CustSuppMenu.class
+com\mycompany\bankingapplication\Views\EmailSuppPage$1.class
 com\mycompany\bankingapplication\Controller\Controllable.class
+com\mycompany\bankingapplication\Views\EmailSuppPage$2.class
