@@ -28,8 +28,8 @@ public abstract class Authentication implements RegistrationLoginInterface {
     }
     
     //register a new account if validation is passed
-    public String createAccount(String fName, String lName, int accountId, String email, String phoneNumber, 
-            String password, int age, double balance, String dateOfBirth, String gender, String address) {
+    public String createAccount(String fName, String lName, int accountId, String accountNum, String email, String phoneNumber, 
+            String password, double balance, String dateOfBirth, String gender, String address) {
         
         //validation
         if (fName == null || fName.equals("")) {
@@ -38,12 +38,7 @@ public abstract class Authentication implements RegistrationLoginInterface {
         if (lName == null || lName.equals("")) {
             throw new IllegalArgumentException("Last name must be filled.");
         }
-        if (age <= 0) {
-            throw new IllegalArgumentException("Age is invalid.");
-        }
-        if (age < 16) {
-            throw new IllegalArgumentException("You need to be at least 16 to open an account.");
-        }
+
         //call method to check if the email passed to it is valid
         if (!isValidEmail(email) || email == null || email.equals("")) {
             throw new IllegalArgumentException("The email is not valid, needs to include '@'/meet minimum length");
@@ -70,12 +65,20 @@ public abstract class Authentication implements RegistrationLoginInterface {
             throw new IllegalArgumentException("An address must be provided.");
         }
         
+        //validate balance
+        if(balance<0){
+            throw new IllegalArgumentException("Balance cannot be less than zero");
+        }
         //hash password
         String passwordHash=hash.hashPassword(password);
         
         //initialize new UserAccount Object with its variables after validation completion
-        UserAccount ua= new UserAccount( fName,  lName,  accountId,  email,  phoneNumber, 
-             passwordHash,  age,  balance,  dateOfBirth,  gender,  address);
+        UserAccount ua= new UserAccount( fName,  lName,  0, "0", email,  phoneNumber, 
+             passwordHash,  balance,  dateOfBirth,  gender,  address);
+        
+        //update accountId and accountNum using methods from AccountsFile
+        ua.setAccountId(accountsFile.getNextId());
+        ua.setAccountNum(accountsFile.getNextAccountNum());
         
         //add Account to the ArrayList
         accountsFile.addAccount(ua);
@@ -119,9 +122,6 @@ public abstract class Authentication implements RegistrationLoginInterface {
 
     public String login(int accountId, String email,String password){
         
-        if(accountId=null || accountId<1){
-            
-        }
         
         //call method to check if the email passed to it is valid
         if (!isValidEmail(email) || email == null || email.equals("")) {

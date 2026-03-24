@@ -21,8 +21,8 @@ public class AccountsFile implements AccountsFileInterface {
     //array list for users
     private ArrayList<UserAccount> users = new ArrayList<>();
     //variable to increment the id for new users
-    private int nextId = 1, nextNum = 502019189;
-
+    private int nextId = 1, nextAccountNum = 502019189;
+    
     //method to save user to file
     @Override
     public void saveAccount() {
@@ -54,7 +54,7 @@ public class AccountsFile implements AccountsFileInterface {
             String line;
             while ((line = br.readLine()) != null) {
                 //array to store user account information
-                String[] info = line.split("|");
+                String[] info = line.split("\\|");//treat pipe as a normal character instead of as or in regex
 
                 //assign to variable the info from the save file
                 String fName = info[0];
@@ -64,20 +64,23 @@ public class AccountsFile implements AccountsFileInterface {
                 String email = info[4];
                 String phoneNumber = info[5];
                 String passwordHash = info[6];
-                int age = Integer.parseInt(info[7]);
-                double balance = Double.parseDouble(info[8]);
-                String dateOfBirth = info[9];
-                String gender = info[10];
-                String address = info[11];
+                double balance = Double.parseDouble(info[7]);
+                String dateOfBirth = info[8];
+                String gender = info[9];
+                String address = info[10];
                 
                 //update the user id, splits responsibilities, keep id generation here
                 nextId=Math.max(nextId, accountId+1);
                 //update the user account number
-                nextNum = Math.max(nextNum,Integer.parseInt(accountNum)+1);
+                nextAccountNum=Math.max(nextAccountNum, nextAccountNum+1);
+                //form user IBAN 
+                String accountNum="IESEBA35330"+nextAccountNum;
                 
-                       
                 //initialize new UserAccount object with the user information
-                UserAccount account = new UserAccount(fName, lName, accountId, accountNum, email, phoneNumber, passwordHash, age, balance, dateOfBirth, gender, address);
+                UserAccount account = new UserAccount(fName, lName, accountId, accountNum, email,
+                        phoneNumber, passwordHash, age, balance, dateOfBirth, gender, address);
+                
+
                 //add accounts to arraylist
                 users.add(account);
             }
@@ -90,9 +93,23 @@ public class AccountsFile implements AccountsFileInterface {
 
     }
     
+    //
+    
     //method to add to ArrayList
     @Override
     public void addAccount(UserAccount ua){
         users.add(ua);
+    }
+    
+    //increment nextid for use in Authentication to form accountId when a new account is registered and saved
+    @Override
+    public int getNextId(){
+        return nextId++;
+    }
+    
+    //increment nextAccountNum for use in Authentication to form accountNum when a new account is registered and saved
+    @Override
+    public String getNextAccountNum(){
+        return "IE SEBA 35330 "+(nextAccountNum++);
     }
 }

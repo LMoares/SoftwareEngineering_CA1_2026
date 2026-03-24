@@ -13,17 +13,13 @@ public class UserAccount {
     //variables
     private String fName, lName;
     private int accountId;
-    private String accountNum,email, phoneNumber;
+    private String accountNum, email, phoneNumber;
     private String passwordHash;
-    private int age;
     private double balance;
-    private String dateOfBirth, gender,address;
-    
-    
-    //overloaded constructor
-    
+    private String dateOfBirth, gender, address;
 
-    public UserAccount(String fName, String lName, int accountId, String accountNum, String email, String phoneNumber, String passwordHash, int age, double balance, String dateOfBirth, String gender, String address) {
+    //overloaded constructor
+    public UserAccount(String fName, String lName, int accountId, String accountNum, String email, String phoneNumber, String passwordHash, double balance, String dateOfBirth, String gender, String address) {
         this.fName = fName;
         this.lName = lName;
         this.accountId = accountId;
@@ -31,7 +27,6 @@ public class UserAccount {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.passwordHash = passwordHash;
-        this.age = age;
         this.balance = balance;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
@@ -39,7 +34,6 @@ public class UserAccount {
     }
 
     //setters
-
     public void setfName(String fName) {
         this.fName = fName;
     }
@@ -68,10 +62,6 @@ public class UserAccount {
         this.passwordHash = passwordHash;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public void setBalance(double balance) {
         this.balance = balance;
     }
@@ -88,9 +78,7 @@ public class UserAccount {
         this.address = address;
     }
 
-
     //getters
-
     public String getfName() {
         return fName;
     }
@@ -119,10 +107,6 @@ public class UserAccount {
         return passwordHash;
     }
 
-    public int getAge() {
-        return age;
-    }
-
     public double getBalance() {
         return balance;
     }
@@ -138,20 +122,18 @@ public class UserAccount {
     public String getAddress() {
         return address;
     }
-    
-   
 
     //get user details
     public String accountDetails() {
-        return "Registration details\n" + "Account Id: " + accountId +"\nAccount Number: \n"+accountNum+"\nFirst Name: "+fName + "\nLast Name: " + lName +  "\nEmail: " +
-                "\nPhone Number: " + phoneNumber+email + "\nPassword: " + passwordHash+"\nAge: "+age+"\nBalance:"+balance +
-                 "\nDate of Birth " + dateOfBirth + "\n Gender" + gender + "\nAddress: " + address;
+        return "Registration details\n" + "Account Id: " + accountId + "\nAccount Number: \n" + accountNum + "\nFirst Name: " + fName + "\nLast Name: " + lName + "\nEmail: "
+                + "\nPhone Number: " + phoneNumber + email + "\nPassword: " + passwordHash + "\nBalance:" + balance
+                + "\nDate of Birth " + dateOfBirth + "\n Gender" + gender + "\nAddress: " + address;
     }
-    
+
     //method for a parseable format with the comma delimetre that can be saved to a file
-    public String accountDetailsFileFormat(){
-        return  fName + "|" + lName + "|" + accountId +"|"+accountNum+ "|" + email + "|" +phoneNumber+"|"+ passwordHash+ "|"+age+"|"+balance +"|"+
-                 dateOfBirth + "|" + gender + "|" + address;
+    public String accountDetailsFileFormat() {
+        return fName + "|" + lName + "|" + accountId + "|" + accountNum + "|" + email + "|" + phoneNumber + "|" + passwordHash + "|" + balance + "|"
+                + dateOfBirth + "|" + gender + "|" + address;
     }
 
 }
