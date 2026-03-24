@@ -20,8 +20,9 @@ public class AccountsFile implements AccountsFileInterface {
 
     //array list for users
     private ArrayList<UserAccount> users = new ArrayList<>();
-    //variable to increment the id for new users
-    private int nextId = 1, nextAccountNum = 502019180;
+    //variable to increment the id, numeric part of accountnum and registration number for new users
+    private int nextId = 1, nextAccountNum = 50201918, nextRegistrationNum=24875611;
+    //variable to icnrement the registration number for the new users
     
     //method to save user to file
     @Override
@@ -61,13 +62,14 @@ public class AccountsFile implements AccountsFileInterface {
                 String lName = info[1];
                 int accountId = Integer.parseInt(info[2]);
                 String accountNum=info[3];
-                String email = info[4];
-                String phoneNumber = info[5];
-                String passwordHash = info[6];
-                double balance = Double.parseDouble(info[7]);
-                String dateOfBirth = info[8];
-                String gender = info[9];
-                String address = info[10];
+                String registrationNum=info[4];
+                String email = info[5];
+                String phoneNumber = info[6];
+                String passwordHash = info[7];
+                double balance = Double.parseDouble(info[8]);
+                String dateOfBirth = info[9];
+                String gender = info[10];
+                String address = info[11];
                 
                 //update the next id for use by the next user, splits responsibilities, keep id generation here
                 //ensures the nextId is always larger, preventing duplicates
@@ -78,8 +80,11 @@ public class AccountsFile implements AccountsFileInterface {
                 //use regex to only select the digits 
                 nextAccountNum=Math.max(nextAccountNum, Integer.parseInt(accountNum.replaceAll("\\D", ""))+1);
                 
+                //update the registration number for use by the next user
+                nextRegistrationNum=Math.max(nextRegistrationNum, Integer.parseInt(registrationNum)+1);
+                
                 //initialize new UserAccount object with the user information
-                UserAccount account = new UserAccount(fName, lName, accountId, accountNum, email,
+                UserAccount account = new UserAccount(fName, lName, accountId, accountNum, registrationNum, email,
                         phoneNumber, passwordHash, balance, dateOfBirth, gender, address);
                 
 
@@ -115,5 +120,10 @@ public class AccountsFile implements AccountsFileInterface {
     public String getNextAccountNum(){
         //returns 502019180 then increments
         return "IESEBA35330"+(nextAccountNum++);
+    }
+    
+    @Override
+    public String getNextRegistrationNum(){
+        return Integer.toString(nextRegistrationNum++);
     }
 }
