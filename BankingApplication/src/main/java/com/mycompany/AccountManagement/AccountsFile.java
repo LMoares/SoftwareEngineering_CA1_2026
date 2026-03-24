@@ -55,9 +55,9 @@ public class AccountsFile implements AccountsFileInterface {
             String line;
             while ((line = br.readLine()) != null) {
                 //array to store user account information
-                String[] info = line.split("\\|");//treat pipe as a normal character instead of as or in regex
+                String[] info = line.split("\\|");//treat pipe as a normal character instead of as 'or' in regex
 
-                //assign to variable the info from the save file
+                //assign to variables the info from the save file
                 String fName = info[0];
                 String lName = info[1];
                 int accountId = Integer.parseInt(info[2]);
@@ -81,6 +81,7 @@ public class AccountsFile implements AccountsFileInterface {
                 nextAccountNum=Math.max(nextAccountNum, Integer.parseInt(accountNum.replaceAll("\\D", ""))+1);
                 
                 //update the registration number for use by the next user
+                //ensure nextRegistration number is always larger, preventing duplicates
                 nextRegistrationNum=Math.max(nextRegistrationNum, Integer.parseInt(registrationNum)+1);
                 
                 //initialize new UserAccount object with the user information
@@ -93,15 +94,13 @@ public class AccountsFile implements AccountsFileInterface {
             }
 
         } catch (FileNotFoundException e) {
-            System.out.println("The user.txt could not be found. " + e);
+            System.out.println("The user.txt file could not be found, save before loading. " + e);
         } catch (IOException e) {
             System.out.println("There was an error reading the file.  " + e);
         }
 
     }
-    
-    //
-    
+        
     //method to add to ArrayList
     @Override
     public void addAccount(UserAccount ua){
@@ -127,6 +126,7 @@ public class AccountsFile implements AccountsFileInterface {
         return Integer.toString(nextRegistrationNum++);
     }
     
+    @Override
     public UserAccount findByRegistrationNum(String registrationNum){
         //loop through stored accounts
         for(int i=0; i<users.size(); i++){
@@ -137,6 +137,7 @@ public class AccountsFile implements AccountsFileInterface {
              }        
         
         }
+        //if no user with that registration number was found
         return null;
     }
     

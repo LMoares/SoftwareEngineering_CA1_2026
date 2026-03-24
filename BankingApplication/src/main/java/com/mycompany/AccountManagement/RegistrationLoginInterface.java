@@ -9,7 +9,9 @@ package com.mycompany.AccountManagement;
  * @author moise
  */
 public interface RegistrationLoginInterface {
-    public boolean createAccount();
-    public boolean login();
+    public String createAccount(String fName, String lName, String email, String phoneNumber, 
+            String password, double balance, String dateOfBirth, String gender, String address);
+    public String login();
+    public String updatePassword();
     
 }

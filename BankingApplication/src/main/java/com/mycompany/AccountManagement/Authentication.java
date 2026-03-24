@@ -16,11 +16,12 @@ public abstract class Authentication implements RegistrationLoginInterface {
     
     //reference the AccountsFile does not create it
     private AccountsFileInterface accountsFile;
+    //reference to PasswordHashing does not create it
     private PasswordHashing hash;
     
     //dependency injection
     //sperate responsibility of authentication and file handling
-    //Authentication isn't forced to user AccountsFile everytime
+    //Authentication isn't forced to use AccountsFile everytime
     //testing Authentication is simpler without using real files
     public Authentication(AccountsFileInterface accountsFile, PasswordHashing hash){
         this.accountsFile=accountsFile;
@@ -41,15 +42,15 @@ public abstract class Authentication implements RegistrationLoginInterface {
 
         //call method to check if the email passed to it is valid
         if (!isValidEmail(email) || email == null || email.equals("")) {
-            throw new IllegalArgumentException("The email is not valid, needs to include '@'/meet minimum length");
+            throw new IllegalArgumentException("The email is not valid, needs to include '@' and meet minimum length");
         }
         //check if a valid passowrd as been given
         if(  password==null || password.equals("") || !(password.length()>=8 && password.length()<=12)){
-            throw new IllegalArgumentException("A password must be at least 8 characters long and less than 12 characters.");
+            throw new IllegalArgumentException("A password of 8-12 characters must be provided.");
         }
         //check null empty before
         if ( phoneNumber == null || phoneNumber.equals("") || phoneNumber.length() < 1 || phoneNumber.length() > 10) {
-            throw new IllegalArgumentException("The hhone number length is not valid.");
+            throw new IllegalArgumentException("The phone number length is not valid.");
         }
         
         //call method to validate birthdate
@@ -150,27 +151,31 @@ public abstract class Authentication implements RegistrationLoginInterface {
     //method to change password
     public String updatePassword(String registrationNum, String password, String newPassword){
         //validate registrationNum
-        if(registrationNum==null || registrationNum.equals("")){
+        if(registrationNum.isEmpty() || registrationNum.equals("")){
             throw new IllegalArgumentException("A registration number must be provide.");
         }
         //validate passowrd
-        if( password==null || password.equals("") || password.length()<8){
+        if( password.isEmpty()|| password.equals("") || password.length()<8){
             throw new IllegalArgumentException("A password must be provided.");
         }
         
         //validate new password
-        if( newPassword==null || newPassword.equals("") || newPassword.length()<8){
-            throw new IllegalArgumentException("A password must be provided.");
+        if( newPassword.isEmpty() || newPassword.equals("") || (newPassword.length()<8 || newPassword.length()>12)){
+            throw new IllegalArgumentException("A password of 8-12 characters must be provided.");
         }
         
+        //find user by registration number and get their details
         UserAccount ua = accountsFile.findByRegistrationNum(registrationNum);
+        
+        //Throw exception if no user with registration Number found and passwords don't match
         if(ua==null || !hash.verifyPassword(password,ua.getPasswordHash())){
             throw new IllegalArgumentException("Incorrect registration number or password entered.");
         }
         
-        //update the passwordhash with the new password hash
+        //update the passwordHash with the new password hash
         ua.setPasswordHash(hash.hashPassword(newPassword));
         
+        //save the updated account
         accountsFile.saveAccount();
         return "Passowrd as been successfully updated.";
     }

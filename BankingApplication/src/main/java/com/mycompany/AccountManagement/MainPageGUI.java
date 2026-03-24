@@ -26,19 +26,51 @@ public class MainPageGUI extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        createAccountBtn = new javax.swing.JButton();
+        loginBtn = new javax.swing.JButton();
+        titleLbl = new javax.swing.JLabel();
+
+        createAccountBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        createAccountBtn.setText("Create Account");
+
+        loginBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        loginBtn.setText("Login");
+
+        titleLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        titleLbl.setText("Main page");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(137, 137, 137)
+                .addComponent(createAccountBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(loginBtn)
+                .addGap(153, 153, 153))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(315, 315, 315)
+                .addComponent(titleLbl)
+                .addGap(187, 314, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(titleLbl)
+                .addGap(202, 202, 202)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(loginBtn)
+                    .addComponent(createAccountBtn))
+                .addContainerGap(237, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton createAccountBtn;
+    private javax.swing.JButton loginBtn;
+    private javax.swing.JLabel titleLbl;
     // End of variables declaration//GEN-END:variables
 }
