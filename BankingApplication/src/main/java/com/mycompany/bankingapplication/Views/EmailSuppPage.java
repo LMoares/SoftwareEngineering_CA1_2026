@@ -49,6 +49,9 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
             JOptionPane.showMessageDialog(this, "Please ensure that time you have inputted is in the following format: 00:00 (24 HOUR FORMAT)");
         } else if (contactTime.length() > 5) {//If the time submitted contains more than 5 characters
             JOptionPane.showMessageDialog(this, "Please ensure you have entered a valid time in the following format: 00:00 (24 HOUR FORMAT)");
+        } else if (!phonenum.matches("\\d{10}"))//Regex which essentialy says that the string the user inputs must have exactly 10 digits
+        {
+            JOptionPane.showMessageDialog(this, "Please ensure you have entered a valid phone number. It must be 10 digits in length");
         } else {
             fNameFld.setText("");
             surnameFld.setText("");
@@ -65,25 +68,22 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
     }
 
     public void writeToFile() {
-        String fileName= "CustomerSupportRequests.txt";
-        String fileData = "NEW CUSTOMER SUPPORT QUEREY" + "\n"
-                +"First Name: "+ fNameFld.getText().trim() + "\n"
-                +"Surname: "+surnameFld.getText().trim() + "\n"
-                +"Email: "+emailFld.getText().trim() + "\n"
-                +"Phone Number: "+ phonenumFld.getText().trim() + "\n"
-                +"Issues They Are Facing: "+issuesFld.getText() + "\n"
-                +"Comments: "+ commentsFld.getText() + "\n"
-                +"Contact Time: "+ contactFld.getText().trim() + "\n"
-                + "---------------------------------";
-        
-        try 
-            (FileWriter myWriter =  new FileWriter(fileName, true)){//The true here means that the file can be edited 
+        String fileName = "CustomerSupportRequests.txt";
+        String fileData
+                = "First Name: " + fNameFld.getText().trim() + "\n"
+                + "Surname: " + surnameFld.getText().trim() + "\n"
+                + "Email: " + emailFld.getText().trim() + "\n"
+                + "Phone Number: " + phonenumFld.getText().trim() + "\n"
+                + "Issues They Are Facing: " + issuesFld.getText() + "\n"
+                + "Comments: " + commentsFld.getText() + "\n"
+                + "Contact Time: " + contactFld.getText().trim() + "\n"
+                + "---------------------------------" + "\n";
+
+        try (FileWriter myWriter = new FileWriter(fileName, true)) {//The true here means that the file can be edited 
             myWriter.write(fileData);
             System.out.println("NEW CUSTOMER SUPPORT REQUEST");
-            
-        }
-        
-        catch (IOException e){
+
+        } catch (IOException e) {
             System.out.println("Error saving new customer support request");
         }
     }
@@ -259,7 +259,7 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
         // TODO add your handling code here:
         writeToFile();//Write the information to a txx file
         submitInfo();//Run the above submit info function
-        
+
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void issuesFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_issuesFldActionPerformed
