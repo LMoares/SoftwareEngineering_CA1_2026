@@ -12,7 +12,7 @@ import java.time.format.DateTimeParseException;
  *
  * @author moise
  */
-public abstract class Authentication implements RegistrationLoginInterface {
+public class Authentication implements RegistrationLoginInterface {
     
     //reference the AccountsFile does not create it
     private AccountsFileInterface accountsFile;
@@ -29,27 +29,28 @@ public abstract class Authentication implements RegistrationLoginInterface {
     }
     
     //register a new account if validation is passed
+    @Override
     public String createAccount(String fName, String lName, String email, String phoneNumber, 
             String password, double balance, String dateOfBirth, String gender, String address) {
         
         //validation
-        if (fName == null || fName.equals("")) {
+        if (fName == null || fName.isEmpty()) {
             throw new IllegalArgumentException("First name must be filled.");
         }
-        if (lName == null || lName.equals("")) {
+        if (lName == null || lName.isEmpty()) {
             throw new IllegalArgumentException("Last name must be filled.");
         }
 
         //call method to check if the email passed to it is valid
-        if (!isValidEmail(email) || email == null || email.equals("")) {
+        if (!isValidEmail(email) || email == null || email.isEmpty()) {
             throw new IllegalArgumentException("The email is not valid, needs to include '@' and meet minimum length");
         }
         //check if a valid passowrd as been given
-        if(  password==null || password.equals("") || !(password.length()>=8 && password.length()<=12)){
+        if(  password==null || password.isEmpty() || !(password.length()>=8 && password.length()<=12)){
             throw new IllegalArgumentException("A password of 8-12 characters must be provided.");
         }
         //check null empty before
-        if ( phoneNumber == null || phoneNumber.equals("") || phoneNumber.length() < 1 || phoneNumber.length() > 10) {
+        if ( phoneNumber == null || phoneNumber.isEmpty() || phoneNumber.length() < 1 || phoneNumber.length() > 10) {
             throw new IllegalArgumentException("The phone number length is not valid.");
         }
         
@@ -58,7 +59,7 @@ public abstract class Authentication implements RegistrationLoginInterface {
             throw new IllegalArgumentException("That is an Invald Date of birth.");
         }
 
-        if (gender.equals("") || gender == null || !(gender.equalsIgnoreCase("Male") || gender.equalsIgnoreCase("Female"))) {
+        if (gender.isEmpty() || gender == null || !(gender.equalsIgnoreCase("Male") || gender.equalsIgnoreCase("Female"))) {
             throw new IllegalArgumentException("That is not a valid gender.");
         }
 
@@ -126,14 +127,15 @@ public abstract class Authentication implements RegistrationLoginInterface {
     }
     
     //method to handle user login
+    @Override
     public String login(String registrationNum, String password){
         
         //validate registrationNum
-        if(registrationNum==null || registrationNum.equals("")){
+        if(registrationNum==null || registrationNum.isEmpty()){
             throw new IllegalArgumentException("A registration number must be provide.");
         }
         //validate passowrd
-        if( password==null || password.equals("") || password.length()<8){
+        if( password==null || password.isEmpty() || password.length()<8){
             throw new IllegalArgumentException("A password must be provided.");
         }
         //get saved user accounts
@@ -149,18 +151,19 @@ public abstract class Authentication implements RegistrationLoginInterface {
     }
     
     //method to change password
+    @Override
     public String updatePassword(String registrationNum, String password, String newPassword){
         //validate registrationNum
-        if(registrationNum.isEmpty() || registrationNum.equals("")){
+        if(registrationNum==null || registrationNum.equals("")){
             throw new IllegalArgumentException("A registration number must be provide.");
         }
         //validate passowrd
-        if( password.isEmpty()|| password.equals("") || password.length()<8){
+        if( password==null || password.isEmpty() || password.length()<8){
             throw new IllegalArgumentException("A password must be provided.");
         }
         
         //validate new password
-        if( newPassword.isEmpty() || newPassword.equals("") || (newPassword.length()<8 || newPassword.length()>12)){
+        if( newPassword==null || newPassword.isEmpty() || (newPassword.length()<8 || newPassword.length()>12)){
             throw new IllegalArgumentException("A password of 8-12 characters must be provided.");
         }
         

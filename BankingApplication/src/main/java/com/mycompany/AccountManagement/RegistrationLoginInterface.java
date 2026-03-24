@@ -11,7 +11,9 @@ package com.mycompany.AccountManagement;
 public interface RegistrationLoginInterface {
     public String createAccount(String fName, String lName, String email, String phoneNumber, 
             String password, double balance, String dateOfBirth, String gender, String address);
-    public String login();
-    public String updatePassword();
+    
+    public String login(String registrationNum, String password);
+
+     public String updatePassword(String registrationNum, String password, String newPassword);
     
 }

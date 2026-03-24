@@ -11,9 +11,9 @@ package com.mycompany.AccountManagement;
 public class AccountUpdate implements AccountUpdateInterface {
 
     //reference to AccountsFile does not create it
-    private AccountsFile accountsFile;
+    private AccountsFileInterface accountsFile;
     //reference to Authentication does not create it
-    private Authentication auth;
+    private RegistrationLoginInterface auth;
     //reference to PasswordHashing does not create it
     private PasswordHashing hash;
 
@@ -32,7 +32,7 @@ public class AccountUpdate implements AccountUpdateInterface {
     public String updateProfile(String registrationNum, String password, String newfName, String newlName) {
 
         //validate password
-        if (password == null || password.equals("") || password.length() < 8) {
+        if (password == null || password.isEmpty() || password.length() < 8) {
             throw new IllegalArgumentException("A password must be provided.");
         }
         //find user by registration number and get their details
@@ -43,11 +43,11 @@ public class AccountUpdate implements AccountUpdateInterface {
             throw new IllegalArgumentException("Incorrect registration number or password entered.");
         }
         //if first name is provided update
-        if (newfName != null && !newfName.equals("")) {
+        if (newfName != null && !newfName.isEmpty()) {
             //set new first name
             ua.setfName(newfName);
         }
-        if (newlName != null && !newlName.equals("")) {
+        if (newlName != null && !newlName.isEmpty()) {
             //set new last name
             ua.setlName(newlName);
         }
@@ -63,7 +63,7 @@ public class AccountUpdate implements AccountUpdateInterface {
     public String updateContact(String registrationNum, String password, String newEmail, String newPhoneNumber, String newAddress) {
 
         //validate passowrd
-        if (password == null || password.equals("") || password.length() < 8) {
+        if (password == null || password.isEmpty() || password.length() < 8) {
             throw new IllegalArgumentException("A password must be provided.");
         }
 
@@ -76,7 +76,7 @@ public class AccountUpdate implements AccountUpdateInterface {
         }
 
         //if an email is provided update account
-        if (newEmail != null && !newEmail.equals("")) {
+        if (newEmail != null && !newEmail.isEmpty()) {
             //call method from Authentication to check if the email passed to it is valid
             if (!auth.isValidEmail(newEmail)) {
                 throw new IllegalArgumentException("The email is not valid, needs to include '@' and meet minimum length");
@@ -86,7 +86,7 @@ public class AccountUpdate implements AccountUpdateInterface {
         }
 
         //if phone number is provided update account
-        if (newPhoneNumber != null && !newPhoneNumber.equals("")) {
+        if (newPhoneNumber != null && !newPhoneNumber.isEmpty()) {
             //ensure phone number is valid and update it
             if (newPhoneNumber.length() < 1 || newPhoneNumber.length() > 10) {
                 throw new IllegalArgumentException("The phone number length is not valid.");
@@ -95,7 +95,7 @@ public class AccountUpdate implements AccountUpdateInterface {
             ua.setPhoneNumber(newPhoneNumber);
         }
         //if address is provided update account
-        if (newAddress != null && !newAddress.equals("")) {
+        if (newAddress != null && !newAddress.isEmpty()) {
             //update address
             ua.setAddress(newAddress);
         }

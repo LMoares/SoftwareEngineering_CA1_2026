@@ -27,17 +27,50 @@ public class AccountLoginGUI extends javax.swing.JPanel {
     private void initComponents() {
 
         titleLbl = new javax.swing.JLabel();
+        loginBtn = new javax.swing.JButton();
+        registrationNumLbl = new javax.swing.JLabel();
+        passwordLbl = new javax.swing.JLabel();
+        registrationNumTF = new javax.swing.JTextField();
+        passwordTF = new javax.swing.JTextField();
 
         titleLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         titleLbl.setText("Account Login");
+
+        loginBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        loginBtn.setText("Login");
+
+        registrationNumLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        registrationNumLbl.setText("Registration Number");
+
+        passwordLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        passwordLbl.setText("Password");
+
+        registrationNumTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
+        passwordTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(loginBtn)
+                .addGap(196, 196, 196))
             .addGroup(layout.createSequentialGroup()
-                .addGap(296, 296, 296)
-                .addComponent(titleLbl)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(296, 296, 296)
+                        .addComponent(titleLbl))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(registrationNumLbl)
+                            .addComponent(passwordLbl))
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(registrationNumTF)
+                            .addComponent(passwordTF))))
                 .addContainerGap(306, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -45,12 +78,27 @@ public class AccountLoginGUI extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(titleLbl)
-                .addContainerGap(467, Short.MAX_VALUE))
+                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(registrationNumLbl)
+                    .addComponent(registrationNumTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordLbl)
+                    .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE)
+                .addComponent(loginBtn)
+                .addGap(33, 33, 33))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton loginBtn;
+    private javax.swing.JLabel passwordLbl;
+    private javax.swing.JTextField passwordTF;
+    private javax.swing.JLabel registrationNumLbl;
+    private javax.swing.JTextField registrationNumTF;
     private javax.swing.JLabel titleLbl;
     // End of variables declaration//GEN-END:variables
 }
