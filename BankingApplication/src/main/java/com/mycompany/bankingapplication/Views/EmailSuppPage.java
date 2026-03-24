@@ -68,6 +68,7 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
     }
 
     public void writeToFile() {
+        String filePath= "./src/main/java/com/mycompany/bankingapplication/";//The location where the txt file created will be saved.
         String fileName = "CustomerSupportRequests.txt";
         String fileData
                 = "First Name: " + fNameFld.getText().trim() + "\n"
@@ -79,7 +80,7 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
                 + "Contact Time: " + contactFld.getText().trim() + "\n"
                 + "---------------------------------" + "\n";
 
-        try (FileWriter myWriter = new FileWriter(fileName, true)) {//The true here means that the file can be edited 
+        try (FileWriter myWriter = new FileWriter(filePath+fileName, true)) {//The true here means that the file can be edited 
             myWriter.write(fileData);
             System.out.println("NEW CUSTOMER SUPPORT REQUEST");
 
