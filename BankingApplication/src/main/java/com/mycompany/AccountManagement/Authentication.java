@@ -28,7 +28,7 @@ public abstract class Authentication implements RegistrationLoginInterface {
     }
     
     //register a new account if validation is passed
-    public String createAccount(String fName, String lName, int accountId, String accountNum, String email, String phoneNumber, 
+    public String createAccount(String fName, String lName, String email, String phoneNumber, 
             String password, double balance, String dateOfBirth, String gender, String address) {
         
         //validation
@@ -72,13 +72,16 @@ public abstract class Authentication implements RegistrationLoginInterface {
         //hash password
         String passwordHash=hash.hashPassword(password);
         
+        //update accountId and accountNum using methods from AccountsFile
+        int accountId=accountsFile.getNextId();
+        String accountNum=accountsFile.getNextAccountNum();
+//        int accountId=ua.setAccountId(accountsFile.getNextId());
+//        String accountNum=ua.setAccountNum(accountsFile.getNextAccountNum());
+        
         //initialize new UserAccount Object with its variables after validation completion
-        UserAccount ua= new UserAccount( fName,  lName,  0, "0", email,  phoneNumber, 
+        UserAccount ua= new UserAccount( fName,  lName,  accountId, accountNum, email,  phoneNumber, 
              passwordHash,  balance,  dateOfBirth,  gender,  address);
         
-        //update accountId and accountNum using methods from AccountsFile
-        ua.setAccountId(accountsFile.getNextId());
-        ua.setAccountNum(accountsFile.getNextAccountNum());
         
         //add Account to the ArrayList
         accountsFile.addAccount(ua);
@@ -129,7 +132,7 @@ public abstract class Authentication implements RegistrationLoginInterface {
         }
         
         if(!(password.length()<8) || password==null || password.equals("")){
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("A password must be provided.");
         }
         //get save user accounts
         accountsFile.loadFile();

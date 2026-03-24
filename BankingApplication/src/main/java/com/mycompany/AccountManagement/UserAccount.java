@@ -126,7 +126,7 @@ public class UserAccount {
     //get user details
     public String accountDetails() {
         return "Registration details\n" + "Account Id: " + accountId + "\nAccount Number: \n" + accountNum + "\nFirst Name: " + fName + "\nLast Name: " + lName + "\nEmail: "
-                + "\nPhone Number: " + phoneNumber + email + "\nPassword: " + passwordHash + "\nBalance:" + balance
+                + "\nPhone Number: " + phoneNumber +"\nEmail: "+ email + "\nPassword: " + passwordHash + "\nBalance:" + balance
                 + "\nDate of Birth " + dateOfBirth + "\n Gender" + gender + "\nAddress: " + address;
     }
 

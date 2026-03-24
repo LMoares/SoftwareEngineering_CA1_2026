@@ -21,7 +21,7 @@ public class AccountsFile implements AccountsFileInterface {
     //array list for users
     private ArrayList<UserAccount> users = new ArrayList<>();
     //variable to increment the id for new users
-    private int nextId = 1, nextAccountNum = 502019189;
+    private int nextId = 1, nextAccountNum = 502019180;
     
     //method to save user to file
     @Override
@@ -69,16 +69,18 @@ public class AccountsFile implements AccountsFileInterface {
                 String gender = info[9];
                 String address = info[10];
                 
-                //update the user id, splits responsibilities, keep id generation here
+                //update the next id for use by the next user, splits responsibilities, keep id generation here
+                //ensures the nextId is always larger, preventing duplicates
                 nextId=Math.max(nextId, accountId+1);
-                //update the user account number
-                nextAccountNum=Math.max(nextAccountNum, nextAccountNum+1);
-                //form user IBAN 
-                String accountNum="IESEBA35330"+nextAccountNum;
+                
+                //update the user account number for use by the next user
+                //ensures the nextAccountNum is always larger, preventing duplicates
+                //use regex to only select the digits 
+                nextAccountNum=Math.max(nextAccountNum, Integer.parseInt(accountNum.replaceAll("\\D", ""))+1);
                 
                 //initialize new UserAccount object with the user information
                 UserAccount account = new UserAccount(fName, lName, accountId, accountNum, email,
-                        phoneNumber, passwordHash, age, balance, dateOfBirth, gender, address);
+                        phoneNumber, passwordHash, balance, dateOfBirth, gender, address);
                 
 
                 //add accounts to arraylist
@@ -104,12 +106,14 @@ public class AccountsFile implements AccountsFileInterface {
     //increment nextid for use in Authentication to form accountId when a new account is registered and saved
     @Override
     public int getNextId(){
+        //return 1 first then increments
         return nextId++;
     }
     
     //increment nextAccountNum for use in Authentication to form accountNum when a new account is registered and saved
     @Override
     public String getNextAccountNum(){
-        return "IE SEBA 35330 "+(nextAccountNum++);
+        //returns 502019180 then increments
+        return "IESEBA35330"+(nextAccountNum++);
     }
 }

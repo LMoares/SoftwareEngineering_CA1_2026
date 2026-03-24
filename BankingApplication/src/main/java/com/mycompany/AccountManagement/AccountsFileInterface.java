@@ -14,6 +14,10 @@ public interface AccountsFileInterface {
     
     public void loadFile();
    
-    public void addAccount(Object ua);
+    public void addAccount(UserAccount ua);
+    
+    public int getNextId();
+    
+    public String getNextAccountNum();
     
 }
