@@ -20,6 +20,8 @@ public interface AccountsFileInterface {
     
     public String getNextAccountNum();
     
-    public String getNextRegistrationNum()
+    public String getNextRegistrationNum();
+    
+    public UserAccount findByRegistrationNum(String registrationNum);
     
 }

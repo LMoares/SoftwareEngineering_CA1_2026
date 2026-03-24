@@ -72,14 +72,15 @@ public abstract class Authentication implements RegistrationLoginInterface {
         //hash password
         String passwordHash=hash.hashPassword(password);
         
-        //update accountId and accountNum using methods from AccountsFile
+        //update accountId and accountNum and registrationNum using methods from AccountsFile
         int accountId=accountsFile.getNextId();
         String accountNum=accountsFile.getNextAccountNum();
+        String registrationNum=accountsFile.getNextRegistrationNum();
 //        int accountId=ua.setAccountId(accountsFile.getNextId());
 //        String accountNum=ua.setAccountNum(accountsFile.getNextAccountNum());
         
         //initialize new UserAccount Object with its variables after validation completion
-        UserAccount ua= new UserAccount( fName,  lName,  accountId, accountNum, email,  phoneNumber, 
+        UserAccount ua= new UserAccount( fName,  lName,  accountId, accountNum,registrationNum, email,  phoneNumber, 
              passwordHash,  balance,  dateOfBirth,  gender,  address);
         
         
@@ -123,28 +124,30 @@ public abstract class Authentication implements RegistrationLoginInterface {
         }
     }
 
-    public String login(int accountId, String email,String password){
+    public String login(String registrationNum, String password){
         
-        
-        //call method to check if the email passed to it is valid
-        if (!isValidEmail(email) || email == null || email.equals("")) {
-            throw new IllegalArgumentException("The email is not valid, needs to include '@'/meet minimum length");
+        //validate registrationNum
+        if(registrationNum==null || registrationNum.equals("")){
+            throw new IllegalArgumentException("A registration number must be provide.");
         }
-        
-        if(!(password.length()<8) || password==null || password.equals("")){
+        //validate passowrd
+        if( password==null || password.equals("") || password.length()<8){
             throw new IllegalArgumentException("A password must be provided.");
         }
         //get save user accounts
         accountsFile.loadFile();
         
-        //UserAccount ua=
-        
-        if(accountId==ua.accountId){
-            
+        UserAccount ua = accountsFile.findByRegistrationNum(registrationNum);
+        if(ua==null){
+            throw new IllegalArgumentException("You entered the incorrrect registration number");
         }
                 
+        if(!hash.verifyPassword(password,ua.getPasswordHash())){
+            throw new IllegalArgumentException("Registration number could not be found.");
+        }
         
         return "Login was successful.";
 
     }
+    
 }

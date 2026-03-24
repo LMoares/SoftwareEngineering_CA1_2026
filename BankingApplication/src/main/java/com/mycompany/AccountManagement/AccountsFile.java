@@ -126,4 +126,18 @@ public class AccountsFile implements AccountsFileInterface {
     public String getNextRegistrationNum(){
         return Integer.toString(nextRegistrationNum++);
     }
+    
+    public UserAccount findByRegistrationNum(String registrationNum){
+        //loop through stored accounts
+        for(int i=0; i<users.size(); i++){
+            //cast to UserAccount to get access to methods in order to compare
+             UserAccount ua=(UserAccount)users.get(i);
+            if(registrationNum.equalsIgnoreCase(ua.getRegistrationNum())){
+                return users.get(i);           
+             }        
+        
+        }
+        return null;
+    }
+    
 }
