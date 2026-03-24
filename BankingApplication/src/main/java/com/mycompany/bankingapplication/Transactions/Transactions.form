@@ -407,7 +407,7 @@
                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="depostiTabDepositMessage" min="-2" pref="300" max="-2" attributes="0"/>
+                              <Component id="depositTabDepositMessage" min="-2" pref="300" max="-2" attributes="0"/>
                               <EmptySpace pref="156" max="32767" attributes="0"/>
                               <Component id="depositFundsButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
@@ -416,7 +416,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="depostiTabDespositAmount" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="depositTabDespositAmount" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -444,7 +444,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="depostiTabDespositAmount" min="-2" max="-2" attributes="0"/>
+                      <Component id="depositTabDespositAmount" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -453,7 +453,7 @@
                               <EmptySpace min="0" pref="97" max="32767" attributes="0"/>
                               <Component id="depositFundsButton" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="depostiTabDepositMessage" max="32767" attributes="0"/>
+                          <Component id="depositTabDepositMessage" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
@@ -500,17 +500,17 @@
                 <Property name="text" type="java.lang.String" value="Deposit Amount"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="depostiTabDespositAmount">
+            <Component class="javax.swing.JTextField" name="depositTabDespositAmount">
               <Properties>
                 <Property name="text" type="java.lang.String" value="deposit amount"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="depostiTabDespositAmountActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="depositTabDespositAmountActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="depostiTabDepositMessage">
+            <Component class="javax.swing.JTextField" name="depositTabDepositMessage">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="depostiTabDepositMessageActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="depositTabDepositMessageActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">

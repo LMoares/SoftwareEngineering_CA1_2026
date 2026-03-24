@@ -4,9 +4,10 @@
  */
 package com.mycompany.bankingapplication.Transactions;
 import com.mycompany.bankingapplication.Controller.Controllable;
-import com.mycompany.bankingapplication.Controller.UserInterfaceController;
 
 import com.mycompany.bankingapplication.Controller.UserInterfaceController;
+import javax.swing.JOptionPane;
+
 // Deposits and withdrawals can only happen when standing beside atm (code of atm)
 /**
  *
@@ -14,10 +15,16 @@ import com.mycompany.bankingapplication.Controller.UserInterfaceController;
  */
 public class Transactions extends javax.swing.JPanel implements Controllable {
     private UserInterfaceController Listener;
-    
+    private int accountNumber, atmCode, recieverAccountNumber;
+    private double currentBalance, transferAmount, depositAmount, withdrawAmount;
+    private boolean isValidAtmCode, isValidRecieverAccount;
+     
     public void setListener(UserInterfaceController Listener) {
         this.Listener = Listener;
     }
+    
+    //user account number (to get from Moise)
+    
     
     
     /**
@@ -28,7 +35,9 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
     }
     
     
-    public void setUserDetails(){}
+    public void setUserDetails(){
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,8 +79,8 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
         despositTabAtmCode = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        depostiTabDespositAmount = new javax.swing.JTextField();
-        depostiTabDepositMessage = new javax.swing.JTextField();
+        depositTabDespositAmount = new javax.swing.JTextField();
+        depositTabDepositMessage = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(720, 600));
@@ -324,16 +333,16 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
 
         jLabel10.setText("Deposit Amount");
 
-        depostiTabDespositAmount.setText("deposit amount");
-        depostiTabDespositAmount.addActionListener(new java.awt.event.ActionListener() {
+        depositTabDespositAmount.setText("deposit amount");
+        depositTabDespositAmount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                depostiTabDespositAmountActionPerformed(evt);
+                depositTabDespositAmountActionPerformed(evt);
             }
         });
 
-        depostiTabDepositMessage.addActionListener(new java.awt.event.ActionListener() {
+        depositTabDepositMessage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                depostiTabDepositMessageActionPerformed(evt);
+                depositTabDepositMessageActionPerformed(evt);
             }
         });
 
@@ -347,7 +356,7 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
                 .addGap(51, 51, 51)
                 .addGroup(depostiTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(depostiTabLayout.createSequentialGroup()
-                        .addComponent(depostiTabDepositMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(depositTabDepositMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
                         .addComponent(depositFundsButton)
                         .addGap(40, 40, 40))
@@ -355,7 +364,7 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
                         .addGroup(depostiTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
                             .addGroup(depostiTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(depostiTabDespositAmount, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(depositTabDespositAmount, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,7 +386,7 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(depostiTabDespositAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(depositTabDespositAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -385,7 +394,7 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
                     .addGroup(depostiTabLayout.createSequentialGroup()
                         .addGap(0, 97, Short.MAX_VALUE)
                         .addComponent(depositFundsButton))
-                    .addComponent(depostiTabDepositMessage))
+                    .addComponent(depositTabDepositMessage))
                 .addGap(40, 40, 40))
         );
 
@@ -416,19 +425,31 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void withdrawFundsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawFundsButtonActionPerformed
-        // TODO add your handling code here:
+       
+        
+        //valid atmcode and account balance greater thatn the withdrawal amount
+        if(atmCode > 0 && atmCode < 100000){
+            isValidAtmCode = true;
+        }
+        
+        if(isValidAtmCode && currentBalance > withdrawAmount){
+            currentBalance -= withdrawAmount;
+            JOptionPane.showMessageDialog(this, "Collect monies: " + withdrawAmount + "\nYour new balance is: " + currentBalance);
+        }
     }//GEN-LAST:event_withdrawFundsButtonActionPerformed
 
     private void withdrawTabAtmCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawTabAtmCodeActionPerformed
-        // TODO add your handling code here:
+        // assign the atm code input
+        atmCode = Integer.parseInt(withdrawTabAtmCode.getText());
     }//GEN-LAST:event_withdrawTabAtmCodeActionPerformed
 
     private void transferTabAccountNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferTabAccountNumberActionPerformed
-        // TODO add your handling code here:
+        transferTabAccountNumber.setText(Integer.toString(accountNumber));   
     }//GEN-LAST:event_transferTabAccountNumberActionPerformed
 
     private void transferTabTransferAccountNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferTabTransferAccountNumberActionPerformed
-        // TODO add your handling code here:
+        //assign the reciever account to a field
+        recieverAccountNumber = Integer.parseInt(transferTabAccountNumber.getText());
     }//GEN-LAST:event_transferTabTransferAccountNumberActionPerformed
 
     private void transferTabTransferMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferTabTransferMessageActionPerformed
@@ -436,19 +457,35 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
     }//GEN-LAST:event_transferTabTransferMessageActionPerformed
 
     private void transferFundsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferFundsButtonActionPerformed
-        // TODO add your handling code here:
+        //validated if the reciever account has 8 digits and transfer amount is not greater than balance
+        if(recieverAccountNumber > 10000000 && recieverAccountNumber < 100000000){
+            isValidRecieverAccount = true;
+        }else{
+            JOptionPane.showMessageDialog(this, "The account number entered is not valid!");
+            return;
+        }
+        
+        //if valid reciever account and transfer amount is less than the current balance
+        if(isValidRecieverAccount && transferAmount < currentBalance){
+            currentBalance -= transferAmount;
+        }else{
+            JOptionPane.showMessageDialog(this, "The transfer amount is greater than the current balance in the account");
+        }
     }//GEN-LAST:event_transferFundsButtonActionPerformed
 
     private void checkBalanceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBalanceButtonActionPerformed
-        // TODO add your handling code here:
+        // display funds in the account:
+        checkBalanceTabDisplay.setText("The account number: " + accountNumber + "\nBalance: " + currentBalance);
     }//GEN-LAST:event_checkBalanceButtonActionPerformed
 
     private void withdrawTabAccountNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawTabAccountNumberActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_withdrawTabAccountNumberActionPerformed
 
     private void withdrawTabWithdrawAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawTabWithdrawAmountActionPerformed
-        // TODO add your handling code here:
+        //assign the withdraw amount double...  variable
+        withdrawAmount = Double.parseDouble(withdrawTabWithdrawAmount.getText());
+        
     }//GEN-LAST:event_withdrawTabWithdrawAmountActionPerformed
 
     private void withdrawTabWithdrawMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawTabWithdrawMessageActionPerformed
@@ -463,16 +500,18 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
         // TODO add your handling code here:
     }//GEN-LAST:event_despositTabAtmCodeActionPerformed
 
-    private void depostiTabDespositAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depostiTabDespositAmountActionPerformed
+    private void depositTabDespositAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositTabDespositAmountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_depostiTabDespositAmountActionPerformed
+        
+    }//GEN-LAST:event_depositTabDespositAmountActionPerformed
 
-    private void depostiTabDepositMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depostiTabDepositMessageActionPerformed
+    private void depositTabDepositMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositTabDepositMessageActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_depostiTabDepositMessageActionPerformed
+    }//GEN-LAST:event_depositTabDepositMessageActionPerformed
 
     private void depositFundsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositFundsButtonActionPerformed
         // TODO add your handling code here:
+        //user account
     }//GEN-LAST:event_depositFundsButtonActionPerformed
 
 
@@ -481,10 +520,10 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
     private javax.swing.JButton checkBalanceButton;
     private javax.swing.JTextArea checkBalanceTabDisplay;
     private javax.swing.JButton depositFundsButton;
+    private javax.swing.JTextField depositTabDepositMessage;
+    private javax.swing.JTextField depositTabDespositAmount;
     private javax.swing.JTextField depostTabAccountNumber;
     private javax.swing.JPanel depostiTab;
-    private javax.swing.JTextField depostiTabDepositMessage;
-    private javax.swing.JTextField depostiTabDespositAmount;
     private javax.swing.JTextField despositTabAtmCode;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
