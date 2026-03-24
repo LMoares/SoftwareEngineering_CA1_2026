@@ -13,17 +13,18 @@ public class UserAccount {
     //variables
     private String fName, lName;
     private int accountId;
-    private String accountNum, email, phoneNumber;
+    private String accountNum,registrationNum, email, phoneNumber;
     private String passwordHash;
     private double balance;
     private String dateOfBirth, gender, address;
 
     //overloaded constructor
-    public UserAccount(String fName, String lName, int accountId, String accountNum, String email, String phoneNumber, String passwordHash, double balance, String dateOfBirth, String gender, String address) {
+    public UserAccount(String fName, String lName, int accountId, String accountNum, String registrationNum, String email, String phoneNumber, String passwordHash, double balance, String dateOfBirth, String gender, String address) {
         this.fName = fName;
         this.lName = lName;
         this.accountId = accountId;
         this.accountNum = accountNum;
+        this.registrationNum = registrationNum;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.passwordHash = passwordHash;
@@ -49,6 +50,10 @@ public class UserAccount {
     public void setAccountNum(String accountNum) {
         this.accountNum = accountNum;
     }
+
+    public void setRegistrationNum(String registrationNum) {
+        this.registrationNum = registrationNum;
+    }   
 
     public void setEmail(String email) {
         this.email = email;
@@ -95,6 +100,10 @@ public class UserAccount {
         return accountNum;
     }
 
+    public String getRegistrationNum() {
+        return registrationNum;
+    }
+   
     public String getEmail() {
         return email;
     }
@@ -125,14 +134,15 @@ public class UserAccount {
 
     //get user details
     public String accountDetails() {
-        return "Registration details\n" + "Account Id: " + accountId + "\nAccount Number: \n" + accountNum + "\nFirst Name: " + fName + "\nLast Name: " + lName + "\nEmail: "
+        return "Registration details\n" + "Account Id: " + accountId + "\nAccount Number: \n" + accountNum +"Registration Number"+
+                registrationNum+"\nFirst Name: " + fName + "\nLast Name: " + lName + "\nEmail: "
                 + "\nPhone Number: " + phoneNumber +"\nEmail: "+ email + "\nPassword: " + passwordHash + "\nBalance:" + balance
                 + "\nDate of Birth " + dateOfBirth + "\n Gender" + gender + "\nAddress: " + address;
     }
 
     //method for a parseable format with the comma delimetre that can be saved to a file
     public String accountDetailsFileFormat() {
-        return fName + "|" + lName + "|" + accountId + "|" + accountNum + "|" + email + "|" + phoneNumber + "|" + passwordHash + "|" + balance + "|"
+        return fName + "|" + lName + "|" + accountId + "|" + accountNum + "|" +registrationNum+"|"+ email + "|" + phoneNumber + "|" + passwordHash + "|" + balance + "|"
                 + dateOfBirth + "|" + gender + "|" + address;
     }
 

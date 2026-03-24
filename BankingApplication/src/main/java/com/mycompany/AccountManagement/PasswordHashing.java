@@ -11,8 +11,8 @@ package com.mycompany.AccountManagement;
 //imort bCrypt package
 import org.mindrot.jbcrypt.BCrypt;
 public class PasswordHashing {
-    
-    //hash the plain password,static as it doesn't use an instance variable, transofrm input to outpu
+    //both methods are static because they do not access or modify methods and won't change across instances
+    //hash the plain password,static as it doesn't use an instance variable, transoforms input to output
     public static String hashPassword(String plainPassword){
         return BCrypt.hashpw(plainPassword, BCrypt.gensalt(12));//generate a random salt, work factor 12 2^12
     }
@@ -22,7 +22,7 @@ public class PasswordHashing {
         if(plainPassword==null|| storedHash==null ){
             return false;
         }
-        //check if storedhash and salt arre the same
+        //check if storedhash and salt are the same
         return BCrypt.checkpw(plainPassword,storedHash);
     }
     

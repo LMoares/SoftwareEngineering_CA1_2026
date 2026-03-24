@@ -45,11 +45,11 @@ public abstract class Authentication implements RegistrationLoginInterface {
         }
         //check if a valid passowrd as been given
         if(  password==null || password.equals("") || !(password.length()>=8 && password.length()<=12)){
-            throw new IllegalArgumentException("A password of at least 8 and less than 12 characters must be provided");
+            throw new IllegalArgumentException("A password must be at least 8 characters long and less than 12 characters.");
         }
         //check null empty before
         if ( phoneNumber == null || phoneNumber.equals("") || phoneNumber.length() < 1 || phoneNumber.length() > 10) {
-            throw new IllegalArgumentException("Phone number length is not the valid.");
+            throw new IllegalArgumentException("The hhone number length is not valid.");
         }
         
         //call method to validate birthdate
@@ -112,7 +112,7 @@ public abstract class Authentication implements RegistrationLoginInterface {
             //converts birthDateIn to LocalDate and check if it matches pattern in formatter
             LocalDate birthDate = LocalDate.parse(birthDateIn, formatter);
 
-            //check if the users' birthdate is after the 16 years mark from now
+            //check if the users' birthdate is before the 16 years mark from now
             if (birthDate.isBefore(LocalDate.now().minusYears(16))) {
                 return true;
             } else {
@@ -123,7 +123,8 @@ public abstract class Authentication implements RegistrationLoginInterface {
 
         }
     }
-
+    
+    //method to handle user login
     public String login(String registrationNum, String password){
         
         //validate registrationNum
@@ -134,20 +135,22 @@ public abstract class Authentication implements RegistrationLoginInterface {
         if( password==null || password.equals("") || password.length()<8){
             throw new IllegalArgumentException("A password must be provided.");
         }
-        //get save user accounts
-        accountsFile.loadFile();
+        //get saved user accounts
+        //accountsFile.loadFile();
         
         UserAccount ua = accountsFile.findByRegistrationNum(registrationNum);
-        if(ua==null){
-            throw new IllegalArgumentException("You entered the incorrrect registration number");
-        }
-                
-        if(!hash.verifyPassword(password,ua.getPasswordHash())){
-            throw new IllegalArgumentException("Registration number could not be found.");
+        if(ua==null || !hash.verifyPassword(password,ua.getPasswordHash())){
+            throw new IllegalArgumentException("Incorrect registration number or password entered.");
         }
         
         return "Login was successful.";
 
+    }
+    
+    //method to handle change of user details
+    
+    public void changeAccountDetails(){
+        
     }
     
 }
