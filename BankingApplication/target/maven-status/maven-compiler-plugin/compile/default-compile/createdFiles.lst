@@ -1,5 +1,4 @@
 com\mycompany\bankingapplication\Views\UserInterfaceView.class
-com\mycompany\bankingapplication\Transactions\Transactions$15.class
 com\mycompany\bankingapplication\Controller\UserInterfaceController.class
 com\mycompany\bankingapplication\Views\NavMenu.class
 com\mycompany\bankingapplication\Views\LoginPanel.class
@@ -14,7 +13,6 @@ com\mycompany\bankingapplication\Transactions\Transactions$11.class
 com\mycompany\bankingapplication\BankingApplication.class
 com\mycompany\bankingapplication\Views\NavMenu$1.class
 com\mycompany\bankingapplication\Transactions\Transactions$6.class
-com\mycompany\bankingapplication\Transactions\Transactions$14.class
 com\mycompany\bankingapplication\Transactions\Transactions$5.class
 com\mycompany\bankingapplication\Transactions\Transactions$3.class
 com\mycompany\bankingapplication\Transactions\Transactions$12.class
