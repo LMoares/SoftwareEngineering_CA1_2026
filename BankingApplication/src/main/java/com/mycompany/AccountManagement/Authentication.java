@@ -147,10 +147,32 @@ public abstract class Authentication implements RegistrationLoginInterface {
 
     }
     
-    //method to handle change of user details
-    
-    public void changeAccountDetails(){
+    //method to change password
+    public String updatePassword(String registrationNum, String password, String newPassword){
+        //validate registrationNum
+        if(registrationNum==null || registrationNum.equals("")){
+            throw new IllegalArgumentException("A registration number must be provide.");
+        }
+        //validate passowrd
+        if( password==null || password.equals("") || password.length()<8){
+            throw new IllegalArgumentException("A password must be provided.");
+        }
         
+        //validate new password
+        if( newPassword==null || newPassword.equals("") || newPassword.length()<8){
+            throw new IllegalArgumentException("A password must be provided.");
+        }
+        
+        UserAccount ua = accountsFile.findByRegistrationNum(registrationNum);
+        if(ua==null || !hash.verifyPassword(password,ua.getPasswordHash())){
+            throw new IllegalArgumentException("Incorrect registration number or password entered.");
+        }
+        
+        //update the passwordhash with the new password hash
+        ua.setPasswordHash(hash.hashPassword(newPassword));
+        
+        accountsFile.saveAccount();
+        return "Passowrd as been successfully updated.";
     }
     
 }
