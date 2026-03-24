@@ -21,7 +21,7 @@ public class AccountUpdate implements AccountUpdateInterface {
     //seperate responsibility of AccountUpdate and file handling
     //Authentication isn't forced to use AccountsFile,Authentication and PassworHashing everytime
     //testing AccountUpdate is simpler without using real files
-    public AccountUpdate(AccountsFile accountsFile, Authentication auth, PasswordHashing hash) {
+    public AccountUpdate(AccountsFileInterface accountsFile, RegistrationLoginInterface auth, PasswordHashing hash) {
         this.accountsFile = accountsFile;
         this.auth = auth;
         this.hash = hash;

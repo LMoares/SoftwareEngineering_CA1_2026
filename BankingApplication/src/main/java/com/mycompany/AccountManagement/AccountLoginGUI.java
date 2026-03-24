@@ -4,17 +4,36 @@
  */
 package com.mycompany.AccountManagement;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author moise
  */
 public class AccountLoginGUI extends javax.swing.JPanel {
 
+    //variable to use AccountsFileInterface
+    private AccountsFileInterface accountsFile;
+
+    //variable to use RegistrationLoginInterface
+    private RegistrationLoginInterface regisLogi;
+
+    //variable to use AccountUpdateInterface
+    private AccountUpdateInterface accountUpdate;
+
     /**
      * Creates new form AccountLoginGUI
      */
     public AccountLoginGUI() {
         initComponents();
+        //initialize a new AccountsFile
+        accountsFile = new AccountsFile();
+        //accountsFile.loadFile();
+        //initialize a new Authentication with accountsFile and new PasswordHashing(using concrete class here)
+        regisLogi = new Authentication(accountsFile, new PasswordHashing());
+        //initialize a new AccountUpdate with accountsFile, regisLogi and new PasswordHashing(using concrete class here)
+        accountUpdate = new AccountUpdate(accountsFile, regisLogi, new PasswordHashing());
+
     }
 
     /**
@@ -32,12 +51,18 @@ public class AccountLoginGUI extends javax.swing.JPanel {
         passwordLbl = new javax.swing.JLabel();
         registrationNumTF = new javax.swing.JTextField();
         passwordTF = new javax.swing.JTextField();
+        updateBtn = new javax.swing.JButton();
 
         titleLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         titleLbl.setText("Account Login");
 
         loginBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         loginBtn.setText("Login");
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
 
         registrationNumLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         registrationNumLbl.setText("Registration Number");
@@ -49,6 +74,14 @@ public class AccountLoginGUI extends javax.swing.JPanel {
 
         passwordTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
 
+        updateBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        updateBtn.setText("Update Accout Details");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -56,7 +89,9 @@ public class AccountLoginGUI extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(loginBtn)
-                .addGap(196, 196, 196))
+                .addGap(27, 27, 27)
+                .addComponent(updateBtn)
+                .addGap(55, 55, 55))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -87,10 +122,35 @@ public class AccountLoginGUI extends javax.swing.JPanel {
                     .addComponent(passwordLbl)
                     .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE)
-                .addComponent(loginBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(loginBtn)
+                    .addComponent(updateBtn))
                 .addGap(33, 33, 33))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        // TODO add your handling code here:
+        //try catch in case user enters invalid details
+        try {
+            //get variables from user
+            String registrationNum = registrationNumTF.getText();
+
+            String password = passwordTF.getText();
+
+            //validate and register user if detail are correct and save
+            regisLogi.login(registrationNum, password);
+            
+            JOptionPane.showMessageDialog(this,"Login successful.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+          }
+        
+    }//GEN-LAST:event_loginBtnActionPerformed
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -100,5 +160,6 @@ public class AccountLoginGUI extends javax.swing.JPanel {
     private javax.swing.JLabel registrationNumLbl;
     private javax.swing.JTextField registrationNumTF;
     private javax.swing.JLabel titleLbl;
+    private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }

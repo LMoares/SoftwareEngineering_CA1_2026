@@ -9,23 +9,31 @@ package com.mycompany.AccountManagement;
  * @author moise
  */
 public class AccountRegistrationGUI extends javax.swing.JPanel {
-    
+
     //variable to use AccountsFileInterface
     private AccountsFileInterface accountsFile;
-    
+
     //variable to use RegistrationLoginInterface
     private RegistrationLoginInterface regisLogi;
-    
+
     //variable to use AccountUpdateInterface
     private AccountUpdateInterface accountUpdate;
+    
+    //new PasswordHashing assignedto hash
+    private PasswordHashing hash=new PasswordHashing();
+
     /**
      * Creates new form AccountRegistrationGUI
      */
     public AccountRegistrationGUI() {
         initComponents();
         //initialize a new AccountsFile
-        accountsFile=new AccountsFile();
-        
+        accountsFile = new AccountsFile();
+        //initialize a new Authentication with accountsFile and new PasswordHashing(using concrete class here)
+        regisLogi = new Authentication(accountsFile, hash);
+        //initialize a new AccountUpdate with accountsFile, regisLogi and new PasswordHashing(using concrete class here)
+        accountUpdate = new AccountUpdate(accountsFile, regisLogi, hash);
+
     }
 
     /**
@@ -48,7 +56,7 @@ public class AccountRegistrationGUI extends javax.swing.JPanel {
         genderLbl = new javax.swing.JLabel();
         addressLbl = new javax.swing.JLabel();
         fNameTF = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        lNameTF = new javax.swing.JTextField();
         genderTF = new javax.swing.JTextField();
         dobTF = new javax.swing.JTextField();
         emailTF = new javax.swing.JTextField();
@@ -91,7 +99,7 @@ public class AccountRegistrationGUI extends javax.swing.JPanel {
 
         fNameTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
 
-        jTextField2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        lNameTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
 
         genderTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
 
@@ -146,7 +154,7 @@ public class AccountRegistrationGUI extends javax.swing.JPanel {
                                 .addComponent(lNameLbl))
                             .addGap(52, 52, 52)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                                .addComponent(lNameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
                                 .addComponent(fNameTF)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,7 +195,7 @@ public class AccountRegistrationGUI extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lNameLbl)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(genderLbl)
@@ -223,6 +231,25 @@ public class AccountRegistrationGUI extends javax.swing.JPanel {
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
         // TODO add your handling code here:
+        //try catch in case user enters invalid details
+        try{
+            
+            String fName=fNameTF.getText();  
+            String lName=lNameTF.getText();
+            String email=emailTF.getText();
+            String password=passwordTF.getText();
+            double balance=Double.parseDouble(balanceTF.getText());
+            String dateOfBirth=dobTF.getText();
+            String gender=genderTF.getText();
+            String address=addressTF.getText();
+            
+            //validate user details, create and save account
+            regisLogi.createAccount(fName, lName, email, gender, password, balance, dateOfBirth, gender, address);
+            
+        }catch(Exception e){
+            
+        }
+        
     }//GEN-LAST:event_registerBtnActionPerformed
 
 
@@ -239,8 +266,8 @@ public class AccountRegistrationGUI extends javax.swing.JPanel {
     private javax.swing.JTextField fNameTF;
     private javax.swing.JLabel genderLbl;
     private javax.swing.JTextField genderTF;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lNameLbl;
+    private javax.swing.JTextField lNameTF;
     private javax.swing.JLabel passwordLbl;
     private javax.swing.JTextField passwordTF;
     private javax.swing.JLabel phoneNumberLbl;
