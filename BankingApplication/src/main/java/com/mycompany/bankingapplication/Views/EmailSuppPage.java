@@ -7,6 +7,8 @@ package com.mycompany.bankingapplication.Views;
 import com.mycompany.bankingapplication.Controller.Controllable;
 import com.mycompany.bankingapplication.Controller.UserInterfaceController;
 import javax.swing.JOptionPane;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -31,7 +33,7 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
     }
 
     public void submitInfo() {
-        String fname = fNameFld.getText().trim();
+        String fname = fNameFld.getText().trim();//Remove any white space present
         String surname = surnameFld.getText().trim();
         String email = emailFld.getText().trim();
         String phonenum = phonenumFld.getText().trim();
@@ -59,6 +61,30 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
             JOptionPane.showMessageDialog(this, "Your feedback has been submitted to customer support, we will respond as soon as possible. Please click the button to view the submitted feedback");
             JOptionPane.showMessageDialog(this, "The Issue(s) you're faceing: " + issues);
             JOptionPane.showMessageDialog(this, "Any futher comments: " + comments);
+        }
+    }
+
+    public void writeToFile() {
+        String fileName= "CustomerSupportRequests.txt";
+        String fileData = "NEW CUSTOMER SUPPORT QUEREY" + "\n"
+                +"First Name: "+ fNameFld.getText().trim() + "\n"
+                +"Surname: "+surnameFld.getText().trim() + "\n"
+                +"Email: "+emailFld.getText().trim() + "\n"
+                +"Phone Number: "+ phonenumFld.getText().trim() + "\n"
+                +"Issues They Are Facing: "+issuesFld.getText() + "\n"
+                +"Comments: "+ commentsFld.getText() + "\n"
+                +"Contact Time: "+ contactFld.getText().trim() + "\n"
+                + "---------------------------------";
+        
+        try 
+            (FileWriter myWriter =  new FileWriter(fileName, true)){//The true here means that the file can be edited 
+            myWriter.write(fileData);
+            System.out.println("NEW CUSTOMER SUPPORT REQUEST");
+            
+        }
+        
+        catch (IOException e){
+            System.out.println("Error saving new customer support request");
         }
     }
 
@@ -231,7 +257,9 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
+        writeToFile();//Write the information to a txx file
         submitInfo();//Run the above submit info function
+        
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void issuesFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_issuesFldActionPerformed
