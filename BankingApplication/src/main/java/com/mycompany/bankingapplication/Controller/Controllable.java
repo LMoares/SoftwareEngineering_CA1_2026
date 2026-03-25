@@ -4,6 +4,8 @@
  */
 package com.mycompany.bankingapplication.Controller;
 
+import com.mycompany.AccountManagement.UserAccount;
+
 /**
  * Software Engineering Team Project - 2026
  * Interfacename Controllable.java
@@ -24,4 +26,5 @@ public interface Controllable {
     
     //NOTE: removed to get goin
     void setUserDetails();
+    
 }
