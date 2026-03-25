@@ -1,3 +1,16 @@
+/home/modus/Documents/GitHub/SoftwareEngineering_CA1_2026/BankingApplication/src/main/java/com/mycompany/AccountManagement/AccountLoginGUI.java
+/home/modus/Documents/GitHub/SoftwareEngineering_CA1_2026/BankingApplication/src/main/java/com/mycompany/AccountManagement/AccountManagementGUI.java
+/home/modus/Documents/GitHub/SoftwareEngineering_CA1_2026/BankingApplication/src/main/java/com/mycompany/AccountManagement/AccountRegistrationGUI.java
+/home/modus/Documents/GitHub/SoftwareEngineering_CA1_2026/BankingApplication/src/main/java/com/mycompany/AccountManagement/AccountUpdate.java
+/home/modus/Documents/GitHub/SoftwareEngineering_CA1_2026/BankingApplication/src/main/java/com/mycompany/AccountManagement/AccountUpdateInterface.java
+/home/modus/Documents/GitHub/SoftwareEngineering_CA1_2026/BankingApplication/src/main/java/com/mycompany/AccountManagement/AccountsFile.java
+/home/modus/Documents/GitHub/SoftwareEngineering_CA1_2026/BankingApplication/src/main/java/com/mycompany/AccountManagement/AccountsFileInterface.java
+/home/modus/Documents/GitHub/SoftwareEngineering_CA1_2026/BankingApplication/src/main/java/com/mycompany/AccountManagement/Authentication.java
+/home/modus/Documents/GitHub/SoftwareEngineering_CA1_2026/BankingApplication/src/main/java/com/mycompany/AccountManagement/MainPageGUI.java
+/home/modus/Documents/GitHub/SoftwareEngineering_CA1_2026/BankingApplication/src/main/java/com/mycompany/AccountManagement/PasswordHashing.java
+/home/modus/Documents/GitHub/SoftwareEngineering_CA1_2026/BankingApplication/src/main/java/com/mycompany/AccountManagement/RegistrationLoginInterface.java
+/home/modus/Documents/GitHub/SoftwareEngineering_CA1_2026/BankingApplication/src/main/java/com/mycompany/AccountManagement/UpdateGUI.java
+/home/modus/Documents/GitHub/SoftwareEngineering_CA1_2026/BankingApplication/src/main/java/com/mycompany/AccountManagement/UserAccount.java
 /home/modus/Documents/GitHub/SoftwareEngineering_CA1_2026/BankingApplication/src/main/java/com/mycompany/bankingapplication/BankingApplication.java
 /home/modus/Documents/GitHub/SoftwareEngineering_CA1_2026/BankingApplication/src/main/java/com/mycompany/bankingapplication/Controller/Controllable.java
 /home/modus/Documents/GitHub/SoftwareEngineering_CA1_2026/BankingApplication/src/main/java/com/mycompany/bankingapplication/Controller/UserInterfaceController.java
