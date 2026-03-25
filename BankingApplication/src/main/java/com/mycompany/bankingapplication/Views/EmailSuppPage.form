@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[781, 601]"/>
+    </Property>
+    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[780, 600]"/>
+    </Property>
+  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -33,7 +41,6 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="issueLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="fNameLbl" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -41,23 +48,24 @@
                                   <Component id="emailLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="phoneNumLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="contactTimeLbl" min="-2" max="-2" attributes="0"/>
+                                  <Component id="issueLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="fNameFld" max="32767" attributes="0"/>
-                                  <Component id="surnameFld" max="32767" attributes="0"/>
-                                  <Component id="emailFld" max="32767" attributes="0"/>
-                                  <Component id="phonenumFld" max="32767" attributes="0"/>
-                                  <Component id="contactFld" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                              </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="commentsLbl" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="issuesFld" pref="200" max="32767" attributes="0"/>
-                                  <Component id="commentsFld" max="32767" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="commentsFld" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="issuesFld" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="fNameFld" max="32767" attributes="0"/>
+                              <Component id="surnameFld" max="32767" attributes="0"/>
+                              <Component id="emailFld" max="32767" attributes="0"/>
+                              <Component id="phonenumFld" max="32767" attributes="0"/>
+                              <Component id="contactFld" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -66,7 +74,7 @@
                       <Component id="submitBtn" min="-2" pref="200" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="210" max="32767" attributes="0"/>
+              <EmptySpace pref="164" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -116,7 +124,7 @@
               </Group>
               <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
               <Component id="submitBtn" min="-2" pref="90" max="-2" attributes="0"/>
-              <EmptySpace pref="142" max="32767" attributes="0"/>
+              <EmptySpace pref="114" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

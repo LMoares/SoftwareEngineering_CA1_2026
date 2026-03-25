@@ -117,6 +117,9 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
         contactFld = new javax.swing.JTextField();
         submitBtn = new javax.swing.JButton();
 
+        setMaximumSize(new java.awt.Dimension(781, 601));
+        setMinimumSize(new java.awt.Dimension(780, 600));
+
         emailWelcomeLbl.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         emailWelcomeLbl.setText("Email Customer Support");
 
@@ -183,31 +186,31 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(issueLbl)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(fNameLbl)
                                     .addComponent(sNameLbl)
                                     .addComponent(emailLbl)
                                     .addComponent(phoneNumLbl)
-                                    .addComponent(contactTimeLbl))
-                                .addGap(38, 38, 38)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(fNameFld)
-                                    .addComponent(surnameFld)
-                                    .addComponent(emailFld)
-                                    .addComponent(phonenumFld)
-                                    .addComponent(contactFld, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(contactTimeLbl)
+                                    .addComponent(issueLbl))
+                                .addGap(38, 38, 38))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(commentsLbl)
-                                .addGap(66, 66, 66)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(issuesFld, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(commentsFld)))))
+                                .addGap(63, 63, 63)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(commentsFld, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(issuesFld, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(fNameFld)
+                                .addComponent(surnameFld)
+                                .addComponent(emailFld)
+                                .addComponent(phonenumFld)
+                                .addComponent(contactFld, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(259, 259, 259)
                         .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,7 +251,7 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
                     .addComponent(commentsFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64)
                 .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
