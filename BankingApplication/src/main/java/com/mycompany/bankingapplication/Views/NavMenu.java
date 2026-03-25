@@ -132,15 +132,8 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(transactionsJLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-
                             .addComponent(custSuppLbl, javax.swing.GroupLayout.Alignment.LEADING)
-
-
-
                             .addComponent(loanAppLBL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-
                             .addComponent(homeLBL, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
@@ -253,8 +246,6 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
     private javax.swing.JLabel accountManagementLBL;
     private javax.swing.JLabel custSuppLbl;
     private javax.swing.JLabel homeLBL;
-    private javax.swing.JLabel jLabel1;
-
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
