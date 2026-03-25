@@ -11,5 +11,6 @@ package com.mycompany.AccountManagement;
 public interface AccountUpdateInterface {
     
     public String updateProfile(String registrationNum, String password, String newfName, String newlName);
+    
     public String updateContact(String registrationNum, String password, String newEmail, String newPhoneNumber, String newAddress);
 }

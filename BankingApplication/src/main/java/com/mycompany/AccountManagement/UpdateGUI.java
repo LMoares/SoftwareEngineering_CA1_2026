@@ -4,13 +4,15 @@
  */
 package com.mycompany.AccountManagement;
 
+import com.mycompany.bankingapplication.Controller.Controllable;
+import com.mycompany.bankingapplication.Controller.UserInterfaceController;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author moise
  */
-public class UpdateGUI extends javax.swing.JPanel {
+public class UpdateGUI extends javax.swing.JPanel implements Controllable {
 //variable to use AccountsFileInterface
 
     private AccountsFileInterface accountsFile;
@@ -21,8 +23,35 @@ public class UpdateGUI extends javax.swing.JPanel {
     //variable to use AccountUpdateInterface
     private AccountUpdateInterface accountUpdate;
 
-    //new PasswordHashing assignedto hash
+    //new PasswordHashing assigned to hash
     private PasswordHashing hash = new PasswordHashing();
+
+    //variable to use UserInterfaceController
+    private UserInterfaceController uicListener;
+
+    @Override
+    public void setListener(UserInterfaceController uicListener) {
+        this.uicListener = uicListener;
+    }
+    //get current logged in user's account details
+
+    @Override
+    public void setUserDetails() {
+        //get current user from controller
+        UserAccount currentAccount = uicListener.getUser();
+
+        //set user account fields
+        if (currentAccount != null) {
+            fNameTF.setText(currentAccount.getfName());
+            lNameTF.setText(currentAccount.getlName());
+            emailTF.setText(currentAccount.getEmail());
+            registrationNumTF.setText(currentAccount.getRegistrationNum());
+            passwordTF.setText(currentAccount.getPasswordHash());
+            phoneNumberTF.setText(currentAccount.getPhoneNumber());
+            addressTF.setText(currentAccount.getAddress());
+
+        }
+    }
 
     /**
      * Creates new form UpdateGUI
@@ -332,59 +361,64 @@ public class UpdateGUI extends javax.swing.JPanel {
     //update user profile, contact or passowrd
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
-        
-        String registrationNum=registrationNumTF.getText();
-        String password=passwordTF.getText();
+
+        String registrationNum = registrationNumTF.getText();
+        String password = passwordTF.getText();
         //try catch in case user enters invalid details
         try {
             if (updateProfileRB.isSelected()) {
 //                String registrationNum=registrationNumTF.getText();
 //                String passowrd=passwordTF.getText();
-                String fName=fNameTF.getText();
+                String fName = fNameTF.getText();
                 String lName = lNameTF.getText();
-                
+
                 //validate update account and save
                 accountUpdate.updateProfile(registrationNum, password, fName, lName);
-                
-                JOptionPane.showMessageDialog(this,"Profile updated successfully");
-                
-                UserAccount ua=accountsFile.findByRegistrationNum(registrationNum);
-                
-                JOptionPane.showMessageDialog(this,"Updated Account: \n"+ua.accountDetails());
-                
-                
+
+                JOptionPane.showMessageDialog(this, "Profile updated successfully");
+
+                //find the user's account based on registration number
+                UserAccount ua = accountsFile.findByRegistrationNum(registrationNum);
+
+                //return the updated account details to the user
+                JOptionPane.showMessageDialog(this, "Updated Account: \n" + ua.accountDetails());
+
             }
-            
-            if(updateContactRB.isSelected()){
-                String email=emailTF.getText();
-                String phoneNumber=phoneNumberTF.getText();
-                String address=addressTF.getText();
-                
+
+            if (updateContactRB.isSelected()) {
+                String email = emailTF.getText();
+                String phoneNumber = phoneNumberTF.getText();
+                String address = addressTF.getText();
+
                 accountUpdate.updateContact(registrationNum, password, email, phoneNumber, address);
-                
+
                 //validate update account and save
-                JOptionPane.showMessageDialog(this,"Contact updated successfully");
-                
-                UserAccount ua=accountsFile.findByRegistrationNum(registrationNum);
-                
-                JOptionPane.showMessageDialog(this,"Updated Account: \n"+ua.accountDetails());
+                JOptionPane.showMessageDialog(this, "Contact updated successfully");
+
+                //find the user's account based on registration number
+                UserAccount ua = accountsFile.findByRegistrationNum(registrationNum);
+
+                //return the updated account details to the user
+                JOptionPane.showMessageDialog(this, "Updated Account: \n" + ua.accountDetails());
             }
-            
-            if(updatePasswordRB.isSelected()){
-                String newPassword=newPasswordTF.getText();
-                
+
+            if (updatePasswordRB.isSelected()) {
+                String newPassword = newPasswordTF.getText();
+
                 //validate update account and save
                 regisLogi.updatePassword(registrationNum, password, newPassword);
-                
-                JOptionPane.showMessageDialog(this,"Password updated successfully");
-                
-                UserAccount ua=accountsFile.findByRegistrationNum(registrationNum);
-                
-                JOptionPane.showMessageDialog(this,"Updated Account: \n"+ua.accountDetails());
+
+                JOptionPane.showMessageDialog(this, "Password updated successfully");
+
+                //find the user's account based on registration number
+                UserAccount ua = accountsFile.findByRegistrationNum(registrationNum);
+
+                //return the updated account details to the user
+                JOptionPane.showMessageDialog(this, "Updated Account: \n" + ua.accountDetails());
             }
 
         } catch (Exception e) {
-                JOptionPane.showMessageDialog(this,e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_updateBtnActionPerformed
 

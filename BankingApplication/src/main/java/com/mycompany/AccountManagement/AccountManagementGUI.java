@@ -3,16 +3,32 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.AccountManagement;
+
 import com.mycompany.bankingapplication.Controller.Controllable;
+import com.mycompany.bankingapplication.Controller.UserInterfaceController;
 
 /**
  *
  * @author moise
  */
-public class AccountManagementGUI extends javax.swing.JPanel {
-    
-    //variable to use Controllable
-    private Controllable ui;
+public class AccountManagementGUI extends javax.swing.JPanel implements Controllable {
+
+    //variable to use UserInterfaceController
+    private UserInterfaceController uicListener;
+
+    //reference UserInterfaceController
+    @Override
+    public void setListener(UserInterfaceController uicListener) {
+        this.uicListener = uicListener;
+    }
+
+    //doesn't need fields
+    @Override
+    public void setUserDetails() {
+        //get current user from controller
+        UserAccount currentAccount = uicListener.getUser();
+    }
+
     /**
      * Creates new form MainPageGUI
      */
@@ -35,9 +51,19 @@ public class AccountManagementGUI extends javax.swing.JPanel {
 
         createAccountBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         createAccountBtn.setText("Create Account");
+        createAccountBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createAccountBtnActionPerformed(evt);
+            }
+        });
 
         loginBtn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         loginBtn.setText("Login");
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
 
         titleLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         titleLbl.setText("Main page");
@@ -69,6 +95,19 @@ public class AccountManagementGUI extends javax.swing.JPanel {
                 .addContainerGap(237, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void createAccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountBtnActionPerformed
+        // TODO add your handling code here:
+        //go to page to create an account
+        uicListener.changeCard("AccountRegistration");
+    }//GEN-LAST:event_createAccountBtnActionPerformed
+
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        // TODO add your handling code here:
+        //got to page to login
+        uicListener.changeCard("AccountLogin");
+
+    }//GEN-LAST:event_loginBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

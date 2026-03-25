@@ -8,6 +8,7 @@ package com.mycompany.AccountManagement;
  *
  * @author moise
  */
+//interface for AccountsFile
 public interface AccountsFileInterface {
     
     public void saveAccount();

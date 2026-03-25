@@ -4,19 +4,42 @@
  */
 package com.mycompany.AccountManagement;
 
+import com.mycompany.bankingapplication.Controller.Controllable;
+import com.mycompany.bankingapplication.Controller.UserInterfaceController;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author moise
  */
-public class AccountLoginGUI extends javax.swing.JPanel {
+public class AccountLoginGUI extends javax.swing.JPanel implements Controllable {
 
     //variable to use AccountsFileInterface
     private AccountsFileInterface accountsFile;
 
     //variable to use RegistrationLoginInterface
     private RegistrationLoginInterface regisLogi;
+
+    //variable to use UserInterfaceController
+    private UserInterfaceController uicListener;
+
+    @Override
+    public void setListener(UserInterfaceController uicListener) {
+        this.uicListener = uicListener;
+    }
+
+    @Override
+    public void setUserDetails() {
+        //get current user from controller
+        UserAccount currentAccount = uicListener.getUser();
+
+        //set user account fields
+        if (currentAccount != null) {
+            registrationNumTF.setText(currentAccount.getRegistrationNum());
+            passwordTF.setText(currentAccount.getPasswordHash());
+
+        }
+    }
 
     /**
      * Creates new form AccountLoginGUI
@@ -124,7 +147,7 @@ public class AccountLoginGUI extends javax.swing.JPanel {
                 .addGap(33, 33, 33))
         );
     }// </editor-fold>//GEN-END:initComponents
-    
+
     //login existing users
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
@@ -138,15 +161,26 @@ public class AccountLoginGUI extends javax.swing.JPanel {
             //validate and register user if detail are correct and save
             regisLogi.login(registrationNum, password);
             
-            JOptionPane.showMessageDialog(this,"Login successful.");
+            //get userDetails
+            UserAccount ua=accountsFile.findByRegistrationNum(registrationNum);
+            
+            //set logged in user in the controller
+            uicListener.setUserDetails(ua);
+
+            JOptionPane.showMessageDialog(this, "Login successful.");
+
+            //after login ...
+            //uicListener.changeCard();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
-          }
-        
+        }
+
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
+        //go to UpdateGUI
+        uicListener.changeCard("Update");
     }//GEN-LAST:event_updateBtnActionPerformed
 
 

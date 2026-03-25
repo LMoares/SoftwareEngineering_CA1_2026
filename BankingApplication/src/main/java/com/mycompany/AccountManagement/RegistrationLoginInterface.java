@@ -8,6 +8,7 @@ package com.mycompany.AccountManagement;
  *
  * @author moise
  */
+//interface for Authentication
 public interface RegistrationLoginInterface {
     public UserAccount createAccount(String fName, String lName, String email, String phoneNumber, 
             String password, double balance, String dateOfBirth, String gender, String address);

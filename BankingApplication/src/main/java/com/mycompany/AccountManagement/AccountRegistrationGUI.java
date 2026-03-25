@@ -4,22 +4,53 @@
  */
 package com.mycompany.AccountManagement;
 
+import com.mycompany.bankingapplication.Controller.Controllable;
+import com.mycompany.bankingapplication.Controller.UserInterfaceController;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author moise
  */
-public class AccountRegistrationGUI extends javax.swing.JPanel {
+public class AccountRegistrationGUI extends javax.swing.JPanel implements Controllable {
 
     //variable to use AccountsFileInterface
     private AccountsFileInterface accountsFile;
 
     //variable to use RegistrationLoginInterface
     private RegistrationLoginInterface regisLogi;
+
+    //new PasswordHashing assigned to hash
+    private PasswordHashing hash = new PasswordHashing();
+
+    //variable to use UserInterfaceController
+    private UserInterfaceController uicListener;
     
-    //new PasswordHashing assignedto hash
-    private PasswordHashing hash=new PasswordHashing();
+    @Override
+    public void setListener( UserInterfaceController uicListener){
+        this.uicListener=uicListener;
+    }
+    
+    //get logged in user's account details
+    @Override
+    public void setUserDetails(UserAccount currentAccount) {
+        //get current user from controller
+        currentAccount = uicListener.getUser();
+
+        //set user account fields
+        if (currentAccount != null) {
+            fNameTF.setText(currentAccount.getfName());
+            lNameTF.setText(currentAccount.getlName());
+            dobTF.setText(currentAccount.getDateOfBirth());
+            genderTF.setText(currentAccount.getGender());
+            emailTF.setText(currentAccount.getEmail());
+            passwordTF.setText(currentAccount.getPasswordHash());
+            phoneNumberTF.setText(currentAccount.getPhoneNumber());
+            addressTF.setText(currentAccount.getAddress());
+            balanceTF.setText(Double.toString(currentAccount.getBalance()));
+
+        }
+    }
 
     /**
      * Creates new form AccountRegistrationGUI
@@ -64,6 +95,7 @@ public class AccountRegistrationGUI extends javax.swing.JPanel {
         passwordTF = new javax.swing.JTextField();
         balanceTF = new javax.swing.JTextField();
         registerBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         titleLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         titleLbl.setText("Account Registration");
@@ -123,6 +155,8 @@ public class AccountRegistrationGUI extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -176,7 +210,9 @@ public class AccountRegistrationGUI extends javax.swing.JPanel {
                         .addGap(271, 271, 271))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(registerBtn)
-                        .addGap(225, 225, 225))))
+                        .addGap(102, 102, 102)
+                        .addComponent(jLabel1)
+                        .addGap(81, 81, 81))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,7 +259,9 @@ public class AccountRegistrationGUI extends javax.swing.JPanel {
                     .addComponent(balanceLbl)
                     .addComponent(balanceTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                .addComponent(registerBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(registerBtn)
+                    .addComponent(jLabel1))
                 .addGap(29, 29, 29))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -231,29 +269,34 @@ public class AccountRegistrationGUI extends javax.swing.JPanel {
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
         // TODO add your handling code here:
         //try catch in case user enters invalid details
-        try{
-            
-            String fName=fNameTF.getText();  
-            String lName=lNameTF.getText();
-            String dateOfBirth=dobTF.getText();
-            String gender=genderTF.getText();
-            String email=emailTF.getText();
-            String password=passwordTF.getText();
-            String phoneNumber=phoneNumberTF.getText();
-            String address=addressTF.getText();
-            double balance=Double.parseDouble(balanceTF.getText());
-            
+        try {
+
+            String fName = fNameTF.getText();
+            String lName = lNameTF.getText();
+            String dateOfBirth = dobTF.getText();
+            String gender = genderTF.getText();
+            String email = emailTF.getText();
+            String password = passwordTF.getText();
+            String phoneNumber = phoneNumberTF.getText();
+            String address = addressTF.getText();
+            double balance = Double.parseDouble(balanceTF.getText());
+
             //validate user details, create and save account
-            UserAccount ua=regisLogi.createAccount( fName,  lName,  email,  phoneNumber,password,  balance,  dateOfBirth,  gender,  address);
+            UserAccount ua = regisLogi.createAccount(fName, lName, email, phoneNumber, password, balance, dateOfBirth, gender, address);
             
-            JOptionPane.showMessageDialog(this,"Congratulations, your account was successfully created!");
+            //set new user in controller so all panels have access
+            uicListener.setUserDetails(ua);
             
-            JOptionPane.showMessageDialog(this,ua);
+            JOptionPane.showMessageDialog(this, "Congratulations, your account was successfully created!");
+
+            JOptionPane.showMessageDialog(this, ua);
             
-        }catch(Exception e){
-            
+            //change to ...
+            //changeCard();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
-        
+
     }//GEN-LAST:event_registerBtnActionPerformed
 
 
@@ -270,6 +313,7 @@ public class AccountRegistrationGUI extends javax.swing.JPanel {
     private javax.swing.JTextField fNameTF;
     private javax.swing.JLabel genderLbl;
     private javax.swing.JTextField genderTF;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lNameLbl;
     private javax.swing.JTextField lNameTF;
     private javax.swing.JLabel passwordLbl;
