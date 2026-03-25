@@ -345,14 +345,20 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         }
         sourceTF.setText("");
         incomeTF.setText("");
-
+        
+        //creasted table model object based on incomeTable fields
+        //model will contain all existing entries in table
         DefaultTableModel model = (DefaultTableModel) incomeTable.getModel();
+        //adds a row as an array of objects (default behavior) saves source of income as string, monthly renumeration as float
         model.addRow(new Object[]{source, income});
+        //changes effect overall values for loan application calculations
         sum += income;
         maxLoan = sum * 4.0f;
+        //updating loan slider with max value
         slider.setMaximum((int) maxLoan);
         loanMaxLBL.setText("€" + ((int) maxLoan));
-
+        //generate output text
+        //will not include chosen loan details as user will need to select that later via slide and confirmation button
         outputTA.setText("####################\n"
                 + "USER: "+user.getfName()+" "+user.getlName()
                 + "TOTAL INCOME BASED ON DECLARED INCOME:\n"
@@ -368,13 +374,16 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
             JOptionPane.showMessageDialog(this, "Please select a row to update.");
             return;
         }
-
+        
+        //creasted table model object based on incomeTable fields
+        //model will contain all existing entries in table
         DefaultTableModel model = (DefaultTableModel) incomeTable.getModel();
         String source = model.getValueAt(selectedRow, 0).toString();
         float income = (float) model.getValueAt(selectedRow, 1);
-
+        
         float updatedIncome = -1.0f;
-
+        
+        //read new value from user
         try {
             updatedIncome = Float.parseFloat(JOptionPane.showInputDialog(this, "Update monthly income for : " + source));
 
@@ -385,9 +394,11 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
             JOptionPane.showMessageDialog(this, "Please enter a valid positive number for monthly income");
             return;
         }
-
+        
+        //remove previous row and replace it with new information
         model.removeRow(selectedRow);
         model.addRow(new Object[]{source, updatedIncome});
+        //update loan calculation
         sum -= income;
         sum += updatedIncome;
         maxLoan = sum * 4.0f;
@@ -408,11 +419,13 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
             JOptionPane.showMessageDialog(this, "Please select a row to delete.");
             return;
         }
-
+        //creasted table model object based on incomeTable fields
+        //model will contain all existing entries in table
         DefaultTableModel model = (DefaultTableModel) incomeTable.getModel();
         String source = model.getValueAt(selectedRow, 0).toString();
         float income = (float) model.getValueAt(selectedRow, 1);
-
+        
+        //confirm user wants to delete selected row
         int selection = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete:\nSource - " + source + "\nMonthly Income - €" + income);
 
         if (selection == 0) {
@@ -421,6 +434,7 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         } else {
             JOptionPane.showMessageDialog(this, "Action Aborted");
         }
+        //update loan calculation
         sum -= income;
         maxLoan = sum * 4.0f;
         slider.setMaximum((int) maxLoan);
