@@ -1,8 +1,20 @@
-/home/modus/Documents/College/SoftwareEngineering/CA1/BankingApplication/src/main/java/com/mycompany/bankingapplication/BankingApplication.java
-/home/modus/Documents/College/SoftwareEngineering/CA1/BankingApplication/src/main/java/com/mycompany/bankingapplication/Controller/Controllable.java
-/home/modus/Documents/College/SoftwareEngineering/CA1/BankingApplication/src/main/java/com/mycompany/bankingapplication/Controller/UserInterfaceController.java
-/home/modus/Documents/College/SoftwareEngineering/CA1/BankingApplication/src/main/java/com/mycompany/bankingapplication/Views/AccountManagement.java
-/home/modus/Documents/College/SoftwareEngineering/CA1/BankingApplication/src/main/java/com/mycompany/bankingapplication/Views/HomePage.java
-/home/modus/Documents/College/SoftwareEngineering/CA1/BankingApplication/src/main/java/com/mycompany/bankingapplication/Views/LoginPanel.java
-/home/modus/Documents/College/SoftwareEngineering/CA1/BankingApplication/src/main/java/com/mycompany/bankingapplication/Views/NavMenu.java
-/home/modus/Documents/College/SoftwareEngineering/CA1/BankingApplication/src/main/java/com/mycompany/bankingapplication/Views/UserInterfaceView.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/AccountManagement/AccountLoginGUI.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/AccountManagement/AccountManagementGUI.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/AccountManagement/AccountRegistrationGUI.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/AccountManagement/AccountUpdate.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/AccountManagement/AccountUpdateInterface.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/AccountManagement/AccountsFile.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/AccountManagement/AccountsFileInterface.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/AccountManagement/Authentication.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/AccountManagement/PasswordHashing.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/AccountManagement/RegistrationLoginInterface.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/AccountManagement/UpdateGUI.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/AccountManagement/UserAccount.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/bankingapplication/BankingApplication.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/bankingapplication/Controller/Controllable.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/bankingapplication/Controller/UserInterfaceController.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/bankingapplication/Views/AccountManagement.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/bankingapplication/Views/HomePage.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/bankingapplication/Views/LoginPanel.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/bankingapplication/Views/NavMenu.java
+/Users/moise/Documents/Computing/Year 2/Software Engineering/SoftwareEngineering_CA1_2026-main/BankingApplication/src/main/java/com/mycompany/bankingapplication/Views/UserInterfaceView.java

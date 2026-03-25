@@ -4,6 +4,8 @@
  */
 package com.mycompany.bankingapplication.Controller;
 
+import com.mycompany.AccountManagement.UserAccount;
+
 /**
  * Software Engineering Team Project - 2026
  * Interfacename Controllable.java
@@ -22,4 +24,5 @@ public interface Controllable {
     //Used to call Controller for updated user details
     //Requires that it runs after user is logged in, else will set null details
     void setUserDetails();
+    
 }
