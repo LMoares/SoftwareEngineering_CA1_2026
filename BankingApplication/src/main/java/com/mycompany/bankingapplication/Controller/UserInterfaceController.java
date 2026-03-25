@@ -92,6 +92,9 @@ public class UserInterfaceController {
         //ensure currentAccount isn;t null
         if(currentAccount!=null){
         //passing currentAccount to all GUI that need it
+        //ensure currentAccount isn;t null
+        if(currentAccount!=null){
+        //passing currentAccount to all GUI that need it
         card.setUserDetails();
         }
         ui.showCard(key);
