@@ -48,7 +48,7 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
         jSeparator1 = new javax.swing.JSeparator();
         transactionsJLabel = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
+        custSuppLbl = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         loanAppLBL = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
@@ -81,7 +81,18 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
             }
         });
 
-        jLabel2.setText("jLabel2");
+        custSuppLbl.setText("Customer Support");
+        custSuppLbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                custSuppLblMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                custSuppLblMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                custSuppLblMousePressed(evt);
+            }
+        });
 
         loanAppLBL.setText("<html>Loan Application</html>");
         loanAppLBL.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -122,7 +133,14 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(transactionsJLabel, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+
+                            .addComponent(custSuppLbl, javax.swing.GroupLayout.Alignment.LEADING)
+
+
+
                             .addComponent(loanAppLBL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                             .addComponent(homeLBL, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
@@ -150,7 +168,7 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
                 .addGap(53, 53, 53)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(jLabel2)
+                .addComponent(custSuppLbl)
                 .addGap(36, 36, 36)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
@@ -201,6 +219,22 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
         transactionsJLabel.setForeground(Color.black);
     }//GEN-LAST:event_transactionsJLabelMouseExited
 
+
+    private void custSuppLblMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_custSuppLblMouseEntered
+        // TODO add your handling code here:
+        custSuppLbl.setForeground(Color.blue);
+    }//GEN-LAST:event_custSuppLblMouseEntered
+
+    private void custSuppLblMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_custSuppLblMouseExited
+        // TODO add your handling code here:
+        custSuppLbl.setForeground(Color.black);
+    }//GEN-LAST:event_custSuppLblMouseExited
+
+    private void custSuppLblMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_custSuppLblMousePressed
+        // TODO add your handling code here:
+        Listener.changeCard("CustSuppMenu");
+    }//GEN-LAST:event_custSuppLblMousePressed
+
     private void loanAppLBLMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loanAppLBLMouseEntered
         loanAppLBL.setForeground(Color.blue);
     }//GEN-LAST:event_loanAppLBLMouseEntered
@@ -214,10 +248,13 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
     }//GEN-LAST:event_loanAppLBLMousePressed
 
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accountManagementLBL;
+    private javax.swing.JLabel custSuppLbl;
     private javax.swing.JLabel homeLBL;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
+
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
