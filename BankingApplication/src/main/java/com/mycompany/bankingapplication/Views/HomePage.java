@@ -4,6 +4,7 @@
  */
 package com.mycompany.bankingapplication.Views;
 
+import com.mycompany.AccountManagement.UserAccount;
 import com.mycompany.bankingapplication.Controller.Controllable;
 import com.mycompany.bankingapplication.Controller.UserInterfaceController;
 
@@ -26,7 +27,17 @@ public class HomePage extends javax.swing.JPanel implements Controllable {
         this.Listener = Listener;
     }
     
-    public void setUserDetails(){}
+    public void setUserDetails(){
+        //get current user from controller
+        UserAccount currentAccount = Listener.getUser();
+
+        //set user account fields
+        if (currentAccount != null) {
+//            registrationNumTF.setText(currentAccount.getRegistrationNum());
+//            passwordTF.setText(currentAccount.getPasswordHash());
+
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -4,6 +4,7 @@
  */
 package com.mycompany.bankingapplication.Views;
 
+import com.mycompany.AccountManagement.UserAccount;
 import com.mycompany.bankingapplication.Controller.Controllable;
 import com.mycompany.bankingapplication.Controller.UserInterfaceController;
 import java.awt.Color;
@@ -20,14 +21,18 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
     public NavMenu() {
         initComponents();
     }
-    
+
     private UserInterfaceController Listener;
-    
+
     public void setListener(UserInterfaceController Listener) {
         this.Listener = Listener;
     }
     
-    public void setUserDetails(){}
+    public void setUserDetails(){
+        //get current user from controller
+        UserAccount currentAccount = Listener.getUser();
+    
+    }
     
 
     /**
@@ -45,7 +50,7 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
         jSeparator2 = new javax.swing.JSeparator();
         custSuppLbl = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
+        loanAppLBL = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         homeLBL = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
@@ -78,7 +83,18 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
             }
         });
 
-        jLabel3.setText("jLabel3");
+        loanAppLBL.setText("<html>Loan Application</html>");
+        loanAppLBL.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                loanAppLBLMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                loanAppLBLMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                loanAppLBLMousePressed(evt);
+            }
+        });
 
         homeLBL.setText("Home");
         homeLBL.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -105,8 +121,13 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+
                             .addComponent(custSuppLbl, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+
+
+
+                            .addComponent(loanAppLBL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                             .addComponent(homeLBL, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
@@ -138,7 +159,7 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
                 .addGap(36, 36, 36)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(jLabel3)
+                .addComponent(loanAppLBL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
@@ -150,6 +171,7 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
 
     private void accountManagementLBLMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountManagementLBLMouseEntered
         accountManagementLBL.setForeground(Color.blue); //change color to blue if mouse detected over label
+        
     }//GEN-LAST:event_accountManagementLBLMouseEntered
 
     private void accountManagementLBLMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountManagementLBLMouseExited
@@ -172,6 +194,7 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
         Listener.changeCard("HomePage");
     }//GEN-LAST:event_homeLBLMousePressed
 
+
     private void custSuppLblMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_custSuppLblMouseEntered
         // TODO add your handling code here:
         custSuppLbl.setForeground(Color.blue);
@@ -187,17 +210,31 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
         Listener.changeCard("CustSuppMenu");
     }//GEN-LAST:event_custSuppLblMousePressed
 
+    private void loanAppLBLMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loanAppLBLMouseEntered
+        loanAppLBL.setForeground(Color.blue);
+    }//GEN-LAST:event_loanAppLBLMouseEntered
+
+    private void loanAppLBLMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loanAppLBLMouseExited
+        loanAppLBL.setForeground(Color.black);
+    }//GEN-LAST:event_loanAppLBLMouseExited
+
+    private void loanAppLBLMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loanAppLBLMousePressed
+        Listener.changeCard("LoanApplication");
+    }//GEN-LAST:event_loanAppLBLMousePressed
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accountManagementLBL;
     private javax.swing.JLabel custSuppLbl;
     private javax.swing.JLabel homeLBL;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JLabel loanAppLBL;
     // End of variables declaration//GEN-END:variables
 }
