@@ -69,6 +69,17 @@ public class UserInterfaceController {
         }
     }
     
+    public void updateCardUserDetails() {
+        //Interates through each element in the cards collection
+        //Calls setUserDetails to update card data to reflect current logged in user
+        for (Map.Entry<String, Controllable> card : cards.entrySet()) {
+            String key = card.getKey();
+            Controllable controllableCard = card.getValue();
+            //Call setUserDetails -- implemented via Controllable interface
+            controllableCard.setUserDetails();
+        }
+    }
+    
     public void changeCard(String key) {
         //TODO: Once Moise creates user entity, determine best way to send user data between cards
         var card = cards.get(key);
@@ -94,6 +105,7 @@ public class UserInterfaceController {
     //set current user account after registration or login
     public void setUserDetails(UserAccount account){
         this.currentAccount=account;
+        updateCardUserDetails(); //update all cards to reflect current user
     }
     
     //TODO: User service - methods that will call for new user registration, login existing users, retrieve user data, save user data

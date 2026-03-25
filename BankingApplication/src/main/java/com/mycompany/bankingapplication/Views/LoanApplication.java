@@ -43,12 +43,10 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
     public void setUserDetails() {
         //get current user from controller
         user = Listener.getUser();
-        
+        isUserLoggedIn();
     }
     
     public void isUserLoggedIn() {
-        setUserDetails();
-        
         if (user == null) {
             System.out.println("Empty User");
             loanTP.setVisible(false);
@@ -58,6 +56,7 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
             loanTP.setVisible(true);
             errorLBL.setVisible(false);
             refreshBTN.setVisible(false);
+            userDetailsLBL.setText("<html>Welcome, "+user.getfName()+" "+user.getlName()+" - Account Number: "+user.getAccountNum());
         }
     }
 
@@ -83,6 +82,7 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         updateBTN = new javax.swing.JButton();
         deleteBTN = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        userDetailsLBL = new javax.swing.JLabel();
         loanApplicationPane = new javax.swing.JPanel();
         loanLBL = new javax.swing.JLabel();
         loanMaxLBL = new javax.swing.JLabel();
@@ -147,6 +147,8 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
 
         jLabel4.setText("<html>Enter all sources of income in the following form before subitting Loan Application to correctly calculate loan range.</html>");
 
+        userDetailsLBL.setText("NO USER LOGGED IN");
+
         javax.swing.GroupLayout incomePaneLayout = new javax.swing.GroupLayout(incomePane);
         incomePane.setLayout(incomePaneLayout);
         incomePaneLayout.setHorizontalGroup(
@@ -169,7 +171,8 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
                         .addGap(105, 105, 105)
                         .addComponent(deleteBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(userDetailsLBL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(75, Short.MAX_VALUE))
         );
         incomePaneLayout.setVerticalGroup(
@@ -177,7 +180,9 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
             .addGroup(incomePaneLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(userDetailsLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(incomePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(sourceTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,7 +195,7 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
                     .addComponent(updateBTN)
                     .addComponent(deleteBTN)
                     .addComponent(addBTN))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(36, 36, 36))
         );
 
         loanTP.addTab("Income Declaration", incomePane);
@@ -274,7 +279,7 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
                         .addComponent(selectBTN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(requestBTN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         loanTP.addTab("Loan Application", loanApplicationPane);
@@ -317,12 +322,12 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(loanTP)
+                .addComponent(loanTP, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(errorLBL)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(refreshBTN)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -349,7 +354,8 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         loanMaxLBL.setText("€" + ((int) maxLoan));
 
         outputTA.setText("####################\n"
-                + "TOTAL INCOME BASED ON DECLARED INCOME AND CURRENT FUNDS:\n"
+                + "USER: "+user.getfName()+" "+user.getlName()
+                + "TOTAL INCOME BASED ON DECLARED INCOME:\n"
                 + "€" + sum + "\n"
                 + "####################\n");
         isUserLoggedIn();
@@ -389,7 +395,8 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         loanMaxLBL.setText("€" + ((int) maxLoan));
 
         outputTA.setText("####################\n"
-                + "TOTAL INCOME BASED ON DECLARED INCOME AND CURRENT FUNDS:\n"
+                + "USER: "+user.getfName()+" "+user.getlName()
+                + "TOTAL INCOME BASED ON DECLARED INCOME:\n"
                 + "€" + sum + "\n"
                 + "####################\n");
     }//GEN-LAST:event_updateBTNActionPerformed
@@ -420,7 +427,8 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         loanMaxLBL.setText("€" + ((int) maxLoan));
 
         outputTA.setText("####################\n"
-                + "TOTAL INCOME BASED ON DECLARED INCOME AND CURRENT FUNDS:\n"
+                + "USER: "+user.getfName()+" "+user.getlName()
+                + "TOTAL INCOME BASED ON DECLARED INCOME:\n"
                 + "€" + sum + "\n"
                 + "####################\n");
     }//GEN-LAST:event_deleteBTNActionPerformed
@@ -437,7 +445,8 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         
         selectedLoan = slider.getValue();
         outputTA.setText("####################\n"
-                + "TOTAL INCOME BASED ON DECLARED INCOME AND CURRENT FUNDS:\n"
+                + "USER: "+user.getfName()+" "+user.getlName()
+                + "TOTAL INCOME BASED ON DECLARED INCOME:\n"
                 + "€" + sum + "\n"
                 + "--------------------\n"
                 + "SELECTED LOAN VALUE:\n"
@@ -490,5 +499,6 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
     private javax.swing.JSlider slider;
     private javax.swing.JTextField sourceTF;
     private javax.swing.JButton updateBTN;
+    private javax.swing.JLabel userDetailsLBL;
     // End of variables declaration//GEN-END:variables
 }

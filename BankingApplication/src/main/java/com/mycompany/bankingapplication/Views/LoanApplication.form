@@ -49,12 +49,12 @@
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="loanTP" max="32767" attributes="0"/>
+              <Component id="loanTP" pref="455" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="errorLBL" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="refreshBTN" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -111,6 +111,7 @@
                           </Group>
                           <Component id="jScrollPane1" max="32767" attributes="0"/>
                           <Component id="jLabel4" pref="0" max="32767" attributes="0"/>
+                          <Component id="userDetailsLBL" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="75" max="32767" attributes="0"/>
                   </Group>
@@ -121,7 +122,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" pref="32" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="userDetailsLBL" min="-2" pref="38" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="sourceTF" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -136,7 +139,7 @@
                           <Component id="deleteBTN" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="addBTN" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="63" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -239,6 +242,11 @@
                 <Property name="text" type="java.lang.String" value="&lt;html&gt;Enter all sources of income in the following form before subitting Loan Application to correctly calculate loan range.&lt;/html&gt;"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="userDetailsLBL">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="NO USER LOGGED IN"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="loanApplicationPane">
@@ -304,7 +312,7 @@
                               <Component id="requestBTN" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="132" max="32767" attributes="0"/>
+                      <EmptySpace pref="135" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
