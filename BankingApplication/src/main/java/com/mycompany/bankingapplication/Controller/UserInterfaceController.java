@@ -4,12 +4,22 @@
  */
 package com.mycompany.bankingapplication.Controller;
 
+
+import com.mycompany.bankingapplication.Views.AccountManagement;
+import com.mycompany.bankingapplication.Views.CustSuppMenu;
+import com.mycompany.bankingapplication.Views.EmailSuppPage;
+import com.mycompany.bankingapplication.Views.HomePage;
+import com.mycompany.bankingapplication.Views.LoginPanel;
+import com.mycompany.bankingapplication.Views.PhoneSuppPage;
+import com.mycompany.bankingapplication.Views.UserInterfaceView;
+
 import com.mycompany.AccountManagement.AccountLoginGUI;
 import com.mycompany.bankingapplication.Views.*;
 import com.mycompany.AccountManagement.AccountManagementGUI;
 import com.mycompany.AccountManagement.AccountRegistrationGUI;
 import com.mycompany.AccountManagement.UpdateGUI;
 import com.mycompany.AccountManagement.UserAccount;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,11 +46,18 @@ public class UserInterfaceController {
             //put("LoanApplication", new LoanApplication());
             put("Login", new LoginPanel());
             put("HomePage", new HomePage());
+
+
+            put("CustSuppMenu", new CustSuppMenu());
+            put("EmailSuppPage", new EmailSuppPage());
+            put("PhoneSuppPage", new PhoneSuppPage());
+
             put("AccountManagement", new AccountManagementGUI());
             put("AcccountRegistration", new AccountRegistrationGUI());
             put("AccountLogin", new AccountLoginGUI());
             put("Update", new UpdateGUI());
             put("LoanApplication", new LoanApplication());
+
         }
     };
 
