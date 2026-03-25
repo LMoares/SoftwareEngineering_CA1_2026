@@ -4,7 +4,13 @@
  */
 package com.mycompany.bankingapplication.Controller;
 
+import com.mycompany.AccountManagement.AccountLoginGUI;
 import com.mycompany.bankingapplication.Views.*;
+import com.mycompany.AccountManagement.AccountManagementGUI;
+import com.mycompany.AccountManagement.AccountRegistrationGUI;
+import com.mycompany.AccountManagement.UpdateGUI;
+import com.mycompany.AccountManagement.UserAccount;
+
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JPanel;
@@ -18,6 +24,9 @@ import javax.swing.JPanel;
 public class UserInterfaceController {
     private UserInterfaceView ui;
     
+    //variable to store the current UserAccount
+    private UserAccount currentAccount;
+    
     private Map<String, Controllable> cards = new HashMap<>() {
         {
             //Place all panels that need to be displayed here
@@ -26,7 +35,10 @@ public class UserInterfaceController {
             //put("LoanApplication", new LoanApplication());
             put("Login", new LoginPanel());
             put("HomePage", new HomePage());
-            put("AccountManagement", new AccountManagement());
+            put("AccountManagement", new AccountManagementGUI());
+            put("AcccountRegistration", new AccountRegistrationGUI());
+            put("AccountLogin", new AccountLoginGUI());
+            put("Update", new UpdateGUI());
             put("LoanApplication", new LoanApplication());
         }
     };
@@ -34,6 +46,7 @@ public class UserInterfaceController {
     public UserInterfaceController() {
         //Passes a reference of this controller object to ui object -- allows for two-way communication
         ui = new UserInterfaceView(this);
+        
         
         initializeCards();
         ui.generateCards();
@@ -65,18 +78,30 @@ public class UserInterfaceController {
             System.out.println("ChangeCard Error: key not found");
             return;
         }
-        
+        //ensure currentAccount isn;t null
+        if(currentAccount!=null){
+        //passing currentAccount to all GUI that need it
         card.setUserDetails();
-        
+        }
         ui.showCard(key);
+        
     }
     
     public void removeMenu() {
         ui.removeMenu();
     }
     
+    //set current user account after registration or login
+    public void setUserDetails(UserAccount account){
+        this.currentAccount=account;
+    }
+    
     //TODO: User service - methods that will call for new user registration, login existing users, retrieve user data, save user data
-    public void getUser(){} //void -> User
+    //allow GUI's to get access to current user account from the controller
+    public UserAccount getUser(){
+        return currentAccount;
+    
+    } //void -> User
     
     //Class responsible for creating new users, getting/saving user details from data file
     public void getUserService(){} //void -> UserService

@@ -4,6 +4,7 @@
  */
 package com.mycompany.bankingapplication.Views;
 
+import com.mycompany.AccountManagement.UserAccount;
 import com.mycompany.bankingapplication.Controller.Controllable;
 import com.mycompany.bankingapplication.Controller.UserInterfaceController;
 import java.awt.Color;
@@ -26,9 +27,13 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
     public void setListener(UserInterfaceController Listener) {
         this.Listener = Listener;
     }
-
-    public void setUserDetails() {
+    
+    public void setUserDetails(){
+        //get current user from controller
+        UserAccount currentAccount = Listener.getUser();
+    
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -150,6 +155,7 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
 
     private void accountManagementLBLMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountManagementLBLMouseEntered
         accountManagementLBL.setForeground(Color.blue); //change color to blue if mouse detected over label
+        
     }//GEN-LAST:event_accountManagementLBLMouseEntered
 
     private void accountManagementLBLMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountManagementLBLMouseExited
