@@ -72,14 +72,15 @@ public class UpdateGUI extends javax.swing.JPanel implements Controllable {
         lNameTF.setVisible(false);
         emailLbl.setVisible(false);
         emailTF.setVisible(false);
-        passwordLbl.setVisible(false);
-        passwordTF.setVisible(false);
+        passwordLbl.setVisible(true);
+        passwordTF.setVisible(true);
         newPasswordLbl.setVisible(false);
         newPasswordTF.setVisible(false);
         phoneNumberLbl.setVisible(false);
         phoneNumberTF.setVisible(false);
         addressLbl.setVisible(false);
         addressTF.setVisible(false);
+        
     }
 
     /**
@@ -125,11 +126,13 @@ public class UpdateGUI extends javax.swing.JPanel implements Controllable {
         });
 
         fNameTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        fNameTF.setPreferredSize(new java.awt.Dimension(108, 24));
 
         lNameLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lNameLbl.setText("Last Name");
 
         lNameTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        lNameTF.setPreferredSize(new java.awt.Dimension(108, 24));
 
         emailLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         emailLbl.setText("Email");
@@ -138,16 +141,19 @@ public class UpdateGUI extends javax.swing.JPanel implements Controllable {
         passwordLbl.setText("Password");
 
         emailTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        emailTF.setPreferredSize(new java.awt.Dimension(108, 24));
 
         phoneNumberLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         phoneNumberLbl.setText("Phone Number");
 
         phoneNumberTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        phoneNumberTF.setPreferredSize(new java.awt.Dimension(108, 24));
 
         addressTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        addressTF.setPreferredSize(new java.awt.Dimension(102, 24));
+        addressTF.setPreferredSize(new java.awt.Dimension(108, 24));
 
         passwordTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        passwordTF.setPreferredSize(new java.awt.Dimension(108, 24));
 
         fNameLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         fNameLbl.setText("First Name");
@@ -186,11 +192,13 @@ public class UpdateGUI extends javax.swing.JPanel implements Controllable {
         registrationNumLbl.setText("Registration Number");
 
         registrationNumTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        registrationNumTF.setPreferredSize(new java.awt.Dimension(108, 24));
 
         newPasswordLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         newPasswordLbl.setText("New Password");
 
         newPasswordTF.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        newPasswordTF.setPreferredSize(new java.awt.Dimension(108, 24));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -222,20 +230,20 @@ public class UpdateGUI extends javax.swing.JPanel implements Controllable {
                         .addGap(88, 88, 88)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lNameTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(emailTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(fNameTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(178, 178, 178)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(updatePasswordRB)
                                     .addComponent(updateContactRB)
                                     .addComponent(updateProfileRB)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(passwordTF)
-                                    .addComponent(phoneNumberTF)
-                                    .addComponent(addressTF, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+                                    .addComponent(addressTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(phoneNumberTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(passwordTF, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,8 +251,8 @@ public class UpdateGUI extends javax.swing.JPanel implements Controllable {
                             .addComponent(newPasswordLbl))
                         .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(registrationNumTF, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                            .addComponent(newPasswordTF))))
+                            .addComponent(registrationNumTF, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                            .addComponent(newPasswordTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -313,8 +321,8 @@ public class UpdateGUI extends javax.swing.JPanel implements Controllable {
         lNameTF.setVisible(true);
         emailLbl.setVisible(false);
         emailTF.setVisible(false);
-        passwordLbl.setVisible(false);
-        passwordTF.setVisible(false);
+        passwordLbl.setVisible(true);
+        passwordTF.setVisible(true);
         newPasswordLbl.setVisible(false);
         newPasswordTF.setVisible(false);
         phoneNumberLbl.setVisible(false);
@@ -331,8 +339,8 @@ public class UpdateGUI extends javax.swing.JPanel implements Controllable {
         lNameTF.setVisible(false);
         emailLbl.setVisible(false);
         emailTF.setVisible(false);
-        passwordLbl.setVisible(false);
-        passwordTF.setVisible(false);
+        passwordLbl.setVisible(true);
+        passwordTF.setVisible(true);
         newPasswordLbl.setVisible(false);
         newPasswordTF.setVisible(false);
         phoneNumberLbl.setVisible(true);

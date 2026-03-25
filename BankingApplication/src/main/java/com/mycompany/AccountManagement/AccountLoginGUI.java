@@ -179,6 +179,7 @@ public class AccountLoginGUI extends javax.swing.JPanel implements Controllable 
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this,"Fill in only the field you to update after selecting the sections you want to  change aside from your login details. ");
         //go to UpdateGUI
         uicListener.changeCard("Update");
     }//GEN-LAST:event_updateBtnActionPerformed

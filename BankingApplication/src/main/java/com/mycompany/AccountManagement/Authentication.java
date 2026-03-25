@@ -56,7 +56,7 @@ public class Authentication implements RegistrationLoginInterface {
         
         //call method to validate birthdate
         if (!isValidBirthday(dateOfBirth)){
-            throw new IllegalArgumentException("That is an Invald Date of birth.");
+            throw new IllegalArgumentException("That is an Invald Date of birth. format is dd/MM/yyyy");
         }
 
         if (gender.isEmpty() || gender == null || !(gender.equalsIgnoreCase("Male") || gender.equalsIgnoreCase("Female"))) {
@@ -100,6 +100,7 @@ public class Authentication implements RegistrationLoginInterface {
     }
 
     //ensures email is valid
+    @Override
     public boolean isValidEmail(String email) {
         return (email != null && !email.equals("") && email.contains("@") && email.length() >= 5);
  

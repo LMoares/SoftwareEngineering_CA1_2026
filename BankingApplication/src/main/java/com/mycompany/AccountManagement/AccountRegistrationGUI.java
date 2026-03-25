@@ -25,17 +25,17 @@ public class AccountRegistrationGUI extends javax.swing.JPanel implements Contro
 
     //variable to use UserInterfaceController
     private UserInterfaceController uicListener;
-    
+
     @Override
-    public void setListener( UserInterfaceController uicListener){
-        this.uicListener=uicListener;
+    public void setListener(UserInterfaceController uicListener) {
+        this.uicListener = uicListener;
     }
-    
+
     //get logged in user's account details
     @Override
-    public void setUserDetails(UserAccount currentAccount) {
+    public void setUserDetails() {
         //get current user from controller
-        currentAccount = uicListener.getUser();
+        UserAccount currentAccount = uicListener.getUser();
 
         //set user account fields
         if (currentAccount != null) {
@@ -95,7 +95,7 @@ public class AccountRegistrationGUI extends javax.swing.JPanel implements Contro
         passwordTF = new javax.swing.JTextField();
         balanceTF = new javax.swing.JTextField();
         registerBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         titleLbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         titleLbl.setText("Account Registration");
@@ -155,64 +155,72 @@ public class AccountRegistrationGUI extends javax.swing.JPanel implements Contro
             }
         });
 
-        jLabel1.setText("jLabel1");
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButton1.setText("Login");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(dobTF, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                        .addComponent(emailTF))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(passwordLbl)
-                                .addGap(116, 116, 116))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(emailLbl)
-                                .addGap(145, 145, 145))
-                            .addComponent(dobLbl)
-                            .addComponent(phoneNumberLbl))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(genderLbl)
-                            .addGap(76, 76, 76)
-                            .addComponent(genderTF))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(fNameLbl)
-                                .addComponent(lNameLbl))
-                            .addGap(52, 52, 52)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lNameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                                .addComponent(fNameTF)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(addressLbl)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(3, 3, 3)
-                                    .addComponent(balanceLbl)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(addressTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(phoneNumberTF)
-                                .addComponent(passwordTF)
-                                .addComponent(balanceTF)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(286, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(titleLbl)
-                        .addGap(271, 271, 271))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(registerBtn)
-                        .addGap(102, 102, 102)
-                        .addComponent(jLabel1)
-                        .addGap(81, 81, 81))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(286, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(titleLbl)
+                                .addGap(161, 161, 161))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(registerBtn)
+                                .addGap(33, 33, 33)
+                                .addComponent(jButton1))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(dobTF, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                                .addComponent(emailTF))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(passwordLbl)
+                                        .addGap(116, 116, 116))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(emailLbl)
+                                        .addGap(145, 145, 145))
+                                    .addComponent(dobLbl)
+                                    .addComponent(phoneNumberLbl))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(genderLbl)
+                                    .addGap(76, 76, 76)
+                                    .addComponent(genderTF))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(fNameLbl)
+                                        .addComponent(lNameLbl))
+                                    .addGap(52, 52, 52)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lNameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                                        .addComponent(fNameTF)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(addressLbl)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(3, 3, 3)
+                                            .addComponent(balanceLbl)))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(addressTF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(phoneNumberTF)
+                                        .addComponent(passwordTF)
+                                        .addComponent(balanceTF)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(110, 110, 110))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,7 +269,7 @@ public class AccountRegistrationGUI extends javax.swing.JPanel implements Contro
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registerBtn)
-                    .addComponent(jLabel1))
+                    .addComponent(jButton1))
                 .addGap(29, 29, 29))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -283,14 +291,14 @@ public class AccountRegistrationGUI extends javax.swing.JPanel implements Contro
 
             //validate user details, create and save account
             UserAccount ua = regisLogi.createAccount(fName, lName, email, phoneNumber, password, balance, dateOfBirth, gender, address);
-            
+
             //set new user in controller so all panels have access
             uicListener.setUserDetails(ua);
-            
+
             JOptionPane.showMessageDialog(this, "Congratulations, your account was successfully created!");
 
-            JOptionPane.showMessageDialog(this, ua);
-            
+            JOptionPane.showMessageDialog(this, ua.accountDetails());
+
             //change to ...
             //changeCard();
         } catch (Exception e) {
@@ -298,6 +306,11 @@ public class AccountRegistrationGUI extends javax.swing.JPanel implements Contro
         }
 
     }//GEN-LAST:event_registerBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+       // changeCard
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -313,7 +326,7 @@ public class AccountRegistrationGUI extends javax.swing.JPanel implements Contro
     private javax.swing.JTextField fNameTF;
     private javax.swing.JLabel genderLbl;
     private javax.swing.JTextField genderTF;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel lNameLbl;
     private javax.swing.JTextField lNameTF;
     private javax.swing.JLabel passwordLbl;

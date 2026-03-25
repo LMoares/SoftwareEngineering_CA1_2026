@@ -16,5 +16,7 @@ public interface RegistrationLoginInterface {
     public String login(String registrationNum, String password);
 
      public String updatePassword(String registrationNum, String password, String newPassword);
+     
+     public boolean isValidEmail(String email);
     
 }

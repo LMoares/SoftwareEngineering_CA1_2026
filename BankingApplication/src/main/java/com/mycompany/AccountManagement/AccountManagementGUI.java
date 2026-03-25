@@ -99,7 +99,7 @@ public class AccountManagementGUI extends javax.swing.JPanel implements Controll
     private void createAccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountBtnActionPerformed
         // TODO add your handling code here:
         //go to page to create an account
-        uicListener.changeCard("AccountRegistration");
+        uicListener.changeCard("AcccountRegistration");
     }//GEN-LAST:event_createAccountBtnActionPerformed
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed

@@ -134,10 +134,10 @@ public class UserAccount {
 
     //get user details
     public String accountDetails() {
-        return "Registration details\n" + "Account Id: " + accountId + "\nAccount Number: \n" + accountNum +"Registration Number"+
-                registrationNum+"\nFirst Name: " + fName + "\nLast Name: " + lName + "\nEmail: "
-                + "\nPhone Number: " + phoneNumber +"\nEmail: "+ email + "\nPassword: " + passwordHash + "\nBalance:" + balance
-                + "\nDate of Birth " + dateOfBirth + "\n Gender" + gender + "\nAddress: " + address;
+        return "Registration details\n" + "Account Id: " + accountId + "\nAccount Number: \n" + accountNum +"\nRegistration Number: "+
+                registrationNum+"\nFirst Name: " + fName + "\nLast Name: " + lName + "\nEmail: "+ email
+                + "\nPhone Number: " + phoneNumber +"\nPassword: " + passwordHash + "\nBalance: " + balance
+                + "\nDate of Birth: " + dateOfBirth + "\n Gender: " + gender + "\nAddress: " + address;
     }
 
     //method for a parseable format with the comma delimetre that can be saved to a file

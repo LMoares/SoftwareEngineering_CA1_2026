@@ -20,8 +20,10 @@ public class AccountsFile implements AccountsFileInterface {
 
     //array list for users
     private ArrayList<UserAccount> users = new ArrayList<>();
-    //variable to increment the id, numeric part of accountnum and registration number for new users
-    private int nextId = 1, nextAccountNum = 50201918, nextRegistrationNum=24875611;
+    //variable to increment the id
+    private int nextId = 1;
+     //variable to increment the numeric part of accountnum and registration number for new users
+    long nextAccountNum = 50201918L, nextRegistrationNum=24875611L;
     //variable to icnrement the registration number for the new users
     
     //method to save user to file
@@ -78,11 +80,11 @@ public class AccountsFile implements AccountsFileInterface {
                 //update the user account number for use by the next user
                 //ensures the nextAccountNum is always larger, preventing duplicates
                 //use regex to only select the digits 
-                nextAccountNum=Math.max(nextAccountNum, Integer.parseInt(accountNum.replaceAll("\\D", ""))+1);
+                nextAccountNum=Math.max(nextAccountNum, Long.parseLong(accountNum.replaceAll("\\D", ""))+1);
                 
                 //update the registration number for use by the next user
                 //ensure nextRegistration number is always larger, preventing duplicates
-                nextRegistrationNum=Math.max(nextRegistrationNum, Integer.parseInt(registrationNum)+1);
+                nextRegistrationNum=Math.max(nextRegistrationNum, Long.parseLong(registrationNum)+1);
                 
                 //initialize new UserAccount object with the user information
                 UserAccount account = new UserAccount(fName, lName, accountId, accountNum, registrationNum, email,
@@ -91,6 +93,7 @@ public class AccountsFile implements AccountsFileInterface {
 
                 //add accounts to arraylist
                 users.add(account);
+                System.out.print(account.getRegistrationNum());
             }
 
         } catch (FileNotFoundException e) {
@@ -123,7 +126,7 @@ public class AccountsFile implements AccountsFileInterface {
     
     @Override
     public String getNextRegistrationNum(){
-        return Integer.toString(nextRegistrationNum++);
+        return Long.toString(nextRegistrationNum++);
     }
     
     @Override
@@ -132,7 +135,7 @@ public class AccountsFile implements AccountsFileInterface {
         for(int i=0; i<users.size(); i++){
             //cast to UserAccount to get access to methods in order to compare
              UserAccount ua=(UserAccount)users.get(i);
-            if(registrationNum.equalsIgnoreCase(ua.getRegistrationNum())){
+            if(registrationNum.trim().equalsIgnoreCase(ua.getRegistrationNum())){
                 return users.get(i);           
              }        
         
