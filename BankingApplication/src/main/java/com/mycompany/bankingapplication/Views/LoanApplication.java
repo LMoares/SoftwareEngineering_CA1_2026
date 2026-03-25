@@ -360,7 +360,7 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         //generate output text
         //will not include chosen loan details as user will need to select that later via slide and confirmation button
         outputTA.setText("####################\n"
-                + "USER: "+user.getfName()+" "+user.getlName()
+                + "USER: "+user.getfName()+" "+user.getlName()+"\n"
                 + "TOTAL INCOME BASED ON DECLARED INCOME:\n"
                 + "€" + sum + "\n"
                 + "####################\n");
@@ -441,7 +441,7 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         loanMaxLBL.setText("€" + ((int) maxLoan));
 
         outputTA.setText("####################\n"
-                + "USER: "+user.getfName()+" "+user.getlName()
+                + "USER: "+user.getfName()+" "+user.getlName()+"\n"
                 + "TOTAL INCOME BASED ON DECLARED INCOME:\n"
                 + "€" + sum + "\n"
                 + "####################\n");
@@ -459,7 +459,7 @@ public class LoanApplication extends javax.swing.JPanel implements Controllable 
         
         selectedLoan = slider.getValue();
         outputTA.setText("####################\n"
-                + "USER: "+user.getfName()+" "+user.getlName()
+                + "USER: "+user.getfName()+" "+user.getlName()+"\n"
                 + "TOTAL INCOME BASED ON DECLARED INCOME:\n"
                 + "€" + sum + "\n"
                 + "--------------------\n"
