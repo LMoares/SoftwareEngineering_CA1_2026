@@ -4,6 +4,8 @@
  */
 package com.mycompany.AccountManagement;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author moise
@@ -15,9 +17,6 @@ public class AccountRegistrationGUI extends javax.swing.JPanel {
 
     //variable to use RegistrationLoginInterface
     private RegistrationLoginInterface regisLogi;
-
-    //variable to use AccountUpdateInterface
-    private AccountUpdateInterface accountUpdate;
     
     //new PasswordHashing assignedto hash
     private PasswordHashing hash=new PasswordHashing();
@@ -29,10 +28,10 @@ public class AccountRegistrationGUI extends javax.swing.JPanel {
         initComponents();
         //initialize a new AccountsFile
         accountsFile = new AccountsFile();
+        //load user accounts
+        accountsFile.loadFile();
         //initialize a new Authentication with accountsFile and new PasswordHashing(using concrete class here)
         regisLogi = new Authentication(accountsFile, hash);
-        //initialize a new AccountUpdate with accountsFile, regisLogi and new PasswordHashing(using concrete class here)
-        accountUpdate = new AccountUpdate(accountsFile, regisLogi, hash);
 
     }
 
@@ -228,7 +227,7 @@ public class AccountRegistrationGUI extends javax.swing.JPanel {
                 .addGap(29, 29, 29))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //create account for new users
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
         // TODO add your handling code here:
         //try catch in case user enters invalid details
@@ -236,15 +235,20 @@ public class AccountRegistrationGUI extends javax.swing.JPanel {
             
             String fName=fNameTF.getText();  
             String lName=lNameTF.getText();
-            String email=emailTF.getText();
-            String password=passwordTF.getText();
-            double balance=Double.parseDouble(balanceTF.getText());
             String dateOfBirth=dobTF.getText();
             String gender=genderTF.getText();
+            String email=emailTF.getText();
+            String password=passwordTF.getText();
+            String phoneNumber=phoneNumberTF.getText();
             String address=addressTF.getText();
+            double balance=Double.parseDouble(balanceTF.getText());
             
             //validate user details, create and save account
-            regisLogi.createAccount(fName, lName, email, gender, password, balance, dateOfBirth, gender, address);
+            UserAccount ua=regisLogi.createAccount( fName,  lName,  email,  phoneNumber,password,  balance,  dateOfBirth,  gender,  address);
+            
+            JOptionPane.showMessageDialog(this,"Congratulations, your account was successfully created!");
+            
+            JOptionPane.showMessageDialog(this,ua);
             
         }catch(Exception e){
             

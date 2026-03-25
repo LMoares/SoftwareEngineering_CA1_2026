@@ -30,7 +30,7 @@ public class Authentication implements RegistrationLoginInterface {
     
     //register a new account if validation is passed
     @Override
-    public String createAccount(String fName, String lName, String email, String phoneNumber, 
+    public UserAccount createAccount(String fName, String lName, String email, String phoneNumber, 
             String password, double balance, String dateOfBirth, String gender, String address) {
         
         //validation
@@ -92,7 +92,10 @@ public class Authentication implements RegistrationLoginInterface {
         //save the Account
         accountsFile.saveAccount();
         
-        return "Congratulations your account was created successfully!.";
+        //return "Congratulations your account was created successfully!.";
+        
+        return ua;
+        
 
     }
 

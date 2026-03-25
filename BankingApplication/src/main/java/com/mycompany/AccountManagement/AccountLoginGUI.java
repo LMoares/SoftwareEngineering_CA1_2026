@@ -18,9 +18,6 @@ public class AccountLoginGUI extends javax.swing.JPanel {
     //variable to use RegistrationLoginInterface
     private RegistrationLoginInterface regisLogi;
 
-    //variable to use AccountUpdateInterface
-    private AccountUpdateInterface accountUpdate;
-
     /**
      * Creates new form AccountLoginGUI
      */
@@ -28,11 +25,10 @@ public class AccountLoginGUI extends javax.swing.JPanel {
         initComponents();
         //initialize a new AccountsFile
         accountsFile = new AccountsFile();
-        //accountsFile.loadFile();
+        //load user accounts
+        accountsFile.loadFile();
         //initialize a new Authentication with accountsFile and new PasswordHashing(using concrete class here)
         regisLogi = new Authentication(accountsFile, new PasswordHashing());
-        //initialize a new AccountUpdate with accountsFile, regisLogi and new PasswordHashing(using concrete class here)
-        accountUpdate = new AccountUpdate(accountsFile, regisLogi, new PasswordHashing());
 
     }
 
@@ -128,7 +124,8 @@ public class AccountLoginGUI extends javax.swing.JPanel {
                 .addGap(33, 33, 33))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    //login existing users
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
         //try catch in case user enters invalid details
@@ -143,7 +140,7 @@ public class AccountLoginGUI extends javax.swing.JPanel {
             
             JOptionPane.showMessageDialog(this,"Login successful.");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
+            JOptionPane.showMessageDialog(this, e.getMessage());
           }
         
     }//GEN-LAST:event_loginBtnActionPerformed

@@ -53,9 +53,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Create Account"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createAccountBtnActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="loginBtn">
       <Properties>
@@ -64,9 +61,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Login"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginBtnActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="titleLbl">
       <Properties>
