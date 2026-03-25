@@ -224,5 +224,6 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JLabel loanAppLBL;
+    private javax.swing.JLabel transactionsJLabel;
     // End of variables declaration//GEN-END:variables
 }

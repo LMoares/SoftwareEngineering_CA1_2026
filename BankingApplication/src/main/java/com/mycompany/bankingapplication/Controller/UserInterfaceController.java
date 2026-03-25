@@ -8,8 +8,10 @@ import com.mycompany.AccountManagement.AccountLoginGUI;
 import com.mycompany.bankingapplication.Views.*;
 import com.mycompany.AccountManagement.AccountManagementGUI;
 import com.mycompany.AccountManagement.AccountRegistrationGUI;
+import com.mycompany.AccountManagement.AccountsFile;
 import com.mycompany.AccountManagement.UpdateGUI;
 import com.mycompany.AccountManagement.UserAccount;
+import com.mycompany.bankingapplication.Transactions.Transactions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +26,7 @@ import javax.swing.JPanel;
 public class UserInterfaceController {
 
     private UserInterfaceView ui;
+    
 
     //variable to store the current UserAccount
     private UserAccount currentAccount;
@@ -41,10 +44,15 @@ public class UserInterfaceController {
             put("AccountLogin", new AccountLoginGUI());
             put("Update", new UpdateGUI());
             put("LoanApplication", new LoanApplication());
+            put("Transactions", new Transactions());
         }
     };
+    
+  
 
     public UserInterfaceController() {
+        
+        
         //Passes a reference of this controller object to ui object -- allows for two-way communication
         ui = new UserInterfaceView(this);
 
@@ -121,6 +129,7 @@ public class UserInterfaceController {
         ui.displayMenu();
         changeCard("HomePage");
     }
+    
 
     public void signOut() {
         ui.removeMenu();

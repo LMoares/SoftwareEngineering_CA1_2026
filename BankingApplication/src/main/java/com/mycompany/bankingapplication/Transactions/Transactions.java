@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.bankingapplication.Transactions;
+import com.mycompany.AccountManagement.AccountsFile;
+import com.mycompany.AccountManagement.UserAccount;
 import com.mycompany.bankingapplication.Controller.Controllable;
 
 import com.mycompany.bankingapplication.Controller.UserInterfaceController;
@@ -22,17 +24,19 @@ import javax.swing.JTextField;
  */
 public class Transactions extends javax.swing.JPanel implements Controllable {
     private UserInterfaceController Listener;
-    private int accountNumber, atmCode;
-    private String recieverAccountNumber;
+    private int /*accountNumber,*/ atmCode;
+    private String recieverAccountNumber, accountNumber;
     private double currentBalance, transferAmount, depositAmount, withdrawAmount;
     private boolean isValidAtmCode, isValidRecieverAccount;
-    private String transactionHistory = "====Transaction History===\n";
+    private String transactionHistory = "====Recent Transaction History===\n";
+    private UserAccount user;
+    private AccountsFile accountsFile = new AccountsFile();
      
     public void setListener(UserInterfaceController Listener) {
         this.Listener = Listener;
     }
     
-    //user account number (to get from Moise)
+    //user account number (to get from Moise)24875612 and password applesauce
     
     
     
@@ -44,14 +48,25 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
         
         reload();
         
-        currentAccountNumber.setText(Integer.toString(accountNumber));
-        currentBalance = 1000;
-    }
-    
-    
-    public void setUserDetails(){
+        //currentAccountNumber.setText(accountNumber);
         
     }
+    
+    @Override
+    public void setUserDetails(){
+        //get the account from the listner
+        user = Listener.getUser();
+        
+        if(user != null){
+            this.accountNumber = user.getAccountNum();
+            this.currentBalance = user.getBalance();
+            
+            currentAccountNumber.setText(accountNumber);
+            
+            currentAccountNumber.setFocusable(false);
+        }
+    }
+    
     
     //reload function
     public void reload(){
@@ -570,24 +585,38 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
             if(withdrawAmount <= 0){
                JOptionPane.showMessageDialog(this, "Invalid withdrawal amount, please enter a value greater that zero" ); 
             }
-            if(currentBalance < withdrawAmount){
+            if(this.currentBalance < withdrawAmount){
                 JOptionPane.showMessageDialog(this, "Insufficient Funds! Balance: " + currentBalance);
                 return;
             }
             
             //check if message has an input 
-            if(transferTabTransferMessage.getText().trim().equals("Enter message related to withdraw...") || transferTabTransferMessage.getText().trim().equals("")){
+            if(withdrawTabWithdrawMessage.getText().trim().equals("Enter message related to withdraw...") || withdrawTabWithdrawMessage.getText().trim().equals("")){
                 message = "No message entered";
             }else{
-                message = transferTabTransferMessage.getText().trim();
+                message = withdrawTabWithdrawMessage.getText().trim();
             }
 
-            if(currentBalance > withdrawAmount){
-                currentBalance -= withdrawAmount;
+            if(this.currentBalance >= withdrawAmount){
+                this.currentBalance -= withdrawAmount;
+                accountsFile.loadFile();
+                
+                //update
+                UserAccount account = accountsFile.findByRegistrationNum(user.getRegistrationNum());
+                if(account !=null){
+                    //update balance in memory
+                    double newBalance = user.getBalance() - withdrawAmount;
+                    account.setBalance(newBalance);
+                    
+                    //save the full list back to the file
+                    accountsFile.saveAccount();
+                }
+               
                 JOptionPane.showMessageDialog(this, "Collect monies: " + withdrawAmount + "\nYour new balance is: " + currentBalance + "\nMessage: " + message + "\n Thank You for using Banking Application");
             }
-            transactionHistory += "***Withdraw Funds***"+"\nATM CODE: " + atmCode + "\nWithdrew: " + withdrawAmount + "\nMessage: " + message + "\nBalance: " + currentBalance;
-            //resets place holders
+            transactionHistory += "\n***Withdraw Funds***"+"\nATM CODE: " + atmCode + "\nWithdrew: " + withdrawAmount + "\nMessage: " + message + "\nBalance: " + this.currentBalance;
+            
+            
             reload();
         }catch(NumberFormatException e){
             //catches if user types letters instead of numbers
@@ -634,11 +663,13 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
                 return;
             }
             
+            // The regex pattern for 6 Caps and 15 Numbers
+            String pattern = "^[A-Z]{6}\\d{15}$";
             //check if input equals 8 digits
-            if(recieverAccountNumber.matches("\\d{8}")){
+            if(recieverAccountNumber.matches(pattern)){
                 isValidRecieverAccount = true;
             }else{
-                JOptionPane.showMessageDialog(this, "Invalid account number!, please enter a valid 8 digit account number.\n invalid number: " + recieverAccountNumber);
+                JOptionPane.showMessageDialog(this, "Invalid account number!, please enter a valid \n6 Capital letters followed by 15 digit account number.\n invalid number: " + recieverAccountNumber);
                 return;
             }
             
@@ -657,7 +688,7 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
                 JOptionPane.showMessageDialog(this, "Success!\nTransfer Complete\nAmount: " +transferAmount+ " left your account,\n and credited: " + recieverAccountNumber+ "\nMessage: "+ message + "\n Thank You for using Banking Application");
             }
             
-            transactionHistory += "***Transfer Funds***"+"\nRecievers Account Number: " + recieverAccountNumber + "\nTransfer Amount: " + transferAmount + "\nMessage: "+ message +"\nBalance: " + currentBalance;
+            transactionHistory += "\n***Transfer Funds***"+"\nRecievers Account Number: " + recieverAccountNumber + "\nTransfer Amount: " + transferAmount + "\nMessage: "+ message +"\nBalance: " + currentBalance;
             
             //reset all fields
             reload();
@@ -723,10 +754,10 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
             }
             
             //check if message has an input 
-            if(transferTabTransferMessage.getText().trim().equals("Enter message related to deposit...") || transferTabTransferMessage.getText().trim().equals("")){
+            if(depositTabDespositAmount.getText().trim().equals("Enter message related to deposit...") || depositTabDespositAmount.getText().trim().equals("")){
                 message = "No message entered";
             }else{
-                message = transferTabTransferMessage.getText().trim();
+                message = depositTabDespositAmount.getText().trim();
             }
             
             
@@ -739,7 +770,7 @@ public class Transactions extends javax.swing.JPanel implements Controllable {
                 return;
             }
             
-            transactionHistory += "***Deposit***"+"\nATM CODE: " + atmCode + "\nDeposit: " + withdrawAmount + "\nMessage: " + message + "\nBalance: " + currentBalance;
+            transactionHistory += "\n***Deposit***"+"\nATM CODE: " + atmCode + "\nDeposit: " + depositAmount + "\nMessage: " + message + "\nBalance: " + currentBalance;
             
             reload();
             
