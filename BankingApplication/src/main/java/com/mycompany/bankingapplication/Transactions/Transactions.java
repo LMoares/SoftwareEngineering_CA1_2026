@@ -1,0 +1,828 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
+package com.mycompany.bankingapplication.Transactions;
+import com.mycompany.AccountManagement.AccountsFile;
+import com.mycompany.AccountManagement.UserAccount;
+import com.mycompany.bankingapplication.Controller.Controllable;
+
+import com.mycompany.bankingapplication.Controller.UserInterfaceController;
+import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
+// Deposits and withdrawals can only happen when standing beside atm (code of atm)
+/**
+ *
+ * @author Jeán Walton
+ * 23/03/2025
+ * Transactions.java
+ * 
+ */
+public class Transactions extends javax.swing.JPanel implements Controllable {
+    private UserInterfaceController Listener;
+    private int /*accountNumber,*/ atmCode;
+    private String recieverAccountNumber, accountNumber;
+    private double currentBalance, transferAmount, depositAmount, withdrawAmount;
+    private boolean isValidAtmCode, isValidRecieverAccount;
+    private String transactionHistory = "====Recent Transaction History===\n";
+    private UserAccount user;
+    private AccountsFile accountsFile = new AccountsFile();
+     
+    public void setListener(UserInterfaceController Listener) {
+        this.Listener = Listener;
+    }
+    
+    //user account number (to get from Moise)24875612 and password applesauce
+    
+    
+    
+    /**
+     * Creates new form Transactions
+     */
+    public Transactions() {
+        initComponents();
+        
+        reload();
+        
+        //currentAccountNumber.setText(accountNumber);
+        
+    }
+    
+    @Override
+    public void setUserDetails(){
+        //get the account from the listner
+        user = Listener.getUser();
+        
+        if(user != null){
+            this.accountNumber = user.getAccountNum();
+            this.currentBalance = user.getBalance();
+            
+            currentAccountNumber.setText(accountNumber);
+            
+            currentAccountNumber.setFocusable(false);
+        }
+    }
+    
+    
+    //reload function
+    public void reload(){
+         //withdraw funds Tab input fields
+        inputFieldHolder(withdrawTabAtmCode, "Enter ATM code...");
+        inputFieldHolder(withdrawTabWithdrawAmount, "Enter amount to withdraw...");
+        inputFieldHolder(withdrawTabWithdrawMessage, "Enter message related to withdraw...");
+        //transfer funds Tab input fields
+        inputFieldHolder(transferTabTransferAccountNumber, "Enter 8 digit transfer account number..");
+        inputFieldHolder(transferFundsTransferAmount, "Enter amount to transfer...");
+        inputFieldHolder(transferTabTransferMessage, "Enter message related to transfer...");
+        //deposit funds Tab input fields
+        inputFieldHolder(despositTabAtmCode, "Enter ATM code...");
+        inputFieldHolder(depositTabDespositAmount, "Enter amount to deposit...");
+        inputFieldHolder(depositTabDepositMessage, "Enter message related to deposit...");
+    }
+    
+    /**
+    * Applies simple placeholder behaviour to the text field.
+    * The placeholder text appears in grey.
+    * When the user clicks the field, the placeholder disappears.
+    * If the user leaves the field empty, the placeholder returns.
+    */
+    private void inputFieldHolder(JTextField inputField, String text) {
+
+        // Set the starting placeholder text and colour
+        inputField.setText(text);
+        inputField.setForeground(Color.GRAY);//setting text colour to a grey 
+
+        // Listens (for when the user clicks into or out of the field)
+        inputField.addFocusListener(new FocusAdapter() {
+
+            @Override //when input field is active(clicking on)
+            public void focusGained(FocusEvent e) {
+                // If the input field is showing, clear it for typing
+                if (inputField.getText().equals(text)) {
+                    inputField.setText("");              // remove input field text
+                    inputField.setForeground(Color.BLACK); // switch to normal text colour
+                }
+            }
+
+            @Override//when input filed is not active
+            public void focusLost(FocusEvent e) {
+                // If the user leaves the field empty, restore the input field
+                if (inputField.getText().isEmpty()) {
+                    inputField.setText(text);     // put default text back
+                    inputField.setForeground(Color.GRAY); // grey colour for placeholder
+                }
+            }
+        });
+    }
+    
+    
+
+    
+    
+ 
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        transactionTabPane = new javax.swing.JTabbedPane();
+        balanceTab = new javax.swing.JPanel();
+        checkBalanceButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        checkBalanceTabDisplay = new javax.swing.JTextArea();
+        jLabelBalanceImage = new javax.swing.JLabel();
+        transferTab = new javax.swing.JPanel();
+        transferFundsButton = new javax.swing.JButton();
+        transferTabTransferAccountNumber = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        transferTabTransferMessage = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        transferFundsTransferAmount = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabelAtmTransferImage = new javax.swing.JLabel();
+        withdrawTab = new javax.swing.JPanel();
+        withdrawFundsButton = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        withdrawTabAtmCode = new javax.swing.JTextField();
+        withdrawTabWithdrawAmount = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        withdrawTabWithdrawMessage = new javax.swing.JTextField();
+        jLabelAtmWithdrawImage = new javax.swing.JLabel();
+        depostiTab = new javax.swing.JPanel();
+        depositFundsButton = new javax.swing.JButton();
+        despositTabAtmCode = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        depositTabDespositAmount = new javax.swing.JTextField();
+        depositTabDepositMessage = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabelAtmDepositImage = new javax.swing.JLabel();
+        currentAccountNumber = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(59, 170, 190));
+        setMaximumSize(new java.awt.Dimension(720, 600));
+        setMinimumSize(new java.awt.Dimension(720, 600));
+
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed", 2, 48)); // NOI18N
+        jLabel1.setText("Transactions");
+
+        balanceTab.setBackground(new java.awt.Color(171, 7, 171));
+        balanceTab.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        checkBalanceButton.setText("Check Balance");
+        checkBalanceButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBalanceButtonActionPerformed(evt);
+            }
+        });
+
+        checkBalanceTabDisplay.setBackground(new java.awt.Color(221, 255, 255));
+        checkBalanceTabDisplay.setColumns(20);
+        checkBalanceTabDisplay.setRows(5);
+        jScrollPane1.setViewportView(checkBalanceTabDisplay);
+
+        jLabelBalanceImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/balance_design.png"))); // NOI18N
+        jLabelBalanceImage.setText("jLabel2");
+
+        javax.swing.GroupLayout balanceTabLayout = new javax.swing.GroupLayout(balanceTab);
+        balanceTab.setLayout(balanceTabLayout);
+        balanceTabLayout.setHorizontalGroup(
+            balanceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, balanceTabLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(balanceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(checkBalanceButton)
+                    .addComponent(jLabelBalanceImage, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
+        );
+        balanceTabLayout.setVerticalGroup(
+            balanceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, balanceTabLayout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addGroup(balanceTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(balanceTabLayout.createSequentialGroup()
+                        .addComponent(jLabelBalanceImage, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(97, 97, 97)
+                        .addComponent(checkBalanceButton))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
+        );
+
+        transactionTabPane.addTab("Check Balance", balanceTab);
+
+        transferTab.setBackground(new java.awt.Color(171, 7, 171));
+        transferTab.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        transferFundsButton.setText("Transfer Funds");
+        transferFundsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transferFundsButtonActionPerformed(evt);
+            }
+        });
+
+        transferTabTransferAccountNumber.setBackground(new java.awt.Color(221, 255, 255));
+        transferTabTransferAccountNumber.setText("recievers account number");
+        transferTabTransferAccountNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transferTabTransferAccountNumberActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Reciever Account Number");
+
+        transferTabTransferMessage.setBackground(new java.awt.Color(221, 255, 255));
+        transferTabTransferMessage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transferTabTransferMessageActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Transfer Message");
+
+        transferFundsTransferAmount.setBackground(new java.awt.Color(221, 255, 255));
+        transferFundsTransferAmount.setText("transfer amount");
+        transferFundsTransferAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transferFundsTransferAmountActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Transfer Amount");
+
+        jLabelAtmTransferImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/money_transfer_design.png"))); // NOI18N
+        jLabelAtmTransferImage.setText("jLabel2");
+
+        javax.swing.GroupLayout transferTabLayout = new javax.swing.GroupLayout(transferTab);
+        transferTab.setLayout(transferTabLayout);
+        transferTabLayout.setHorizontalGroup(
+            transferTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transferTabLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(transferTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(transferTabLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(transferTabLayout.createSequentialGroup()
+                        .addComponent(transferTabTransferMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(transferFundsButton)
+                        .addGap(40, 40, 40))
+                    .addGroup(transferTabLayout.createSequentialGroup()
+                        .addGroup(transferTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(transferFundsTransferAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(transferTabTransferAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                        .addComponent(jLabelAtmTransferImage, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))))
+        );
+        transferTabLayout.setVerticalGroup(
+            transferTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transferTabLayout.createSequentialGroup()
+                .addGroup(transferTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(transferTabLayout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(transferTabTransferAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel13)
+                        .addGap(39, 39, 39)
+                        .addComponent(transferFundsTransferAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(transferTabLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabelAtmTransferImage, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)))
+                .addGroup(transferTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(transferFundsButton)
+                    .addComponent(transferTabTransferMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
+        );
+
+        transactionTabPane.addTab("Transfer Funds", transferTab);
+
+        withdrawTab.setBackground(new java.awt.Color(171, 7, 171));
+        withdrawTab.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        withdrawFundsButton.setText("Withdraw Funds");
+        withdrawFundsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                withdrawFundsButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Atm Code");
+
+        withdrawTabAtmCode.setBackground(new java.awt.Color(221, 255, 255));
+        withdrawTabAtmCode.setText("atm code");
+        withdrawTabAtmCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                withdrawTabAtmCodeActionPerformed(evt);
+            }
+        });
+
+        withdrawTabWithdrawAmount.setBackground(new java.awt.Color(221, 255, 255));
+        withdrawTabWithdrawAmount.setText("withdraw amount");
+        withdrawTabWithdrawAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                withdrawTabWithdrawAmountActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Withdraw Amount");
+
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Withdraw Funds Message");
+
+        withdrawTabWithdrawMessage.setBackground(new java.awt.Color(221, 255, 255));
+        withdrawTabWithdrawMessage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                withdrawTabWithdrawMessageActionPerformed(evt);
+            }
+        });
+
+        jLabelAtmWithdrawImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/code_atm.png"))); // NOI18N
+        jLabelAtmWithdrawImage.setText("jLabel5");
+
+        javax.swing.GroupLayout withdrawTabLayout = new javax.swing.GroupLayout(withdrawTab);
+        withdrawTab.setLayout(withdrawTabLayout);
+        withdrawTabLayout.setHorizontalGroup(
+            withdrawTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(withdrawTabLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(withdrawTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(withdrawTabLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(withdrawTabLayout.createSequentialGroup()
+                        .addComponent(withdrawTabWithdrawMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                        .addComponent(withdrawFundsButton)
+                        .addGap(40, 40, 40))
+                    .addGroup(withdrawTabLayout.createSequentialGroup()
+                        .addGroup(withdrawTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(withdrawTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel7)
+                                .addComponent(withdrawTabAtmCode)
+                                .addComponent(withdrawTabWithdrawAmount, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelAtmWithdrawImage, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))))
+        );
+        withdrawTabLayout.setVerticalGroup(
+            withdrawTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, withdrawTabLayout.createSequentialGroup()
+                .addGroup(withdrawTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(withdrawTabLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabelAtmWithdrawImage))
+                    .addGroup(withdrawTabLayout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(withdrawTabAtmCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(withdrawTabWithdrawAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(withdrawTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(withdrawTabLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(withdrawFundsButton))
+                    .addComponent(withdrawTabWithdrawMessage))
+                .addGap(40, 40, 40))
+        );
+
+        transactionTabPane.addTab("Withdraw Funds", withdrawTab);
+
+        depostiTab.setBackground(new java.awt.Color(171, 7, 171));
+        depostiTab.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        depositFundsButton.setText("Deposit Funds");
+        depositFundsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depositFundsButtonActionPerformed(evt);
+            }
+        });
+
+        despositTabAtmCode.setBackground(new java.awt.Color(221, 255, 255));
+        despositTabAtmCode.setText("atm code");
+        despositTabAtmCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                despositTabAtmCodeActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Atm Code");
+
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Deposit Amount");
+
+        depositTabDespositAmount.setBackground(new java.awt.Color(221, 255, 255));
+        depositTabDespositAmount.setText("deposit amount");
+        depositTabDespositAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depositTabDespositAmountActionPerformed(evt);
+            }
+        });
+
+        depositTabDepositMessage.setBackground(new java.awt.Color(221, 255, 255));
+        depositTabDepositMessage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depositTabDepositMessageActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Deposit Message");
+
+        jLabelAtmDepositImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/code_atm.png"))); // NOI18N
+        jLabelAtmDepositImage.setText("jLabel2");
+
+        javax.swing.GroupLayout depostiTabLayout = new javax.swing.GroupLayout(depostiTab);
+        depostiTab.setLayout(depostiTabLayout);
+        depostiTabLayout.setHorizontalGroup(
+            depostiTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(depostiTabLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(depostiTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(depostiTabLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(depostiTabLayout.createSequentialGroup()
+                        .addComponent(depositTabDepositMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                        .addComponent(depositFundsButton)
+                        .addGap(40, 40, 40))
+                    .addGroup(depostiTabLayout.createSequentialGroup()
+                        .addGroup(depostiTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(depositTabDespositAmount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(despositTabAtmCode, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelAtmDepositImage, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))))
+        );
+        depostiTabLayout.setVerticalGroup(
+            depostiTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(depostiTabLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(depostiTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(depostiTabLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(despositTabAtmCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(depositTabDespositAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67))
+                    .addComponent(jLabelAtmDepositImage))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(depostiTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(depositFundsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(depositTabDepositMessage))
+                .addGap(40, 40, 40))
+        );
+
+        transactionTabPane.addTab("Deposit Funds", depostiTab);
+
+        currentAccountNumber.setBackground(new java.awt.Color(221, 255, 255));
+
+        jLabel14.setText("Account Number:");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(currentAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(385, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(255, 255, 255))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(transactionTabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(currentAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addGap(18, 18, 18)
+                .addComponent(transactionTabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void withdrawFundsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawFundsButtonActionPerformed
+        try{
+            String atmCodeText = withdrawTabAtmCode.getText();
+            String withdrawAmountText = withdrawTabWithdrawAmount.getText();
+            String message = "";
+            
+            //form validation
+            if(atmCodeText.equals("Enter ATM code...") || withdrawAmountText.equals("Enter amount to withdraw...")){
+                JOptionPane.showMessageDialog(this, "Please fill in all fields");
+                return;
+            }
+            
+            // safely parse the atmcode/withdrawAmount to an integer/double
+            atmCode = Integer.parseInt(atmCodeText);
+            //assign the withdraw amount double...  variable
+            withdrawAmount = Double.parseDouble(withdrawAmountText);
+
+            //valid atmcode and account balance greater thatn the withdrawal amount
+            if(atmCode > 0 && atmCode < 100000){
+                isValidAtmCode = true;
+            }else{
+                isValidAtmCode = false;
+                JOptionPane.showMessageDialog(this, "Invalid ATM code, please enter valid ATM code");
+                return;
+            }
+            if(withdrawAmount <= 0){
+               JOptionPane.showMessageDialog(this, "Invalid withdrawal amount, please enter a value greater that zero" ); 
+            }
+            if(this.currentBalance < withdrawAmount){
+                JOptionPane.showMessageDialog(this, "Insufficient Funds! Balance: " + currentBalance);
+                return;
+            }
+            
+            //check if message has an input 
+            if(withdrawTabWithdrawMessage.getText().trim().equals("Enter message related to withdraw...") || withdrawTabWithdrawMessage.getText().trim().equals("")){
+                message = "No message entered";
+            }else{
+                message = withdrawTabWithdrawMessage.getText().trim();
+            }
+
+            if(this.currentBalance >= withdrawAmount){
+                this.currentBalance -= withdrawAmount;
+                accountsFile.loadFile();
+                
+                //update
+                UserAccount account = accountsFile.findByRegistrationNum(user.getRegistrationNum());
+                if(account !=null){
+                    //update balance in memory
+                    double newBalance = user.getBalance() - withdrawAmount;
+                    account.setBalance(newBalance);
+                    
+                    //save the full list back to the file
+                    accountsFile.saveAccount();
+                }
+               
+                JOptionPane.showMessageDialog(this, "Collect monies: " + withdrawAmount + "\nYour new balance is: " + currentBalance + "\nMessage: " + message + "\n Thank You for using Banking Application");
+            }
+            transactionHistory += "\n***Withdraw Funds***"+"\nATM CODE: " + atmCode + "\nWithdrew: " + withdrawAmount + "\nMessage: " + message + "\nBalance: " + this.currentBalance;
+            
+            
+            reload();
+        }catch(NumberFormatException e){
+            //catches if user types letters instead of numbers
+            JOptionPane.showMessageDialog(this, "Invalid input, Please enter numbers only.\n");
+            
+        }
+    }//GEN-LAST:event_withdrawFundsButtonActionPerformed
+
+    private void withdrawTabAtmCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawTabAtmCodeActionPerformed
+        
+    }//GEN-LAST:event_withdrawTabAtmCodeActionPerformed
+
+    private void transferTabTransferAccountNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferTabTransferAccountNumberActionPerformed
+      
+    }//GEN-LAST:event_transferTabTransferAccountNumberActionPerformed
+
+    private void transferTabTransferMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferTabTransferMessageActionPerformed
+        
+    }//GEN-LAST:event_transferTabTransferMessageActionPerformed
+
+    private void transferFundsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferFundsButtonActionPerformed
+        //validated if the reciever account has 8 digits and transfer amount is not greater than balance
+        
+        
+        try{
+            recieverAccountNumber = transferTabTransferAccountNumber.getText().trim();
+            // assign the transfer amount entered to the field:
+            String transferAmountText = transferFundsTransferAmount.getText().trim();
+            //message
+            String message = "";
+            
+            //form validation
+            if(recieverAccountNumber.equals("Enter 8 digit transfer account number..") || transferAmountText.equals("Enter amount to transfer...")){
+                JOptionPane.showMessageDialog(this, "Please fill in all fields");
+                return;
+            }
+            
+            //safely parse transferAmountText to a double
+            transferAmount = Double.parseDouble(transferAmountText);
+            
+            //check transfer amount is greater than 0
+            if(transferAmount <= 0){
+                JOptionPane.showMessageDialog(this, "Invalid transfer amount, please enter a value greater that zero");
+                return;
+            }
+            
+            // The regex pattern for 6 Caps and 15 Numbers
+            String pattern = "^[A-Z]{6}\\d{15}$";
+            //check if input equals 8 digits
+            if(recieverAccountNumber.matches(pattern)){
+                isValidRecieverAccount = true;
+            }else{
+                JOptionPane.showMessageDialog(this, "Invalid account number!, please enter a valid \n6 Capital letters followed by 15 digit account number.\n invalid number: " + recieverAccountNumber);
+                return;
+            }
+            
+            //check if message has an input 
+            if(transferTabTransferMessage.getText().trim().equals("Enter message related to transfer...") || transferTabTransferMessage.getText().trim().equals("")){
+                message = "No message entered";
+            }else{
+                message = transferTabTransferMessage.getText().trim();
+            }
+            
+            //value in current is greater than transfer amount
+            if(currentBalance > transferAmount){
+                //remove transfer amount from balance
+                 currentBalance -= transferAmount;
+                //on Success
+                JOptionPane.showMessageDialog(this, "Success!\nTransfer Complete\nAmount: " +transferAmount+ " left your account,\n and credited: " + recieverAccountNumber+ "\nMessage: "+ message + "\n Thank You for using Banking Application");
+            }
+            
+            transactionHistory += "\n***Transfer Funds***"+"\nRecievers Account Number: " + recieverAccountNumber + "\nTransfer Amount: " + transferAmount + "\nMessage: "+ message +"\nBalance: " + currentBalance;
+            
+            //reset all fields
+            reload();
+            
+        }catch(NumberFormatException e){
+            //catches if user types letters instead of numbers
+            JOptionPane.showMessageDialog(this, "Invalid input, Please enter numbers only.\n");
+        }
+        
+    }//GEN-LAST:event_transferFundsButtonActionPerformed
+
+    private void checkBalanceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBalanceButtonActionPerformed
+        // display funds in the account:
+        checkBalanceTabDisplay.setText("The account number: " + accountNumber + "\nBalance: " + currentBalance + "\n\n" + transactionHistory);
+    }//GEN-LAST:event_checkBalanceButtonActionPerformed
+
+    private void withdrawTabWithdrawAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawTabWithdrawAmountActionPerformed
+        
+        
+    }//GEN-LAST:event_withdrawTabWithdrawAmountActionPerformed
+
+    private void withdrawTabWithdrawMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawTabWithdrawMessageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_withdrawTabWithdrawMessageActionPerformed
+
+    private void despositTabAtmCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despositTabAtmCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_despositTabAtmCodeActionPerformed
+
+    private void depositTabDespositAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositTabDespositAmountActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_depositTabDespositAmountActionPerformed
+
+    private void depositTabDepositMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositTabDepositMessageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_depositTabDepositMessageActionPerformed
+
+    private void depositFundsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositFundsButtonActionPerformed
+        try{
+            String atmCodeText = despositTabAtmCode.getText().trim();
+            String depositAmountText = depositTabDespositAmount.getText().trim();
+            String message = "";
+            
+            //form validation
+            if(atmCodeText.equals("Enter ATM code...") || depositAmountText.equals("Enter amount to deposit...")){
+                JOptionPane.showMessageDialog(this, "Please fill in all fields");
+                return;
+            }
+            
+            //safely parse atmCodeText/depositAmountText to an integer/double
+            atmCode = Integer.parseInt(atmCodeText);
+            
+            depositAmount = Double.parseDouble(depositAmountText);
+            
+             //validate atmCode 
+            if(atmCode > 0 && atmCode < 100000){
+                isValidAtmCode = true;
+            }else{
+                isValidAtmCode = false;
+                JOptionPane.showMessageDialog(this, "Invalid ATM code, please enter valid ATM code");
+                return;
+            }
+            
+            //check if message has an input 
+            if(depositTabDespositAmount.getText().trim().equals("Enter message related to deposit...") || depositTabDespositAmount.getText().trim().equals("")){
+                message = "No message entered";
+            }else{
+                message = depositTabDespositAmount.getText().trim();
+            }
+            
+            
+            if(depositAmount > 0){
+                //on success
+                currentBalance += depositAmount;
+                JOptionPane.showMessageDialog(this, "Amount credited to your account: " + depositAmount + "\nYour new balance is: " + currentBalance + "\nMessage: " + message + "\n Thank You for using Banking Application");
+            }else{
+                JOptionPane.showMessageDialog(this, "Invalid deposit amount, please enter a value greater that zero");
+                return;
+            }
+            
+            transactionHistory += "\n***Deposit***"+"\nATM CODE: " + atmCode + "\nDeposit: " + depositAmount + "\nMessage: " + message + "\nBalance: " + currentBalance;
+            
+            reload();
+            
+            
+        }catch (NumberFormatException e){
+            //catches if user types letters instead of numbers
+            JOptionPane.showMessageDialog(this, "Invalid input, Please enter numbers only.\n");
+        }
+        
+    }//GEN-LAST:event_depositFundsButtonActionPerformed
+
+    private void transferFundsTransferAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferFundsTransferAmountActionPerformed
+        
+    }//GEN-LAST:event_transferFundsTransferAmountActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel balanceTab;
+    private javax.swing.JButton checkBalanceButton;
+    private javax.swing.JTextArea checkBalanceTabDisplay;
+    private javax.swing.JTextField currentAccountNumber;
+    private javax.swing.JButton depositFundsButton;
+    private javax.swing.JTextField depositTabDepositMessage;
+    private javax.swing.JTextField depositTabDespositAmount;
+    private javax.swing.JPanel depostiTab;
+    private javax.swing.JTextField despositTabAtmCode;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelAtmDepositImage;
+    private javax.swing.JLabel jLabelAtmTransferImage;
+    private javax.swing.JLabel jLabelAtmWithdrawImage;
+    private javax.swing.JLabel jLabelBalanceImage;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane transactionTabPane;
+    private javax.swing.JButton transferFundsButton;
+    private javax.swing.JTextField transferFundsTransferAmount;
+    private javax.swing.JPanel transferTab;
+    private javax.swing.JTextField transferTabTransferAccountNumber;
+    private javax.swing.JTextField transferTabTransferMessage;
+    private javax.swing.JButton withdrawFundsButton;
+    private javax.swing.JPanel withdrawTab;
+    private javax.swing.JTextField withdrawTabAtmCode;
+    private javax.swing.JTextField withdrawTabWithdrawAmount;
+    private javax.swing.JTextField withdrawTabWithdrawMessage;
+    // End of variables declaration//GEN-END:variables
+}

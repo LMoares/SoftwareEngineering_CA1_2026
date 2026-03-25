@@ -46,7 +46,7 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
 
         accountManagementLBL = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
+        transactionsJLabel = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         custSuppLbl = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -68,7 +68,18 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
             }
         });
 
-        jLabel1.setText("jLabel1");
+        transactionsJLabel.setText("Transactions");
+        transactionsJLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                transactionsJLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                transactionsJLabelMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                transactionsJLabelMousePressed(evt);
+            }
+        });
 
         custSuppLbl.setText("Customer Support");
         custSuppLbl.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -120,14 +131,9 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-
+                            .addComponent(transactionsJLabel, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(custSuppLbl, javax.swing.GroupLayout.Alignment.LEADING)
-
-
-
                             .addComponent(loanAppLBL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-
                             .addComponent(homeLBL, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
@@ -151,7 +157,7 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
                 .addGap(28, 28, 28)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
-                .addComponent(jLabel1)
+                .addComponent(transactionsJLabel)
                 .addGap(53, 53, 53)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
@@ -193,6 +199,18 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
     private void homeLBLMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeLBLMousePressed
         Listener.changeCard("HomePage");
     }//GEN-LAST:event_homeLBLMousePressed
+    //Transactions
+    private void transactionsJLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionsJLabelMousePressed
+        Listener.changeCard("Transactions");
+    }//GEN-LAST:event_transactionsJLabelMousePressed
+
+    private void transactionsJLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionsJLabelMouseEntered
+        transactionsJLabel.setForeground(Color.blue);
+    }//GEN-LAST:event_transactionsJLabelMouseEntered
+
+    private void transactionsJLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionsJLabelMouseExited
+        transactionsJLabel.setForeground(Color.black);
+    }//GEN-LAST:event_transactionsJLabelMouseExited
 
 
     private void custSuppLblMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_custSuppLblMouseEntered
@@ -228,13 +246,12 @@ public class NavMenu extends javax.swing.JPanel implements Controllable {
     private javax.swing.JLabel accountManagementLBL;
     private javax.swing.JLabel custSuppLbl;
     private javax.swing.JLabel homeLBL;
-    private javax.swing.JLabel jLabel1;
-
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JLabel loanAppLBL;
+    private javax.swing.JLabel transactionsJLabel;
     // End of variables declaration//GEN-END:variables
 }

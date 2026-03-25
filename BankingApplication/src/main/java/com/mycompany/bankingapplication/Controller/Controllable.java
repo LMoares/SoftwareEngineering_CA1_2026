@@ -23,6 +23,8 @@ public interface Controllable {
     
     //Used to call Controller for updated user details
     //Requires that it runs after user is logged in, else will set null details
+    
+    //NOTE: removed to get goin
     void setUserDetails();
     
 }

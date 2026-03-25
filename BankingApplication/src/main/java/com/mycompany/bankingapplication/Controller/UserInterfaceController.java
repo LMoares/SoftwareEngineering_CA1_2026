@@ -5,7 +5,6 @@
 package com.mycompany.bankingapplication.Controller;
 
 
-import com.mycompany.bankingapplication.Views.AccountManagement;
 import com.mycompany.bankingapplication.Views.CustSuppMenu;
 import com.mycompany.bankingapplication.Views.EmailSuppPage;
 import com.mycompany.bankingapplication.Views.HomePage;
@@ -19,6 +18,7 @@ import com.mycompany.AccountManagement.AccountManagementGUI;
 import com.mycompany.AccountManagement.AccountRegistrationGUI;
 import com.mycompany.AccountManagement.UpdateGUI;
 import com.mycompany.AccountManagement.UserAccount;
+import com.mycompany.bankingapplication.Transactions.Transactions;
 
 
 import java.util.HashMap;
@@ -57,6 +57,7 @@ public class UserInterfaceController {
             put("AccountLogin", new AccountLoginGUI());
             put("Update", new UpdateGUI());
             put("LoanApplication", new LoanApplication());
+            put("Transactions", new Transactions());
 
         }
     };
