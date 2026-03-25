@@ -53,6 +53,7 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
         {
             JOptionPane.showMessageDialog(this, "Please ensure you have entered a valid phone number. It must be 10 digits in length");
         } else {
+            writeToFile();//Write the information to a txt file when inputted text is valid
             fNameFld.setText("");
             surnameFld.setText("");
             emailFld.setText("");
@@ -261,7 +262,6 @@ public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
-        writeToFile();//Write the information to a txx file
         submitInfo();//Run the above submit info function
 
     }//GEN-LAST:event_submitBtnActionPerformed
