@@ -1,0 +1,294 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
+package com.mycompany.bankingapplication.Views;
+
+import com.mycompany.bankingapplication.Controller.Controllable;
+import com.mycompany.bankingapplication.Controller.UserInterfaceController;
+import javax.swing.JOptionPane;
+import java.io.FileWriter;
+import java.io.IOException;
+
+/**
+ *
+ * @author gamer
+ */
+public class EmailSuppPage extends javax.swing.JPanel implements Controllable {
+
+    /**
+     * Creates new form EmailSuppPage
+     */
+    public EmailSuppPage() {
+        initComponents();
+    }
+
+    private UserInterfaceController Listener;
+
+    public void setListener(UserInterfaceController Listener) {
+        this.Listener = Listener;
+    }
+
+    public void setUserDetails() {
+    }
+
+    public void submitInfo() {
+        String fname = fNameFld.getText().trim();//Remove any white space present
+        String surname = surnameFld.getText().trim();
+        String email = emailFld.getText().trim();
+        String phonenum = phonenumFld.getText().trim();
+        String issues = issuesFld.getText();//No trim on issues or comments as the user will be inputting full sentences here. Removing the whitespace makes no sense
+        String comments = commentsFld.getText();
+        String contactTime = contactFld.getText().trim();
+
+        if (fname.isEmpty() || surname.isEmpty() || email.isEmpty() || phonenum.isEmpty() || issues.isEmpty() || comments.isEmpty() || contactTime.isEmpty()) {//If any of the fields are not filled in
+            JOptionPane.showMessageDialog(this, "Please ensure you have filled out all of the fields.");
+        } else if (!email.contains("@") || !email.contains(".")) {//If the email address submitted does not contain an @ symbol or a .(like for .com, etc found at the end of an email address) display an error message to the user
+            JOptionPane.showMessageDialog(this, "Please ensure you have entered a valid email address");
+        } else if (!contactTime.contains(":")) {//If the 24 hour time submitted does not contain :
+            JOptionPane.showMessageDialog(this, "Please ensure that time you have inputted is in the following format: 00:00 (24 HOUR FORMAT)");
+        } else if (contactTime.length() > 5) {//If the time submitted contains more than 5 characters
+            JOptionPane.showMessageDialog(this, "Please ensure you have entered a valid time in the following format: 00:00 (24 HOUR FORMAT)");
+        } else if (!phonenum.matches("\\d{10}"))//Regex which essentialy says that the string the user inputs must have exactly 10 digits
+        {
+            JOptionPane.showMessageDialog(this, "Please ensure you have entered a valid phone number. It must be 10 digits in length");
+        } else {
+            writeToFile();//Write the information to a txt file when inputted text is valid
+            fNameFld.setText("");
+            surnameFld.setText("");
+            emailFld.setText("");
+            phonenumFld.setText("");
+            issuesFld.setText("");
+            commentsFld.setText("");
+            contactFld.setText("");
+
+            JOptionPane.showMessageDialog(this, "Your feedback has been submitted to customer support, we will respond as soon as possible. Please click the button to view the submitted feedback");
+            JOptionPane.showMessageDialog(this, "The Issue(s) you're faceing: " + issues);
+            JOptionPane.showMessageDialog(this, "Any futher comments: " + comments);
+        }
+    }
+
+    public void writeToFile() {
+        String filePath= "./src/main/java/com/mycompany/bankingapplication/";//The location where the txt file created will be saved.
+        String fileName = "CustomerSupportRequests.txt";
+        String fileData
+                = "First Name: " + fNameFld.getText().trim() + "\n"
+                + "Surname: " + surnameFld.getText().trim() + "\n"
+                + "Email: " + emailFld.getText().trim() + "\n"
+                + "Phone Number: " + phonenumFld.getText().trim() + "\n"
+                + "Issues They Are Facing: " + issuesFld.getText() + "\n"
+                + "Comments: " + commentsFld.getText() + "\n"
+                + "Contact Time: " + contactFld.getText().trim() + "\n"
+                + "---------------------------------" + "\n";
+
+        try (FileWriter myWriter = new FileWriter(filePath+fileName, true)) {//The true here means that the file can be edited 
+            myWriter.write(fileData);
+            System.out.println("NEW CUSTOMER SUPPORT REQUEST");
+
+        } catch (IOException e) {
+            System.out.println("Error saving new customer support request");
+        }
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        emailWelcomeLbl = new javax.swing.JLabel();
+        fillFormLbl = new javax.swing.JLabel();
+        fNameLbl = new javax.swing.JLabel();
+        emailLbl = new javax.swing.JLabel();
+        sNameLbl = new javax.swing.JLabel();
+        phoneNumLbl = new javax.swing.JLabel();
+        issueLbl = new javax.swing.JLabel();
+        commentsLbl = new javax.swing.JLabel();
+        contactTimeLbl = new javax.swing.JLabel();
+        fNameFld = new javax.swing.JTextField();
+        surnameFld = new javax.swing.JTextField();
+        emailFld = new javax.swing.JTextField();
+        phonenumFld = new javax.swing.JTextField();
+        issuesFld = new javax.swing.JTextField();
+        commentsFld = new javax.swing.JTextField();
+        contactFld = new javax.swing.JTextField();
+        submitBtn = new javax.swing.JButton();
+
+        setMaximumSize(new java.awt.Dimension(781, 601));
+        setMinimumSize(new java.awt.Dimension(780, 600));
+
+        emailWelcomeLbl.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        emailWelcomeLbl.setText("Email Customer Support");
+
+        fillFormLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        fillFormLbl.setText("Please fill out the below form. A member of our team will contact you shortly");
+
+        fNameLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        fNameLbl.setText("First Name:");
+
+        emailLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        emailLbl.setText("Email Address:");
+
+        sNameLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        sNameLbl.setText("Surname:");
+
+        phoneNumLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        phoneNumLbl.setText("Contact Number:");
+
+        issueLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        issueLbl.setText("Issue(s) You Are Facing:");
+
+        commentsLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        commentsLbl.setText("Further Comments:");
+
+        contactTimeLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        contactTimeLbl.setText("Preferred Contact Time:");
+
+        fNameFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fNameFldActionPerformed(evt);
+            }
+        });
+
+        issuesFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                issuesFldActionPerformed(evt);
+            }
+        });
+
+        submitBtn.setBackground(new java.awt.Color(80, 200, 120));
+        submitBtn.setForeground(new java.awt.Color(255, 255, 255));
+        submitBtn.setText("Submit");
+        submitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(345, 345, 345)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(251, 251, 251)
+                        .addComponent(emailWelcomeLbl))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(fillFormLbl))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fNameLbl)
+                                    .addComponent(sNameLbl)
+                                    .addComponent(emailLbl)
+                                    .addComponent(phoneNumLbl)
+                                    .addComponent(contactTimeLbl)
+                                    .addComponent(issueLbl))
+                                .addGap(38, 38, 38))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(commentsLbl)
+                                .addGap(63, 63, 63)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(commentsFld, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(issuesFld, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(fNameFld)
+                                .addComponent(surnameFld)
+                                .addComponent(emailFld)
+                                .addComponent(phonenumFld)
+                                .addComponent(contactFld, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(259, 259, 259)
+                        .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(164, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(emailWelcomeLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fillFormLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(contactFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactTimeLbl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fNameLbl)
+                    .addComponent(fNameFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sNameLbl)
+                    .addComponent(surnameFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailLbl)
+                    .addComponent(emailFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phoneNumLbl)
+                    .addComponent(phonenumFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(issueLbl)
+                    .addComponent(issuesFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(commentsLbl)
+                    .addComponent(commentsFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64)
+                .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(114, Short.MAX_VALUE))
+        );
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void fNameFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNameFldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fNameFldActionPerformed
+
+    private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
+        // TODO add your handling code here:
+        submitInfo();//Run the above submit info function
+
+    }//GEN-LAST:event_submitBtnActionPerformed
+
+    private void issuesFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_issuesFldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_issuesFldActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField commentsFld;
+    private javax.swing.JLabel commentsLbl;
+    private javax.swing.JTextField contactFld;
+    private javax.swing.JLabel contactTimeLbl;
+    private javax.swing.JTextField emailFld;
+    private javax.swing.JLabel emailLbl;
+    private javax.swing.JLabel emailWelcomeLbl;
+    private javax.swing.JTextField fNameFld;
+    private javax.swing.JLabel fNameLbl;
+    private javax.swing.JLabel fillFormLbl;
+    private javax.swing.JLabel issueLbl;
+    private javax.swing.JTextField issuesFld;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel phoneNumLbl;
+    private javax.swing.JTextField phonenumFld;
+    private javax.swing.JLabel sNameLbl;
+    private javax.swing.JButton submitBtn;
+    private javax.swing.JTextField surnameFld;
+    // End of variables declaration//GEN-END:variables
+}
